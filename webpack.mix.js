@@ -20,11 +20,20 @@ mix.setPublicPath( './assets/dist' );
 mix.js( 'assets/src/scripts/app.js', 'assets/dist/js' )
 	.js( 'assets/src/scripts/admin.js', 'assets/dist/js' )
 	.block( 'assets/src/scripts/gutenberg.js', 'assets/dist/js' )
-	.sass( 'assets/src/sass/style.scss', 'assets/dist/css' )
+
+mix
+	// .sass('assets/src/sass/style.scss', 'assets/dist/css')
 	.sass( 'assets/src/sass/admin.scss', 'assets/dist/css' )
-	.sass( 'assets/src/sass/gutenberg.scss', 'assets/dist/css' );
+	.sass('assets/src/sass/gutenberg.scss', 'assets/dist/css')
+		
+		mix.sass( 'assets/src/sass/style.scss', 'assets/dist/css' )
 
 // Add source map and versioning to assets in production environment.
 if ( mix.inProduction() ) {
 	mix.sourceMaps().version();
 }
+
+
+// mix.version();
+
+mix.disableNotifications();

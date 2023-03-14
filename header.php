@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The header for our theme
  *
@@ -9,74 +10,84 @@
  * @package awps
  */
 
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html <?php language_attributes(); ?>>
+
 <head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta charset="<?php bloginfo('charset'); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
-	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 
 	<?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
-<?php wp_body_open(); ?>
-	<div id="page" class="site" <?php echo ! is_customize_preview() ?: 'style="padding: 0 40px;"'; ?>>
+	<?php wp_body_open(); ?>
+	<div id="page" class="site" <?php echo !is_customize_preview() ?: 'style="padding: 0 40px;"'; ?>>
 
 		<header id="masthead" class="site-header" role="banner">
 
 			<?php
-			if ( is_customize_preview() ) {
+			if (is_customize_preview()) {
 				echo '<div id="awps-header-control"></div>';
 			}
 			?>
 
 			<div class="container container-fluid">
+				<div class="header-menu">
+
+					<div class="header-menu__items">
+
+					</div>
+				</div>
 
 				<div class="row">
-					<div class="col-xs-12 col-sm-4">
+					<div class="header-menu-icon">
 
-						<div class="site-branding">
-							<h1 class="site-title">
-								<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-									<?php svg( 'wordpress' ); ?>
-									<?php bloginfo( 'name' ); ?>
-								</a>
-							</h1>
-							<?php
-							$description = get_bloginfo( 'description', 'display' );
-							if ( $description || is_customize_preview() ) :
-							?>
-								<p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
-							<?php
-							endif;
-							?>
-					</div><!-- .site-branding -->
-
-				</div><!-- .col -->
-
-				<div class="col-xs-12 col-sm-8">
-
+					</div>
 					<nav id="site-navigation" class="main-navigation" role="navigation">
 						<?php
-						if ( has_nav_menu( 'primary' ) ) :
+						if (has_nav_menu('navigation')) :
 							wp_nav_menu(
 								array(
-									'theme_location' => 'primary',
-									'menu_id'        => 'primary-menu',
-									'walker'         => new Awps\Core\WalkerNav(),
+									'theme_location' => 'navigation',
+									// 'menu_id'        => 'primary-menu',
+									// 'walker'         => new Awps\Core\WalkerNav(),
 								)
 							);
 						endif;
 						?>
 					</nav>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-4">
+						<div class="site-branding">
+							<h1 class="site-title">
+								<a href="<?php echo esc_url(home_url('/')); ?>" rel="home">
+									<?php svg('logo'); ?>
+									<?php bloginfo('name'); ?>
+								</a>
+							</h1>
+							<?php
+							$description = get_bloginfo('description', 'display');
+							if ($description || is_customize_preview()) :
+							?>
+								<p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
+							<?php
+							endif;
+							?>
+						</div><!-- .site-branding -->
 
-				</div><!-- .col -->
+					</div>
+				</div>
+				<div class="row">
 
-			</div><!-- .row -->
-		</div><!-- .container-fluid -->
+				</div>
 
-	</header><!-- #masthead -->
+			</div>
 
-	<div id="content" class="site-content">
+		</header>
+
+		<div id="content" class="site-content">

@@ -1,3 +1,15 @@
 header {
 	position: relative;
+
+	.main-navigation {}
+}
+
+
+
+@include media-breakpoint-up(lg) {
+
+	.header-menu,
+	.header-menu-icon {
+		display: none;
+	}
 }

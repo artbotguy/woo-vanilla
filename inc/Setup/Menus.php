@@ -13,7 +13,7 @@ class Menus
      */
     public function register()
     {
-        add_action( 'after_setup_theme', array( $this, 'menus' ) );
+        add_action('after_setup_theme', array($this, 'menus'));
     }
 
     public function menus()
@@ -22,7 +22,9 @@ class Menus
             Register all your menus here
         */
         register_nav_menus(array(
-            'primary' => esc_html__( 'Primary', 'awps' ),
+            'primary' => esc_html__('Primary', 'awps'),
+            'navigation' => esc_html__('navigation'),
+            'categories' => esc_html__('categories'),
         ));
     }
 }
