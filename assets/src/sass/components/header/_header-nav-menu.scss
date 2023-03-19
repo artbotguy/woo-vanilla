@@ -1,0 +1,99 @@
+.header-nav-menu {
+  background: $secondary-bg;
+
+  // .header-nav-menu__head
+  &__head {
+    height: 50px;
+  }
+
+  // .header-nav-menu__shedule
+  &__shedule {}
+
+  // .header-nav-menu__icon
+  &__icon {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: transparent;
+    min-height: 46px;
+    width: 18px;
+
+    &:active {}
+
+    span {
+      position: absolute;
+      display: inline-flex;
+      height: 2px;
+      background-color: #231f20;
+      width: 100%;
+      left: 0;
+      transition: 0.2s;
+
+      &:nth-child(1) {
+        transform: translate(0, -6px);
+      }
+
+      &:nth-child(2) {}
+
+      &:nth-child(3) {
+        transform: translate(0, 6px);
+      }
+    }
+
+    &_active {
+      span {
+        &:nth-child(1) {
+          width: 104%;
+          transform-origin: top right;
+          transform: translate(-10%, 0) rotate(-45deg);
+        }
+
+        &:nth-child(2) {
+          opacity: 0;
+        }
+
+        &:nth-child(3) {
+          width: 104%;
+          transform-origin: bottom right;
+          transform: translate(-10%, 0) rotate(45deg);
+        }
+      }
+    }
+  }
+
+  // .header-nav-menu__local-contacts
+  &__local-contacts {
+
+    .icon {
+      use {
+        stroke: $tertiary;
+        // fill: $cGreqDark;
+      }
+    }
+
+    // .icon {
+    //   use {
+    //     stroke: $cGreqDark;
+    //     fill: $cGreqDark;
+    //   }
+    // }
+  }
+
+  // .header-nav-menu__items
+  &__items {}
+
+}
+
+@media (max-width: ($md+px)) {
+  .header-nav-menu {
+    display: none;
+  }
+}
+
+// @include media-breakpoint-up(lg) {
+//   .header-nav-menu {
+//     display: none;
+//   }
+// }

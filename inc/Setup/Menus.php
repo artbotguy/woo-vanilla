@@ -24,7 +24,9 @@ class Menus
         register_nav_menus(array(
             'primary' => esc_html__('Primary', 'awps'),
             'navigation' => esc_html__('navigation'),
-            'categories' => esc_html__('categories'),
+            'info' => esc_html__('info'),
+            // 'categories' => esc_html__('categories'),
+            'catalog' => esc_html__('catalog'),
         ));
     }
 }

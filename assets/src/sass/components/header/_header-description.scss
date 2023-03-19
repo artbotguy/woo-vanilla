@@ -1,0 +1,8 @@
+.header-description {
+  width: 150px;
+  font-size: $sub-sup-font-size;
+
+  @media (max-width: ($md+px)) {
+    font-size: inherit;
+  }
+}

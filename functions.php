@@ -1,4 +1,7 @@
 <?php
+error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
+ini_set('error_reporting', E_ALL);
+ini_set('display_errors', 1);
 /**
  *
  * This theme uses PSR-4 and OOP logic instead of procedural coding
@@ -8,10 +11,10 @@
  * @package awps
  */
 
-if ( file_exists( dirname( __FILE__ ) . '/vendor/autoload.php' ) ) :
-	require_once dirname( __FILE__ ) . '/vendor/autoload.php';
+if (file_exists(dirname(__FILE__) . '/vendor/autoload.php')) :
+	require_once dirname(__FILE__) . '/vendor/autoload.php';
 endif;
 
-if ( class_exists( 'Awps\\Init' ) ) :
+if (class_exists('Awps\\Init')) :
 	Awps\Init::register_services();
 endif;

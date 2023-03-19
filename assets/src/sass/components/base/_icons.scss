@@ -1,0 +1,32 @@
+.icons-sprite {
+  height: 0;
+  width: 0;
+
+  path {
+    stroke: inherit;
+    fill: inherit;
+  }
+
+  symbol {
+    fill: inherit;
+
+    &#sprite-cart {
+      fill: none;
+    }
+  }
+}
+
+.icon {
+  height: 24px;
+  width: 24px;
+
+  use {
+    stroke: #000;
+    fill: transparent;
+  }
+}
+
+
+.icon-default {
+  use {}
+}

@@ -1,0 +1,21 @@
+// header-contacts
+.header-contacts {
+
+  // .header-contacts__connect
+  &__connect {
+    li {
+      span {}
+    }
+  }
+
+  // .header-contacts__soc
+  &__soc {
+    a {
+      &:hover {
+        svg {
+          opacity: 0;
+        }
+      }
+    }
+  }
+}

@@ -2,4 +2,4 @@
 /vendor/**
 /assets/dist/**
 
-webpack.mix.js
+# webpack.mix.js

@@ -28,18 +28,18 @@ class Enqueue
 		if (!is_customize_preview()) {
 			wp_deregister_script('jquery');
 		}
-
 		// CSS
-		wp_enqueue_style('bootstrap', get_template_directory_uri() . '/assets/dist/bootstrap/css/bootstrap.min.css', array(), '1.0.0', 'all');
-		wp_enqueue_style('main', mix('css/style.css'), array(), '1.0.0', 'all');
-		// wp_enqueue_style('bootstrap', mix('bootstrap.min.css'), array(), '1.0.0', 'all');
+		wp_enqueue_style('bootstrap-css', get_template_directory_uri() . '/node_modules/bootstrap/dist/css/bootstrap.min.css', array(), '1.0.0', 'all');
+		wp_enqueue_style('main-css', mix('css/style.css'), array(), '1.0.0', 'all');
+		// wp_enqueue_style('bootstrap', get_template_directory_uri() . '/assets/dist/css/bootstrap.min.css', array(), '1.0.0', 'all');
 
 		// JS
 		wp_enqueue_script('main', mix('js/app.js'), array(), '1.0.0', true);
+		// wp_enqueue_script('bootstrap', get_template_directory_uri() . '/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js', array('main'), '1.0.0', 'all');
 
 		// Activate browser-sync on development environment
 		if (getenv('APP_ENV') === 'development') :
-		// wp_enqueue_script('__bs_script__', getenv('WP_SITEURL') . ':3000/browser-sync/browser-sync-client.js', array(), null, true);
+			wp_enqueue_script('__bs_script__', getenv('WP_SITEURL') . ':3000/browser-sync/browser-sync-client.js', array(), null, true);
 		endif;
 
 		// Extra

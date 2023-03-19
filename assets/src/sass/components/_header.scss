@@ -1,15 +1,24 @@
+@import 'header/header-nav-menu';
+@import 'header/header-catalog-menu';
+@import 'header/header-main-menu';
+
+@import 'header/header-actions';
+@import 'header/header-actions-mobile';
+@import 'header/header-description';
+
 header {
 	position: relative;
 
 	.main-navigation {}
+
 }
 
+#svg-logo {
+	&:hover {
+		.svg-logo-stroke {
+			transition: .2s;
+			fill: $tertiary;
+		}
 
-
-@include media-breakpoint-up(lg) {
-
-	.header-menu,
-	.header-menu-icon {
-		display: none;
 	}
 }

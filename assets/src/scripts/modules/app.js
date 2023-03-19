@@ -1,3 +1,5 @@
+import enquireHandler from './enquire';
+import modal from "bootstrap/js/src/modal";
 class App {
 	constructor() {
 		this.el = document.querySelector('.el');
@@ -7,8 +9,16 @@ class App {
 	}
 
 	init() {
-		// eslint-disable-next-line no-console
-		console.info('App Initialized');
+		enquireHandler();
+		// console.log($.noConflict());
+		// $.noConflict();
+		// $(window).on('load', function () {
+		// 	console.log($('#navModal'));
+		// 	$('#navModal').modal('show');
+		// });
+
+		var navModal = new modal(document.getElementById('navModal'), {})
+		navModal.toggle()
 	}
 
 	listeners() {
@@ -26,4 +36,5 @@ class App {
 		);
 	}
 }
+
 export default App;
