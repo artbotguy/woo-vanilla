@@ -1,0 +1,34 @@
+body {
+  font-family: 'TT Norms';
+}
+
+ol,
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: $dark;
+
+  &:hover {
+    color: $emphasis;
+  }
+}
+
+img {
+  // width: 100%;
+}
+
+
+.btn-minimal {
+  &:focus {
+    box-shadow: none
+  }
+}
+
+.swiper {
+  min-width: 0; // for swiper
+}

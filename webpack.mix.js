@@ -49,6 +49,7 @@ if (mix.inProduction()) {
 			],
 		})
 	);
+	// mix.copy('./assets/src/images/svg/', './assets/dist/images/svg/sprite-icons/')
 } else {
 	mix.webpackConfig(
 		merge(webpackConfig, {
@@ -56,6 +57,7 @@ if (mix.inProduction()) {
 			plugins: [
 				new webpack.ProvidePlugin({
 					$: '/home/artbot/dev/wc-docker-apache/html/wp-content/themes/woo-vanilla/node_modules/jquery/dist/jquery.min.js',
+					jQuery: '/home/artbot/dev/wc-docker-apache/html/wp-content/themes/woo-vanilla/node_modules/jquery/dist/jquery.min.js',
 					// jQuery: require.resolve(
 					// 	'/home/artbot/dev/wc-docker-apache/html/wp-content/themes/woo-vanilla/node_modules/jquery/dist/jquery.min.js'
 					// ),

@@ -48,6 +48,7 @@
     "enquire.js": "^2.1.6",
     "jquery": "^3.6.4",
     "lodash-es": "^4.17.21",
+    "swiper": "^9.2.0",
     "webpack-merge": "^5.8.0"
   }
 }

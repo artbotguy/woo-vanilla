@@ -2,6 +2,83 @@
 # Bootstrap
 --------------------------------------------------------------*/
 
+.btn {
+  padding: 0;
+}
+
+.btn-check:checked+.btn,
+.btn.active,
+.btn.show,
+.btn:first-child:active,
+:not(.btn-check)+.btn:active {
+  border: 1px solid transparent;
+}
+
+.offcanvas {
+
+  &-body {
+    padding: 0 20px;
+  }
+
+  &-header {
+    min-height: 66px;
+    padding: 15px;
+  }
+
+  .btn-close {
+    margin: 0;
+  }
+}
+
+.dropdown-menu {
+  box-shadow: 0px 10px 30px rgba(34, 42, 70, 0.1);
+  border-radius: 10px;
+  border: 1px solid #F2F3F5;
+  padding: 20px;
+
+  li {
+    margin-bottom: 10px;
+    white-space: nowrap;
+  }
+}
+
+.dropdown {
+  position: static;
+}
+
+.dropdown-toggle {
+  display: flex;
+  align-items: center;
+  position: relative;
+
+
+  &::after {
+    min-width: 10px;
+    min-height: 10px;
+    content: "";
+    display: block;
+    margin-left: .255em;
+    border: none;
+    background: center no-repeat url('../images/svg/arrow.svg');
+    transition: .1s;
+  }
+
+  &.show {
+    &::after {
+      transform: rotate(-180deg);
+    }
+  }
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+}
+
+.container-fluid {
+  padding: 0 20px;
+}
+
 
 // @import "bootstrap/scss/bootstrap";
 
@@ -12,33 +89,7 @@
 // @import "bootstrap/scss/variables";
 // // // @import "bootstrap/scss/variables-dark";
 
-$sm: 540px;
-$md: 720px;
-$lg: 960px;
-$xl: 1140px;
-$xxl: 1320px;
 
-$sub-sup-font-size: 12px;
-
-$primary: #E2195B;
-$secondary: #505567;
-// $success:       $green !default;
-// $info:          $cyan !default;
-// $warning:       $yellow !default;
-// $danger:        $red !default;
-// $light:         $gray-100 !default;
-$dark: #1B1C21;
-
-$body-color: #222A46;
-
-$tertiary: #0093A2;
-$secondary-bg: #F2F3F5;
-
-$link-color: $body-color;
-$link-hover-color: $tertiary;
-// $theme-colors: (
-//   "tertiary": $tertiary,
-// );
 
 // @import "bootstrap/scss/maps";
 // @import "bootstrap/scss/mixins";

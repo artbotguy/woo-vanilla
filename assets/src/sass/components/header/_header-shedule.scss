@@ -1,0 +1,19 @@
+.header-shedule {
+  margin-right: 25px;
+
+  .icon {
+    margin-right: 10px;
+
+    use {
+      stroke: $secondary;
+    }
+  }
+
+  span {
+    // letter-spacing: .3px;
+
+    @media (min-width: ($md)) {
+      font-size: $small-font-size;
+    }
+  }
+}

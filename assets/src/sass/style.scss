@@ -1,18 +1,25 @@
-@import './bootstrap.scss';
+// @import url(https://fonts.googleapis.com/css?family=Yeseva+One:regular);
+// @import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900);
 
-/*--------------------------------------------------------------
-# Import Modules
---------------------------------------------------------------*/
 // @import '~normalize-scss/sass/normalize/import-now';
 
 
-ul {
-  list-style-type: none;
-}
+/*--------------------------------------------------------------
+# Imports
+--------------------------------------------------------------*/
+@import './bootstrap.scss';
+@import 'swiper/css';
+@import 'swiper/css/pagination';
+@import 'swiper/css/navigation';
+//
 
-a {
-  text-decoration: none;
-}
+@import 'fonts.scss';
+
+@import 'variables.scss';
+
+@import 'tags.scss';
+
+
 
 /*--------------------------------------------------------------
 # Components
@@ -27,3 +34,17 @@ a {
 # Pages
 --------------------------------------------------------------*/
 @import 'pages/home';
+
+/*--------------------------------------------------------------
+# Partials
+--------------------------------------------------------------*/
+@import 'partials/link-item.scss';
+@import 'partials/cart-count.scss';
+
+@import 'components/sliders/slider-product';
+@import 'components/sliders/slider-products';
+
+@import 'components/products/product';
+@import 'components/product-lists/product-list-catalog';
+
+@import 'components/product/product-catalog-actions';

@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * This theme uses PSR-4 and OOP logic instead of procedural coding
@@ -31,7 +32,14 @@ final class Init
 			Api\Gutenberg::class,
 			Api\Widgets\TextWidget::class,
 			Plugins\ThemeJetpack::class,
-			Plugins\Acf::class
+			Plugins\Acf::class,
+
+			WooVanilla\Functions::class,
+			WooVanilla\TemplateFunctions::class,
+			WooVanilla\TemplateHooks::class,
+			WooCommerce\Functions::class,
+			WooCommerce\TemplateFunctions::class,
+			WooCommerce\TemplateHooks::class,
 		];
 	}
 
@@ -41,9 +49,9 @@ final class Init
 	 */
 	public static function register_services()
 	{
-		foreach ( self::get_services() as $class ) {
-			$service = self::instantiate( $class );
-			if ( method_exists( $service, 'register') ) {
+		foreach (self::get_services() as $class) {
+			$service = self::instantiate($class);
+			if (method_exists($service, 'register')) {
 				$service->register();
 			}
 		}
@@ -54,9 +62,8 @@ final class Init
 	 * @param  class $class 		class from the services array
 	 * @return class instance 		new instance of the class
 	 */
-	private static function instantiate( $class )
+	private static function instantiate($class)
 	{
 		return new $class();
 	}
-
 }

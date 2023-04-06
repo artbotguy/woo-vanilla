@@ -1,15 +1,37 @@
-@import 'header/header-nav-menu';
-@import 'header/header-catalog-menu';
-@import 'header/header-main-menu';
+@import 'header/header-menu-nav';
+@import 'header/header-menu-catalog';
+@import 'header/header-menu-catalog-mobile';
+@import 'header/header-menu-main';
 
 @import 'header/header-actions';
-@import 'header/header-actions-mobile';
-@import 'header/header-description';
 
-header {
+@import 'header/header-description';
+@import 'header/header-shedule';
+
+@import 'header/header-contacts';
+@import 'header/header-search';
+//
+@import 'header/header-menu-catalog/header-menu-catalog-items';
+
+
+
+
+.header {
 	position: relative;
+	margin-bottom: 20px;
 
 	.main-navigation {}
+
+	box-shadow: 0px 4px 15px rgba(34, 42, 70, 0.08);
+
+	&__body {
+		display: flex;
+		flex-direction: column;
+
+		&>* {
+			flex: 1 1 auto;
+		}
+	}
 
 }
 
@@ -17,7 +39,7 @@ header {
 	&:hover {
 		.svg-logo-stroke {
 			transition: .2s;
-			fill: $tertiary;
+			fill: $emphasis;
 		}
 
 	}
