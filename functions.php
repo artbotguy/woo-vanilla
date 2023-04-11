@@ -13,6 +13,8 @@
  * @package awps
  */
 
+include 'inc/template-functions.php';
+
 if (file_exists(dirname(__FILE__) . '/vendor/autoload.php')) :
 	require_once dirname(__FILE__) . '/vendor/autoload.php';
 endif;
@@ -20,3 +22,20 @@ endif;
 if (class_exists('Awps\\Init')) :
 	Awps\Init::register_services();
 endif;
+
+
+function wv_get_template($path, $args = [])
+{
+	wc_get_template($path, $args, '', get_template_directory() . '/templates/');
+}
+
+function woovanilla_do_shortcode($tag, array $atts = array(), $content = null)
+{
+	global $shortcode_tags;
+
+	if (!isset($shortcode_tags[$tag])) {
+		return false;
+	}
+
+	return call_user_func($shortcode_tags[$tag], $atts, $content, $tag);
+}

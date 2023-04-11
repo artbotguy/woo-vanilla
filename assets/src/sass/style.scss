@@ -24,11 +24,15 @@
 /*--------------------------------------------------------------
 # Components
 --------------------------------------------------------------*/
+@import 'components/base/icons';
+
 @import 'components/header';
 @import 'components/sidebar';
 @import 'components/footer';
 
-@import 'components/base/icons';
+@import 'components/catalog/catalog';
+
+
 
 /*--------------------------------------------------------------
 # Pages

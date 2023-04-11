@@ -1,10 +1,7 @@
 <?php
-
-if (!defined('ABSPATH')) {
-  exit;
-}
-
-// global $product;
+$product = $args['product'];
+$var_attrs = $product->get_variation_attributes();
+$sizes = $var_attrs['pa_razmer'];
 ?>
 
 

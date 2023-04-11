@@ -25,16 +25,17 @@ class Enqueue
 	public function enqueue_scripts()
 	{
 		// Deregister the built-in version of jQuery from WordPress
-		if (!is_customize_preview()) {
-			wp_deregister_script('jquery');
-		}
+		// if (!is_customize_preview()) {
+		// 	wp_deregister_script('jquery');
+		// }
 		// CSS
 		wp_enqueue_style('bootstrap-css', get_template_directory_uri() . '/node_modules/bootstrap/dist/css/bootstrap.min.css', array(), '1.0.0', 'all');
 		wp_enqueue_style('main-css', mix('css/style.css'), array(), '1.0.0', 'all');
 		// wp_enqueue_style('bootstrap', get_template_directory_uri() . '/assets/dist/css/bootstrap.min.css', array(), '1.0.0', 'all');
 
 		// JS
-		wp_enqueue_script('main-js', mix('js/app.js'), array(), '1.0.0', true);
+
+		wp_enqueue_script('main-js', mix('js/app.js'), ['jquery'], '1.0.0', true);
 		// wp_enqueue_script('bootstrap', get_template_directory_uri() . '/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js', array('main'), '1.0.0', 'all');
 
 		// Activate browser-sync on development environment

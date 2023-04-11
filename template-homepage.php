@@ -18,26 +18,8 @@ get_header(); ?>
 <div class="container">
 
 	<?php
+	do_action('homepage');
 
-	get_template_part(
-		'views/public/components/sliders/slider-products',
-		null,
-		[
-			'title' => 'Новинки',
-			'params' =>
-			[
-				// 'orderby' => 'date'
-			],
-		]
-	);
-	get_template_part(
-		'views/public/components/product-lists/product-list-catalog',
-		null,
-		[
-			'params' =>
-			[],
-		]
-	);
 	?>
 
 </div>

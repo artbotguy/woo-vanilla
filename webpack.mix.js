@@ -57,20 +57,17 @@ if (mix.inProduction()) {
 			plugins: [
 				new webpack.ProvidePlugin({
 					$: '/home/artbot/dev/wc-docker-apache/html/wp-content/themes/woo-vanilla/node_modules/jquery/dist/jquery.min.js',
-					jQuery: '/home/artbot/dev/wc-docker-apache/html/wp-content/themes/woo-vanilla/node_modules/jquery/dist/jquery.min.js',
-					// jQuery: require.resolve(
-					// 	'/home/artbot/dev/wc-docker-apache/html/wp-content/themes/woo-vanilla/node_modules/jquery/dist/jquery.min.js'
-					// ),
-					// lodash: 'lodash-es',
-					// enquirejs: 'enquire.js',
-					// bootstrap: 'bootstrap',
+					// jQuery: '/home/artbot/dev/wc-docker-apache/html/wp-content/themes/woo-vanilla/node_modules/jquery/dist/jquery.min.js',
 				}),
 			],
 		})
 	);
 	mix.browserSync({
 		proxy: 'http://localhost',
-		files: ['./*.php', 'views/**/*.php'],
+		files: [
+			'**/*.php',
+			// 'views/**/*.php'
+		],
 		notify: false,
 		open: false,
 	});

@@ -34,12 +34,7 @@ final class Init
 			Plugins\ThemeJetpack::class,
 			Plugins\Acf::class,
 
-			WooVanilla\Functions::class,
-			WooVanilla\TemplateFunctions::class,
 			WooVanilla\TemplateHooks::class,
-			WooCommerce\Functions::class,
-			WooCommerce\TemplateFunctions::class,
-			WooCommerce\TemplateHooks::class,
 		];
 	}
 
