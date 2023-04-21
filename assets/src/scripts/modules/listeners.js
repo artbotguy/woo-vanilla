@@ -9,6 +9,7 @@ class ClientListeners {
   init() {
     this.click();
     this.resize();
+    // $('#linkCart').trigger('side_cart_open');
   }
 
   click() {
@@ -21,6 +22,26 @@ class ClientListeners {
       //   }
       // }
     })
+
+    $('.quantity__button').click(function (e) {
+      e.preventDefault();
+      const $input = $(this).parent().find('input')
+      const operator = $(this).data().wvChangeQtyOperator;
+      if (operator === '-') {
+        if ($input.val() <= $input.attr('min')) return
+      }
+      if (operator === '+') {
+        /**
+         * Логика должна основываться на атрибуте max, но он не устанавливается.
+         * Тем не менее логика WC, препятвующая добавлению бОльшего количества товаров присутствует
+         */
+        if ($input.attr('max') ? $input.val() >= $input.attr('max') : false) return
+      }
+      $input.val(eval($input.val() + operator + '1'))
+
+    })
+
+
   }
 
   resize() {

@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package awps
+ * @package woovanilla
  */
 
 get_header(); ?>
@@ -20,7 +20,7 @@ get_header(); ?>
 
 				<?php
 				if ( have_posts() ) :
-				?>
+					?>
 
 					<header>
 						<?php

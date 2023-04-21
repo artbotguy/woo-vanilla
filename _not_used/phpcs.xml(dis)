@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<ruleset name="ABGWP">
+    <description>ABGRules Standart</description>
+    <rule ref="WordPress">
+        <exclude name="WordPress.WhiteSpace.PrecisionAlignment"/>
+    </rule>
+
+</ruleset>

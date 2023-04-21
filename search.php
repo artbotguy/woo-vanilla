@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
  *
- * @package awps
+ * @package woovanilla
  */
 
 get_header(); ?>
@@ -20,14 +20,14 @@ get_header(); ?>
 
 				<?php
 				if ( have_posts() ) :
-				?>
+					?>
 
 					<header>
 						<h1 class="page-title">
 						<?php
 						printf(
 							/* translators: %s: Search Term. */
-							esc_html__( 'Search Results for: %s', 'awps' ),
+							esc_html__( 'Search Results for: %s', 'woovanilla' ),
 							'<span>' . get_search_query() . '</span>'
 						);
 						?>

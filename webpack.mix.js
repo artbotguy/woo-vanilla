@@ -13,15 +13,23 @@ const webpack = require('webpack');
 mix.setPublicPath('./assets/dist');
 
 // Compile assets.
-mix.js('assets/src/scripts/app.js', 'assets/dist/js')
+mix
+	.js('assets/src/scripts/wp/add-to-cart-variation.js', 'assets/dist/js')
+	.js('assets/src/scripts/wp/xoo-wsc-main.js', 'assets/dist/js')
+	.js('assets/src/scripts/app.js', 'assets/dist/js')
 	.js('assets/src/scripts/admin.js', 'assets/dist/js')
+
 	.block('assets/src/scripts/gutenberg.js', 'assets/dist/js')
 	.sass('assets/src/sass/admin.scss', 'assets/dist/css')
 	.sass('assets/src/sass/gutenberg.scss', 'assets/dist/css')
 	// .sass('assets/src/sass/bootstrap.scss', 'assets/dist/css')
-	.sass('assets/src/sass/style.scss', 'assets/dist/css');
+	.sass('assets/src/sass/style.scss', 'assets/dist/css')
+
 
 const webpackConfig = {
+	// optimization: {
+	// 	runtimeChunk: 'single'
+	// },
 	resolve: {
 		alias: {
 			// jquery: path.join(__dirname, 'node_modules/jquery/src/jquery'),

@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package awps
+ * @package woovanilla
  */
 
 ?>
@@ -20,11 +20,11 @@
 
 			wp_link_pages(
 				array(
-					'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'awps' ),
+					'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'woovanilla' ),
 					'after'  => '</div>',
 				)
 			);
-		?>
+			?>
 	</div><!-- .entry-content -->
 
 </article><!-- #post-## -->

@@ -7,7 +7,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package awps
+ * @package woovanilla
  */
 
 ?>
@@ -15,15 +15,15 @@
 </div><!-- #content -->
 
 <?php
-if (is_customize_preview()) {
-	echo '<div id="awps-footer-control" style="margin-top:-30px;position:absolute;"></div>';
+if ( is_customize_preview() ) {
+		echo '<div id="woovanilla-footer-control" style="margin-top:-30px;position:absolute;"></div>';
 }
 ?>
 
 <footer id="colophon" class="site-footer container-fluid" role="contentinfo">
 
 </footer>
-<?php get_template_part('views/public/components/offcanvases-modals'); ?>
+<?php get_template_part( 'views/public/components/offcanvases-modals' ); ?>
 </div>
 
 <?php wp_footer(); ?>

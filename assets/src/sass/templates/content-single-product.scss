@@ -1,0 +1,35 @@
+.wv-single-product {
+
+  &__main {
+    display: grid;
+    grid-template: repeat(3, auto) / 1fr;
+
+    @media (min-width: ($md)) {
+      grid-template: repeat(2, auto) / repeat(2, 1fr);
+
+    }
+
+    @media (min-width: ($xl)) {
+      grid-template: auto / 1fr 1fr .5fr;
+
+    }
+  }
+
+  // .wv-single-product__sliders
+  &__sliders {}
+}
+
+.swiper {}
+
+.wv-slider-single-product {}
+
+.swiper-wrapper {}
+
+.swiper-slide {}
+
+.wv-slider-thumb-single-product {
+  img {
+    width: 100px;
+    height: 100px;
+  }
+}

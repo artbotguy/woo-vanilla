@@ -48,7 +48,10 @@
 @import 'components/sliders/slider-product';
 @import 'components/sliders/slider-products';
 
-@import 'components/products/product';
 @import 'components/product-lists/product-list-catalog';
 
 @import 'components/product/product-catalog-actions';
+
+//
+@import 'templates/content-product.scss';
+@import 'templates/content-single-product.scss';

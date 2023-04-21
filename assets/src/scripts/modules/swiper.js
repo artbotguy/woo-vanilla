@@ -50,6 +50,35 @@ export default class ClientSwiper {
 
     }
 
+    /**
+     * Single product
+     */
+    const sliderSingleProduct = $('.wv-slider-single-product')[0]
+    if (sliderSingleProduct && sliderSingleProduct.length !== 0) {
+      const swiperSingleProduct = new Swiper(sliderSingleProduct, {
+        modules: [FreeMode],
+        loop: true,
+        spaceBetween: 10,
+        slidesPerView: 3,
+        freeMode: true,
+        watchSlidesProgress: true,
+      });
+
+      /**
+     * Single product thumbs
+     */
+      const sliderThumbSingleProduct = $('.wv-slider-thumb-single-product')[0]
+      const swiperThumbSingleProduct = new Swiper(sliderThumbSingleProduct, {
+        loop: true,
+        spaceBetween: 10,
+        thumbs: {
+          swiper: swiperSingleProduct,
+        },
+      });
+    }
+
+
+
 
   }
 }
