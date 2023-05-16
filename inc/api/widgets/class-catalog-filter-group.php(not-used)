@@ -1,0 +1,36 @@
+<?php
+/**
+ * @package WooVanilla
+ */
+
+namespace WooVanilla\Api\Widgets;
+
+/**
+ * Предназначен для вывода группы фильтров, предоставляемой плагином berocket ajax product filters
+ */
+class Catalog_Filter_Group_Widget extends \WP_Widget {
+	public $widget_ID;
+
+	public $widget_name;
+
+	public $widget_options = array();
+
+	public $control_options = array();
+	public function __construct() {
+				$this->widget_ID = 'widget_woovanilla_catalog_filter_group';
+
+		$this->widget_name = 'widget_woovanilla_catalog_filter_group';
+	}
+
+	public function widget( $args, $instance ) {
+		// outputs the content of the widget
+	}
+
+	public function form( $instance ) {
+		// outputs the options form in the admin
+	}
+
+	public function update( $new_instance, $old_instance ) {
+		// processes widget options to be saved
+	}
+}

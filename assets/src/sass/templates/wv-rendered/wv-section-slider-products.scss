@@ -1,0 +1,29 @@
+.wv-section-slider-products {
+  margin-bottom: 40px;
+
+  @media (min-width: ($md)) {
+    margin-bottom: 60px;
+  }
+
+  // .wv-section-slider-products__head
+  &__head {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  // .wv-section-slider-products__title
+  &__title {}
+
+  // .wv-section-slider-products__arrow
+  &__arrow {}
+
+  .swiper {}
+
+  .swiper-wrapper {}
+
+  .swiper-slide {
+    height: auto;
+    grid-template-rows: 1fr auto;
+  }
+}

@@ -1,0 +1,23 @@
+.wv-header-shedule {
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+
+  .wv-icon {
+    margin-right: 10px;
+    width: 16px;
+    height: 16px;
+
+    use {
+      stroke: $secondary;
+    }
+  }
+
+  span {
+    white-space: nowrap;
+
+    @media (min-width: ($md)) {
+      font-size: $small-font-size;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+.wv-header-bot {
+  display: none;
+  padding: 18px 0;
+  overflow: auto;
+  height: 60px;
+
+  @media (min-width: ($md)) {
+    display: block;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  scroll-behavior: smooth;
+
+  .menu-main {
+    &__item {
+      &:not(:last-child) {
+        margin-right: 20px;
+      }
+    }
+
+    &__link {
+      white-space: nowrap;
+    }
+  }
+
+  .wv-universal-toggle {
+    z-index: 1;
+    order: 1;
+    // padding-left: 10px;
+    // margin-left: -5px;
+  }
+}

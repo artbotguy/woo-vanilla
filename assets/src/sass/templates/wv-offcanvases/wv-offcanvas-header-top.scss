@@ -1,0 +1,27 @@
+.wv-offcanvas-header-top {
+  @media (min-width: ($md)) {
+    display: none;
+  }
+
+  ul {
+    padding: 0;
+  }
+
+  .offcanvas-body {
+    padding: 0;
+  }
+
+  .offcanvas-header {
+    border-bottom: 1px solid #E2E4EB;
+  }
+
+  .btn-close {
+    height: 13.33px;
+    width: 13.33px;
+    padding: 9.33px;
+  }
+
+  .wv-header-contacts {
+    margin-left: 5px;
+  }
+}

@@ -1,35 +1,18 @@
 const enquire = require('enquire.js');
 
-const headerShedule = $('.header-shedule');
-const navMenuHead = $('.header-menu-nav__head');
-const navMenuOffcanvasBody = $('.header-menu-nav .offcanvas-body');
-const navMenuOffcanvasHeader = $('.header-menu-nav .offcanvas-header');
-
-const navMenuIcon = $('.header-menu-nav__icon');
-
-
 const headerNavMenu = $('.header-nav-menu');
-const headerNavMenuItemsTypeMain = $('.header-nav-menu__items_type_main')
-const headerNavMenuItemInfo = $('.header-nav-menu__item_info'); // элемент меню navigation - Информация
-const headerNavMenuItemsTypeInfo = $('.header-nav-menu__items_type_info'); // меню info 
 
-const headerNavMunuLocalContacts = $('.header-menu-nav__local-contacts');
-const headerContacts = $('.header-contacts');
+const callHeaderMainMenu = $('.wv-header-main-call')
 
-const callHeaderMainMenu = $('.call-header-menu-main')
-const callHeaderActionsDropdownMenu = $('.call-header-menu-main__dropdown .dropdown-menu');
+const headerMenuCatalogMobileBody = $('.wv-header-bot-mobile__body');
+const headerMenuCatalog = $('.wv-header-bot');
 
+const headerActionsMobileList = $('.wv-header-mobile-menu__list');
+const headerMainMenuHeaderSearchWrapper = $('.wv-header-main-search__wrapper');
 
-const headerMenuCatalogMobileBody = $('.header-menu-catalog-mobile__body');
-const headerMenuCatalogItems = $('.header-menu-catalog-items');
-const headerMenuCatalog = $('.header-menu-catalog');
+const headerMenuMain = $('.wv-header-main')
 
-const headerActionsMobileList = $('.header-actions__list');
-const headerMainMenuHeaderSearchWrapper = $('.search-header-menu-main__wrapper');
-
-const headerMenuMain = $('.header-menu-main')
-
-const searchHeaderMenuMain = $('.search-header-menu-main')
+const searchHeaderMenuMain = $('.wv-header-main-search')
 
 
 //
@@ -38,6 +21,12 @@ const linkMyOrders = $('#linkMyOrders')
 const linkCart = $('#linkCart')
 const linkWishlist = $('#linkWishlist')
 
+/**
+ * Warning!
+ * Использование коллекций элементов в переменных, в частности для получения длинны коллекции
+ * может вести к некорректной логике, когда длинна коллекции изменяется, а в переменной остается экземпляр
+ * коллекци ДО изменений!
+ */
 class ClientEnquire {
 
 	instance = null
@@ -47,78 +36,149 @@ class ClientEnquire {
 	}
 
 	init() {
+		/**
+		 * (min-width: 0px)
+		 */
+		enquire.register('(min-width: 0px)', {
+			setup() {
+
+				// CATALOG
+				for (let index = 0; index < 2; index++) {
+					const items = $('.wv-widget-area_location_catalog div .berocket_single_filter_widget')
+					const el = items[items.length - 1];
+					$('.wv-widget-area_location_catalog').append(el)
+				}
+			}
+		})
+
 		// after - после элемента
 		// append - внутрь элемента в конец
-		// this.instance =
+		enquire.register('(min-width: 0px) and (max-width: 768px)', {
+			match() {
+
+			},
+			setup() {
+				$('.wv-menu-navigation_location_header .menu-item-has-children .menu-sub').removeClass('dropdown-menu')
+			}
+		})
+
+		/**
+		 * min-width: 767px
+		 */
 		enquire.register('(min-width: 767px)', {
 			match() {
-				navMenuHead.prepend(headerShedule);
-				$('.logo-header-menu-main').append($('.header-menu-nav__head .header-description'));
-				headerNavMenuItemInfo.append(headerNavMenuItemsTypeInfo)
-
-				headerNavMunuLocalContacts.before(headerNavMenu)
-				callHeaderActionsDropdownMenu.append(headerContacts)
-
-				headerMenuCatalog.prepend(headerMenuCatalogItems)
-
-				// (4) header-search изначально лежит в оболочке, открывающей offcanvas.Catalog, 
-				// 		в которой лежит другой header-search. Для десктопа он находится вне оболочки 
-				$('.header-menu-main__search').prepend($('.search-header-menu-main__wrapper .header-search'))
-
-				$('.header-menu-main__cart').prepend(linkCart)
-				$('.header-menu-main__wishlist').prepend(linkWishlist)
-				$('.header-menu-nav__local-contacts').append(linkMyOrders)
-				linkCart.addClass('link-item_type_circle')
-				linkWishlist.addClass('link-item_type_circle')
+				/**
+				 * Header Top
+				 */
+				// HT0
+				$('.wv-header-top__head').prepend($('.wv-header-shedule'));
+				// HT1
+				$('.wv-header-top__local-contacts').before($('.wv-menu-navigation_location_header'));
+				// HT2 - производит вставку двух элеменов меню, остальные оставляет в .dropdown
+				const menuSubItemsNavigationLocationHeader = $('.wv-menu-navigation_location_header .menu-sub > li')
+				$('.wv-menu-navigation_location_header .menu-item-has-children .menu-sub').addClass('dropdown-menu')
+				for (let index = 0; index < 2; index++) {
+					const el = menuSubItemsNavigationLocationHeader[index];
+					$('.wv-menu-navigation_location_header').prepend(el)
+				}
+				// HT3
+				$('.wv-header-main-call .dropdown-menu').prepend($('.wv-header-contacts'))
 
 
+				/**
+				 * Menu Main
+				 */
+				// MM0
+				headerMenuCatalog.prepend($('.wv-header-bot-mobile .wv-menu-categories')) // note (!)
+				// MM1 - wv-header-search изначально лежит в оболочке, открывающей offcanvas.Catalog, 
+				// 		в которой лежит другой wv-header-search. Для десктопа он находится вне оболочки 
+				$('.wv-header-main__search').prepend($('.wv-header-main-search__wrapper .wv-header-search'))
+				// MM2
+				$('.wv-header-main-cart').prepend(linkCart)
+				$('.wv-header-main-wishlist').prepend(linkWishlist)
+				$('.wv-header-top__local-contacts').append(linkMyOrders)
+				linkCart.addClass('wv-link-item_type_circle')
+				linkWishlist.addClass('wv-link-item_type_circle')
 
+				/**
+				 * FOOTER
+				 */
+				// Меню навигации и контактов помещаются в меню категорий как элементы li
+				$('.wv-menu-categories_location_footer').append($('.wv-menu-navigation_location_footer'))
+				$('.wv-menu-categories_location_footer').append($('.wv-menu-contacts_location_footer '))
 
-				////
-				headerNavMenu.find('.header-nav-menu__link_info').attr('data-bs-toggle', 'dropdown')
-				headerNavMenu.find('.header-nav-menu__item_info').addClass('dropdown')
-				headerNavMenu.find('.header-nav-menu__link_info').addClass('dropdown-toggle')
-				headerNavMenu.find('.header-nav-menu__items_type_info').addClass('dropdown-menu')
-
+				/**
+			 * Class and atrrs manipulations
+			 */
+				// headerNavMenu.find('.header-nav-menu__link_info').attr('data-bs-toggle', 'dropdown')
+				// headerNavMenu.find('.header-nav-menu__item_info').addClass('dropdown')
+				// headerNavMenu.find('.header-nav-menu__link_info').addClass('wv-universal-toggle')
+				// headerNavMenu.find('.header-nav-menu__items_type_info').addClass('dropdown-menu')
 
 			},
 
 			unmatch() {
-				navMenuOffcanvasHeader.prepend(headerShedule);
-				navMenuIcon.after($('.logo-header-menu-main .header-description'));
-				headerNavMenu.append(headerNavMenuItemsTypeInfo)
+				/**
+			 * Header Top
+			 */
+				// HT0
+				$('.wv-offcanvas-header-top .offcanvas-header').prepend($('.wv-header-shedule'))
+				// HT1
+				$('.wv-offcanvas-header-top .offcanvas-body').prepend($('.wv-menu-navigation_location_header'))
+				// HT2
+				const menuItemsNavigationLocationHeader = $('.wv-menu-navigation_location_header > li')
+				$('.wv-menu-navigation_location_header .menu-item-has-children .menu-sub').removeClass('dropdown-menu')
+				for (let index = 0; index < 2; index++) {
+					const el = menuItemsNavigationLocationHeader[index];
+					$('.wv-menu-navigation_location_header .menu-item-has-children .menu-sub').prepend(el)
+				}
+				// HT3
+				$('.wv-offcanvas-header-top .offcanvas-body').append($('.wv-header-main-call .dropdown-menu .wv-header-contacts'))
 
-				navMenuOffcanvasBody.append(headerNavMenu)
-				navMenuOffcanvasBody.append(headerContacts)
+				/**
+				 * Menu Main
+				 */
+				// MM0
+				headerMenuCatalogMobileBody.append($('.wv-header-bot .wv-menu-categories'))
 
-				headerMenuCatalogMobileBody.append(headerMenuCatalogItems)
-
-				// (4)
-				headerMainMenuHeaderSearchWrapper.prepend($('.header-menu-main__search .header-search'))
-
+				// MM1
+				headerMainMenuHeaderSearchWrapper.prepend($('.wv-header-main__search .wv-header-search'))
+				// MM2
 				headerActionsMobileList.append(linkCart)
 				headerActionsMobileList.append(linkWishlist)
 				headerActionsMobileList.append(linkMyOrders)
-				linkCart.removeClass('link-item_type_circle')
-				linkWishlist.removeClass('link-item_type_circle')
+				linkCart.removeClass('wv-link-item_type_circle')
+				linkWishlist.removeClass('wv-link-item_type_circle')
 
+				/**
+				 * FOOTER
+				 */
+				// Меню навигации и контактов возвращаются в общий узел
+				$('.wv-footer__main').append($('.wv-menu-navigation_location_footer'))
+				$('.wv-footer__main').append($('.wv-menu-contacts_location_footer'))
 
-
-				////
-				headerNavMenu.find('.header-nav-menu__link_info').attr('data-bs-toggle', 'dropdown')
-				headerNavMenu.find('.header-nav-menu__item_info').removeClass('dropdown')
-				headerNavMenu.find('.header-nav-menu__link_info').removeClass('dropdown-toggle')
-				headerNavMenu.find('.header-nav-menu__items_type_info').removeClass('dropdown-menu')
-
+				/**
+				 * Class and atrrs manipulations
+				 */
+				// headerNavMenu.find('.header-nav-menu__link_info').attr('data-bs-toggle', 'dropdown')
+				// headerNavMenu.find('.header-nav-menu__item_info').removeClass('dropdown')
+				// headerNavMenu.find('.header-nav-menu__link_info').removeClass('wv-universal-toggle')
+				// headerNavMenu.find('.header-nav-menu__items_type_info').removeClass('dropdown-menu')
 			},
 
-			setup() { },
+			setup() {
+				// $('.wv-menu-navigation_location_header .menu-item-has-children .menu-sub').removeClass('dropdown-menu')
+
+			},
 
 			destroy() { },
 
 			deferSetup: true,
 		});
 
+		/**
+		 * (min-width: 767px) and (max-width: 991px)
+		 */
 		enquire.register('(min-width: 767px) and (max-width: 991px)', {
 			match() {
 				searchHeaderMenuMain.before(callHeaderMainMenu) //
@@ -136,16 +196,58 @@ class ClientEnquire {
 			}
 		})
 
-		enquire.register('(min-width: 1199px)', {
+		/**
+ * (min-width: 991px)
+ */
+		enquire.register('(min-width: 991px)', {
 			match() {
-				headerNavMenuItemInfo.before($('#nav-menu-item-795'))
-				headerNavMenuItemInfo.before($('#nav-menu-item-796'))
-
 
 			},
 			unmatch() {
-				headerNavMenuItemsTypeInfo.append($('#nav-menu-item-795'))
-				headerNavMenuItemsTypeInfo.append($('#nav-menu-item-796'))
+
+			}
+		})
+
+		/**
+		 * (min-width: 1199px)
+		 */
+		enquire.register('(min-width: 1199px)', {
+			match() {
+
+				/**
+				 * Header Top
+				 */
+				// HT0
+				// HT1
+				// HT2
+				const menuSubItemsNavigationLocationHeader = $('.wv-menu-navigation_location_header .menu-sub > li')
+				const menuMainItem = $('.wv-menu-navigation_location_header .menu-item-has-children')
+				// "Отзывы", "Блог" перед "Информация"
+				for (let index = 0; index < 2; index++) {
+					const el = menuSubItemsNavigationLocationHeader[index];
+					menuMainItem.before(el)
+				}
+				// "Контакты" после "Информация"
+				menuMainItem.after(menuSubItemsNavigationLocationHeader[menuSubItemsNavigationLocationHeader.length - 1])
+
+				// CATALOG
+				$('.wv-catalog-sidebar').prepend($('.wv-catalog-filter-desktop__content .widget-area'))
+			},
+			unmatch() {
+				/**
+				 * Header Top
+				 */
+				// HT2
+				const menuSubNavigationLocationHeader = $('.wv-menu-navigation_location_header .menu-item-has-children .menu-sub')
+				// const menuItemsNavigationLocationHeader = $('.wv-menu-navigation_location_header > li')
+				for (let index = 0; index < 2; index++) {
+					menuSubNavigationLocationHeader.prepend($('.wv-menu-navigation_location_header > li')[$('.wv-menu-navigation_location_header > li').length - 3])
+				}
+				menuSubNavigationLocationHeader.append($('.wv-menu-navigation_location_header > li')[$('.wv-menu-navigation_location_header > li').length - 1])
+
+				// CATALOG
+				$('.wv-catalog-filter-desktop__content').prepend($('.wv-catalog-sidebar .widget-area'))
+
 			}
 		})
 	}

@@ -1,0 +1,51 @@
+.wv-catalog-description {
+  margin-bottom: 50px;
+
+  // .wv-catalog-description__title
+  &__title {
+    margin-bottom: 15px;
+
+    @media (min-width: ($md)) {
+      margin-bottom: 20px;
+    }
+  }
+
+  // .wv-catalog-description__paragraph
+  &__paragraph {
+    margin-bottom: 15px;
+    font-size: $font-size-sm;
+
+    @media (min-width: ($md)) {
+      margin-bottom: 20px;
+      font-size: $wv-font-size-md;
+    }
+  }
+
+  // .wv-catalog-description__list
+  &__list {
+    margin-bottom: 15px;
+
+    @media (min-width: ($md)) {
+      margin-bottom: 20px;
+    }
+
+    list-style-type: disc;
+    padding-left: 22px;
+  }
+
+  // .wv-catalog-description__item
+  &__item {}
+
+  // .wv-catalog-description__sub-title
+  &__sub-title {
+    margin-bottom: 15px;
+    padding-top: 15px;
+    font-size: $font-size-sm;
+
+    @media (min-width: ($md)) {
+      margin-bottom: 20px;
+      font-size: $wv-font-size-md;
+      padding-top: 20px;
+    }
+  }
+}

@@ -47,6 +47,7 @@ if ( ! class_exists( 'WooVanilla' ) ) :
 				// WooVanilla\Api\Customizer::class,
 				// WooVanilla\Api\Gutenberg::class,
 				// WooVanilla\Api\Widgets\Text_Widget::class,
+				WooVanilla\Api\Widget_Areas::class,
 				// WooVanilla\Plugins\Theme_Jetpack::class,
 				// WooVanilla\Plugins\Acf::class,
 			);

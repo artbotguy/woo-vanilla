@@ -1,0 +1,33 @@
+export default class ClientGoogleMap {
+  constructor() {
+    this.init()
+  }
+
+  init() {
+    this.initMap()
+  }
+
+  initMap() {
+    const position = { lat: -25.344, lng: 131.031 };
+
+    let maps = new Promise(function (resolve, reject) {
+      resolve(google.maps.importLibrary("maps"));
+    }).then((mapsResult) => {
+      let marker = new Promise(function (resolve, reject) {
+        resolve(google.maps.importLibrary("marker"));
+      }).then((markerResult) => {
+        const map = new mapsResult.Map(document.getElementById("wv-google-map-target"), {
+          zoom: 4,
+          center: position,
+          mapId: "DEMO_MAP_ID",
+        });
+
+        const marker = new markerResult.AdvancedMarkerElement({
+          map: map,
+          position: position,
+          title: "Uluru",
+        });
+      });
+    })
+  }
+}

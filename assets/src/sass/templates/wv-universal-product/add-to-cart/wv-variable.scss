@@ -1,0 +1,196 @@
+  .wv-variations {
+    margin-bottom: 15px;
+
+    // .wv-variations__item
+    &__item {
+      display: flex;
+      align-items: center;
+    }
+
+    // .wv-variations__label
+    &__label {
+      margin-right: 5px;
+    }
+
+    // .wv-variations__list
+    &__list {
+      display: inline-flex;
+      flex-wrap: wrap;
+    }
+
+    // .wv-variations__sub-item
+    &__sub-item {
+      position: relative;
+
+      &:not(:last-child) {
+        margin-bottom: 5px;
+        margin-right: 5px;
+      }
+
+      input {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        opacity: 0;
+
+        &:checked {
+          &+label {
+            background: $emphasis;
+            border: 1px solid $emphasis;
+            color: #fff;
+
+          }
+        }
+      }
+
+      label {
+        display: inline-flex;
+        border: 1px solid #D0D2D7;
+        border-radius: 5px;
+        padding: 4px 10px;
+      }
+    }
+  }
+
+  .wv-single-product__summary {
+    .wv-variable {
+      margin-bottom: 15px;
+    }
+
+    .wv-single-variation-wrap {
+      display: grid;
+
+      .woocommerce-variation-add-to-cart {
+        display: grid;
+        grid-template: repeat(2, auto) / repeat(11, auto);
+        column-gap: 15px;
+        row-gap: 15px;
+        justify-self: start;
+        align-items: center;
+
+        @media (min-width: ($md)) {
+          grid-template: repeat(3, auto) / repeat(10, 1fr) fit-content(40px);
+        }
+
+        .wv-variation-sub-wrapper {
+          grid-row: 1/2;
+          grid-column: 1/9;
+          display: flex;
+
+          @media (min-width: ($md)) {
+            grid-column: 1/12;
+          }
+
+          .woocommerce-variation {
+            margin-right: 10px;
+          }
+
+          .wv-popover {
+            font-size: $sub-sup-font-size;
+
+            span {
+              margin-right: 5px;
+            }
+
+            .wv-icon {
+              stroke: $tertiary;
+              width: 20px;
+              height: 20px;
+            }
+
+            color: $secondary;
+          }
+        }
+
+        .quantity {
+          display: inline-grid;
+          grid-auto-flow: column;
+          justify-items: center;
+          grid-row: 1 / 2;
+          grid-column: 9 / 11;
+          border: 1px solid #D0D2D7;
+          border-radius: 8px;
+          padding: 12px 10px;
+          height: 48px;
+
+          @media (min-width: ($md)) {
+            grid-row: 2 / 3;
+            grid-column: 1 / 5;
+          }
+
+          .wv-icon {
+            use {
+              stroke: $tertiary;
+            }
+          }
+
+          input {
+            max-width: 30px;
+            text-align: center;
+          }
+        }
+
+        .single_add_to_cart_button {
+          justify-self: start;
+          grid-row: 2/3;
+          grid-column: 1/7;
+          padding: 11px 11px;
+          background: $primary;
+          width: 160px;
+          height: 48px;
+
+          @media (min-width: ($md)) {
+            grid-column: 5 / 9;
+          }
+
+          .wv-icon {
+            use {
+              stroke: #fff;
+            }
+          }
+
+          span {
+            color: #fff;
+          }
+        }
+
+        .wv-buy-one-click {
+          grid-row: 2/3;
+          grid-column: 7/10;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+
+          @media (min-width: ($md)) {
+            grid-row: 3 / 4;
+            grid-column: 5 / 9;
+          }
+
+          span {
+            line-height: $line-height-lg;
+            font-size: $font-size-sm;
+            // color: $emphasis;
+            color: #D0D2D7;
+            text-decoration: underline dashed;
+            text-underline-offset: 3px;
+          }
+        }
+
+        .tinv-wishlist {
+          width: 40px;
+          height: 40px;
+          justify-self: start;
+          grid-row: 2/3;
+          grid-column: 10/11;
+
+          @media (min-width: ($md)) {
+            @media (min-width: ($md)) {
+              grid-column: 9 / 11;
+            }
+          }
+        }
+      }
+    }
+  }

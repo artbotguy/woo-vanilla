@@ -5,6 +5,8 @@
  * @package WooVanilla
  */
 
+require 'template-functions/wv-header-template-functions.php';
+
 /**
  * Output the start of a product loop. By default this is a UL.
  *
@@ -16,7 +18,7 @@ function woovanilla_product_loop_start( $echo = true ) {
 
 	wc_set_loop_prop( 'loop', 0 );
 
-	wc_get_template( 'loop/loop-slider-start.php' );
+	wc_get_template( 'loop/wv-loop-slider-start.php' );
 
 	$loop_start = apply_filters( 'woocommerce_product_loop_start', ob_get_clean() );
 
@@ -37,7 +39,7 @@ function woovanilla_product_loop_start( $echo = true ) {
 function woovanilla_product_loop_end( $echo = true ) {
 	ob_start();
 
-	wc_get_template( 'loop/loop-slider-end.php' );
+	wc_get_template( 'loop/wv-loop-slider-end.php' );
 
 	$loop_end = apply_filters( 'woocommerce_product_loop_end', ob_get_clean() );
 
@@ -54,99 +56,30 @@ function woovanilla_product_loop_end( $echo = true ) {
  *
  * @param [type] $args the comment param.
  */
-function woovanilla_recent_products( $args ) {
-	$args = apply_filters(
-		'woovanilla_recent_products_args',
-		array(
-			'limit'   => 4,
-			'columns' => 4,
-			'orderby' => 'date',
-			'order'   => 'desc',
-			'title'   => __( 'Новинки', 'woovanilla' ),
-		// 'cache' => false,
-		)
+function woovanilla_slider_products( $args = array(), $title = 'Товары', $shortcode_tag = 'products_slider', $classes = '' ) {
+	$def_args = array(
+		// 'per_page' => 10,
+		// 'orderby'  => 'date',
+		// 'order'    => 'asc',
 	);
-
 	$shortcode_content = woovanilla_do_shortcode(
-		'products_slider',
-		apply_filters(
-			'woovanilla_recent_products_shortcode_args',
-			array(
-				'orderby'  => esc_attr( $args['orderby'] ),
-				'order'    => esc_attr( $args['order'] ),
-				'per_page' => intval( $args['limit'] ),
-				'columns'  => intval( $args['columns'] ),
-			)
-		)
+		$shortcode_tag,
+		array_merge( $def_args, $args )
 	);
 
 	/**
-	 * Only display the section if the shortcode returns products
+	 * Only display the section if the shortcode returns "products"
 	 */
 	if ( false !== strpos( $shortcode_content, 'product' ) ) {
-		echo '<section class="slider-products">';
+		echo '<section class="wv-section-slider-products placeholder-wave _wv-swiper-parent">';
 
-		do_action( 'woovanilla_homepage_before_recent_products' );
-
-		echo '<div class="slider-products__head">
-        <h2 class="slider-products__title">' . wp_kses_post( $args['title'] ) . '</h2>
-        <div class="slider-products__arrow">
-          <svg class="icon">
+		echo '<div class="wv-section-slider-products__head placeholder">
+        <h2 class="wv-section-slider-products__title">' . wp_kses_post( $title ) . '</h2>
+        <div class="wv-section-slider-products__arrow">
+          <svg class="wv-icon-default">
             <use xlink:href="#sprite-arrow-long"></use>
           </svg>
         </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-      </div>';
-
-		do_action( 'woovanilla_homepage_after_recent_products_title' );
-
-		echo $shortcode_content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-
-		do_action( 'woovanilla_homepage_after_recent_products' );
-
-		echo '</section>';
-	}
-}
-
-/**
- * Undocumented function
- *
- * @param [type] $args the comment param.
- */
-function woovanilla_catalog_products( $args ) {
-	$args = apply_filters(
-		'woovanilla_recent_products_args',
-		array(
-			'limit'   => 4,
-			'columns' => 4,
-			'orderby' => 'date',
-			'order'   => 'desc',
-			'title'   => __( 'Каталог', 'woovanilla' ),
-		)
-	);
-
-	$shortcode_content = woovanilla_do_shortcode(
-		'products',
-		apply_filters(
-			'woovanilla_recent_products_shortcode_args',
-			array(
-				'orderby'  => esc_attr( $args['orderby'] ),
-				'order'    => esc_attr( $args['order'] ),
-				'per_page' => intval( $args['limit'] ),
-				'columns'  => intval( $args['columns'] ),
-			)
-		)
-	);
-
-	/**
-	 * Only display the section if the shortcode returns products
-	 */
-	if ( false !== strpos( $shortcode_content, 'product' ) ) {
-		echo '<section class="catalog-products">';
-
-		echo '<div class="catalog-products__head">
-        <h2 class="catalog-products__title">' . wp_kses_post( $args['title'] ) . '</h2>
       </div>';
 
 		echo $shortcode_content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -161,7 +94,7 @@ function woovanilla_catalog_products( $args ) {
 function woovanilla_template_product_loop_slider() {
 
 	wc_get_template(
-		'wv-universal-product/slider-product.php',
+		'loop/wv-slider-product.php',
 		array(
 			'product_images_src' => get_all_images_product_src(),
 		)
@@ -172,15 +105,24 @@ function woovanilla_template_product_loop_slider() {
  * Undocumented function
  */
 function woovanilla_show_product_loop_labels() {
-	echo '<div class="woocommerce-loop-product__labels"><div class="woocommerce-loop-product__label">Хит</div></div>';
+	global $product;
+	$output = '<div class="woocommerce-loop-product__labels">';
+	if ( $product->is_featured() ) {
+		$output .= '<div class="woocommerce-loop-product__label">Хит</div>';
+	}
+	if ( $product->is_on_sale() ) {
+		$output .= '<div class="woocommerce-loop-product__label">- 30%</div>';
+	}
+	$output .= '</div>';
+	echo $output;
 }
 
 /**
  * Undocumented function
  */
-function woovanilla_template_product_loop_preview() {
-	echo '<div class="woocommerce-loop-product__preview link-item link-item_type_circle">
-    <svg class="icon icon_m">
+function woovanilla_template_product_loop_preview_btn() {
+	echo '<div class="woocommerce-loop-product__preview-btn wv-link-item wv-link-item_type_circle">
+    <svg class="wv-icon">
       <use xlink:href="#sprite-watch"></use>
     </svg>
     </div>';
@@ -189,16 +131,21 @@ function woovanilla_template_product_loop_preview() {
 /**
  * Undocumented function
  */
-function woovanilla_template_product_attributes() {
+function woovanilla_template_product_attributes( $include = array(), $separator = '' ) {
 	global $product;
 	wc_get_template(
 		'wv-universal-product/wv-product-attributes.php',
 		array(
+			'separator'       => $separator,
 			'attribute_names' => array_keys(
 				array_filter(
 					$product->get_attributes(),
-					function( $attr ) {
-						return ! $attr->get_variation();
+					function( $attr ) use ( $include ) {
+						if ( ( ! $attr->get_variation() ) &&
+						empty( $include ) ? true : ( array_search( $attr->get_name(), $include ) !== false )
+						) {
+							return true;
+						}
 					}
 				)
 			),
@@ -206,10 +153,12 @@ function woovanilla_template_product_attributes() {
 	);
 }
 
-	/**
-	 * Output the variable product add to cart area.
-	 */
-function woovanilla_variable_add_to_cart() {
+/**
+ * Undocumented function
+ *
+ * @param [type] $args contain $wv_loop_product_view_type
+ */
+function woovanilla_variable_add_to_cart( $args = array() ) {
 	global $product;
 
 	// Enqueue variation scripts.
@@ -220,11 +169,14 @@ function woovanilla_variable_add_to_cart() {
 
 	// Load the template.
 	wc_get_template(
-		'wv-universal-product/wv-variable.php',
-		array(
-			'available_variations' => $get_variations ? $product->get_available_variations() : false,
-			'attributes'           => $product->get_variation_attributes(),
-			'selected_attributes'  => $product->get_default_attributes(),
+		'wv-universal-product/add-to-cart/wv-variable.php',
+		array_merge(
+			array(
+				'available_variations' => $get_variations ? $product->get_available_variations() : false,
+				'attributes'           => $product->get_variation_attributes(),
+				'selected_attributes'  => $product->get_default_attributes(),
+			),
+			$args
 		)
 	);
 }
@@ -373,13 +325,15 @@ function wv_get_rating_html( $rating, $count = 0 ) {
 	// if ( 0 < $rating ) {
 		/* translators: %s: rating */
 		$label = sprintf( __( 'Rated %s out of 5', 'woocommerce' ), $rating );
-		$html  = '<div class="woocommerce-loop-product__rating"><label>' . esc_html( round( $rating ) ) . '.0</label>
-		<div class="woocommerce-loop-product__rating-star-wrap woocommerce-loop-product__rating-star-wrap_atfer_width_' . round( $rating ) . '">
-		<svg class="icon">
+		$html  = '<div class="wv-rating-reviews__rating">
+		<div class="wv-rating-reviews__rating-star-wrap wv-rating-reviews__rating-star-wrap_atfer_width_' . round( $rating ) . '">
+		<svg class="wv-icon">
 			<use xlink:href="#sprite-star"></use>
-		</svg>		<svg class="icon">
+		</svg>		<svg class="wv-icon">
 			<use xlink:href="#sprite-star"></use>
-		</svg></div></div>
+		</svg></div>
+		<label>' . esc_html( round( $rating ) ) . '.0</label>
+		</div>
 ';
 		// '<div class="star-rating" role="img" aria-label="' . esc_attr( $label ) . '">' . wc_get_star_rating_html( $rating, $count ) .
 		// '</div>';
@@ -396,22 +350,20 @@ function wv_get_rating_html( $rating, $count = 0 ) {
 function woovanilla_template_loop_item_delivery_time_waiting() {
 	printf(
 		'<div class="woocommerce-loop-product__delivery-time-waiting">
-	<span>%d мин</span>
-	<svg class="icon">
-		<use xlink:href="#sprite-delivery"></use>
-	</svg>
+	<span><span>%d</span> мин</span>
 	</div>',
 		150
 	);
 }
 
+
 /**
  * Undocumented function
  */
 function woovanilla_template_popover_info( $args ) {
-	printf(
+	return sprintf(
 		'
-<div class="wv-popover"><span>%s</span><svg class="icon" 
+<div class="wv-popover"><span>%s</span><svg class="wv-icon" 
 	role="button" 
 	placement="top" 
 	class="btn btn-lg btn-danger" 
@@ -430,4 +382,57 @@ function woovanilla_template_popover_info( $args ) {
  */
 function woovanilla_template_ordering_info() {
 	wc_get_template( 'global/wv-ordering-info.php' );
+}
+
+/**
+ * Функция выводит шаблон, в которм присутствует данные о цене из бекенда.
+ * Затем из фронтенда происходит обновление внутреннего html - данные перезаписываются
+ */
+function woovanilla_single_variation( $args ) {
+		$output = '<div class="wv-variation-sub-wrapper">';
+
+			$output .= '<div class="woocommerce-variation single_variation wv-placeholder-ajax placeholder">';
+		woocommerce_template_loop_price();
+		$output .= '</div>';
+
+	if ( ! isset( $args['wv_loop_product_view_type'] ) ) {
+		$output .= woovanilla_template_popover_info(
+			array(
+				'wv-span-content' => 'скидка от кол-ва',
+				'bs-content'      => 'Скидка от количества',
+			)
+		);
+	};
+		$output .= '</div>';
+			echo $output;
+}
+
+
+/**
+ * Undocumented function
+ */
+function woovanilla_variation_add_to_cart_button( $args = array() ) {
+	wc_get_template( 'wv-universal-product/add-to-cart/variation-add-to-cart-button.php', $args );
+}
+
+/**
+ * Undocumented function
+ */
+function woovanilla_tinvwl_wishlist_button_after() {
+	return '	<svg class="wv-icon">
+		<use xlink:href="#sprite-wish"></use>
+	</svg>';
+}
+
+/**
+ * Обновленные тайтлы сортировки
+ */
+function woovanilla_rename_sorting_option( $options ) {
+	// $options['rating'] = 'По рейтингу';
+	// $options['date'] = 'По новизне';
+	// $options['popularity'] = 'По популярности';
+	$options['menu_order'] = 'Сортировка';
+	$options['price']      = 'По возрастанию цены';
+	$options['price-desc'] = 'По убыванию цены';
+	return $options;
 }

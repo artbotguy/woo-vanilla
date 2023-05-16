@@ -1,0 +1,26 @@
+.wv-menu-categories {
+
+  &_location_header {
+    .menu-item {}
+  }
+
+
+  .menu-link {}
+
+  .menu-main {
+    &__item {}
+
+    &__link {}
+  }
+
+
+  .wv-universal-toggle {
+    // display: none;
+
+    &::after {
+      // width: 20px;
+      // height: 20px;
+    }
+  }
+
+}

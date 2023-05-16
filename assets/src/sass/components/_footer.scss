@@ -1,3 +1,91 @@
-footer {
+.wv-footer {
 	position: relative;
+	margin-bottom: 62px; // для того чтобы не перекрывался .wv-header-mobile-menu
+	background: $quaternary-bg;
+	padding: 30px 0 20px 0;
+	color: $body-color;
+
+	@media (min-width: ($md)) {
+		padding: 40px 0 20px 0;
+		margin: 0;
+	}
+
+	// .wv-footer__main
+	&__main {
+		border-bottom: 1px solid #E2E4EB;
+		margin-bottom: 20px;
+	}
+
+	// .wv-footer__bot
+	&__bot {}
+
+	// .wv-footer__text
+	&__text {
+		color: $secondary;
+		font-size: $small-font-size;
+	}
+
+	a {
+		color: $body-color;
+	}
+
+
+
+	// .wv-menu-contacts {
+	// 	.menu-main {
+	// 		&__item {
+	// 			grid-template-columns: auto;
+	// 		}
+	// 	}
+	// }
+}
+
+.wv-footer-bot {
+	display: grid;
+	gap: 20px;
+	align-items: center;
+
+	@media (min-width: ($xl)) {
+		grid-template: auto / repeat(3, 1fr);
+		gap: 30px;
+
+	}
+
+	// .wv-footer-bot__item
+	&__item {
+		@media (min-width: ($md)) {
+
+			// grid-template: repeat(2, auto) / repeat(2, 1fr);
+			// contained wv-contacts-soc 
+			&:nth-child(3) {
+				grid-row: 1 / 3;
+				grid-column: 2 / 3;
+			}
+		}
+
+		@media (min-width: ($xl)) {
+			&:nth-child(3) {
+				grid-row: 1 / 2;
+				grid-column: 3 / 4;
+			}
+		}
+	}
+
+	.wv-contacts-soc {
+		gap: 10px;
+
+		@media (min-width: ($md)) {
+
+			grid-auto-flow: column;
+			align-items: center;
+			justify-content: end;
+			gap: 20px;
+		}
+
+
+		&__title {
+			color: $secondary;
+			font-size: $small-font-size;
+		}
+	}
 }

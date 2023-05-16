@@ -1,0 +1,78 @@
+.icons-sprite {
+  height: 0;
+  width: 0;
+
+  path {
+    stroke: inherit;
+    fill: inherit;
+  }
+
+  symbol {
+    fill: inherit;
+
+    &#sprite-cart {
+      fill: none;
+    }
+  }
+}
+
+.wv-icon,
+.wv-icon-default {
+  transition: .1s;
+  height: 24px;
+  width: 24px;
+
+  &_s {
+    height: 16px;
+    width: 16px;
+  }
+
+  &_m {
+    height: 20px;
+    width: 20px;
+  }
+
+  &_xl {
+    height: 40px;
+    width: 40px;
+  }
+
+}
+
+.wv-icon {
+  use {
+    stroke: $body-color;
+    fill: transparent;
+  }
+}
+
+.wv-icon-default {
+  use {}
+}
+
+.wv-icon-after {
+  display: inline-flex;
+
+  &::after {
+    margin-left: 5px;
+  }
+
+  &_sprite {
+    &::after {}
+  }
+
+}
+
+.wv-icon {
+  &_type_arrow {}
+}
+
+div,
+button,
+a {
+  &.collapsed {
+    .wv-icon_type_arrow {
+      transform: rotate(180deg);
+    }
+  }
+}

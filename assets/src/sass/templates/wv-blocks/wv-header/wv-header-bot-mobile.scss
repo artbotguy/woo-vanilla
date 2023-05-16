@@ -1,0 +1,134 @@
+.wv-header-bot-mobile {
+  flex-direction: column;
+
+  // .wv-header-bot-mobile__offcanvas
+  &__offcanvas {
+    .offcanvas-body {
+      position: relative;
+    }
+  }
+
+  // .wv-header-bot-mobile__body
+  &__body {}
+
+  &__catalog {
+    position: relative;
+  }
+
+  // .wv-header-bot-mobile__title
+  &__title {
+    font-size: $wv-font-size-md;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+
+  .wv-menu-categories_location_header {
+    flex-direction: column;
+  }
+
+  .menu-item {
+    border-bottom: 1px solid #E2E4EB;
+    align-items: center;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .menu-link {
+    padding: 20px 0;
+    background: #fff;
+  }
+
+  .menu-main {
+    &__item {
+
+      &.menu-item-has-children {
+        .menu-main__link {
+          padding: 20px 0;
+        }
+      }
+    }
+
+    &__link {
+      width: 80%;
+      padding: 21.5px 0 !important;
+    }
+  }
+
+  .dropdown-menu {
+    height: 100%;
+    width: 100%;
+    box-shadow: none;
+    border: none;
+    background: #fff;
+    z-index: 1;
+    // transition: transform .3s ease-in-out !important;
+    // transform: translate(-100%, 0) !important;
+    padding: 0;
+
+    &.show {
+      inset: auto auto auto auto !important;
+      top: -59px !important;
+
+      padding: 47px 0 0 0;
+      opacity: 1;
+      transform: translate(0, 67px) !important;
+      visibility: visible;
+    }
+  }
+
+  .wv-universal-toggle {
+    position: absolute;
+    right: 20px;
+    align-items: center;
+    justify-content: flex-end;
+    width: 20px;
+    height: 20px;
+
+    &.show {
+      top: 8px;
+      left: 4px;
+      z-index: 3;
+      transform: translate(0, -2px) rotate(-90deg);
+      margin-left: -4px;
+
+      &+.menu-main__link {
+        padding: 8px 0 20px 0 !important;
+        z-index: 2;
+        font-weight: bold;
+        padding-left: 30px !important;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-bottom: 1px solid #E2E4EB;
+        pointer-events: none;
+        cursor: default;
+        font-size: $wv-font-size-md !important;
+        font-weight: 700 !important;
+      }
+    }
+  }
+
+  .wv-header-search {
+    margin-bottom: 28px;
+    height: 48px;
+  }
+
+  .wv-header-description {
+    color: $secondary;
+    width: auto;
+    font-size: inherit;
+  }
+
+  .offcanvas-header {
+    // min-height: 67px;
+    padding: 22.5px 20px 22.5px 20px;
+
+    .btn-close {
+      margin: 0;
+      padding: 0;
+    }
+  }
+}

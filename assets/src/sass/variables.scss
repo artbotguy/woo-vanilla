@@ -1,14 +1,19 @@
-$border: 1px solid #D0D2D7;
+$wv-border: 1px solid #D0D2D7;
 
 //
+//14/20 - 1.428;  18/26 - 1.44
+$line-height-base: 1.375;
+$line-height-sm: 1.25;
+$line-height-lg: 1.428;
 
 $font-size-root: null !default;
 $font-size-base: 1rem !default; // Assumes the browser default, typically `16px`
 $font-size-sm: $font-size-base * .875 !default;
-$font-size-md: $font-size-base * 1.125 !default; // MINE
+$wv-font-size-md: $font-size-base * 1.125 !default;
 $font-size-lg: $font-size-base * 1.25 !default;
 
 $small-font-size: .875em;
+// $sub-sup-font-size: 14px;
 $sub-sup-font-size: .75em;
 // $container-max-widths: (
 //   sm: 540px,
@@ -28,22 +33,18 @@ $xxl: 1400px;
 
 $primary: #E2195B;
 $secondary: #505567;
-// $success:       $green !default;
-// $info:          $cyan !default;
-// $warning:       $yellow !default;
-// $danger:        $red !default;
-// $light:         $gray-100 !default;
 $dark: #1B1C21;
 
 $body-color: #222A46;
 $emphasis: #0093A2;
 
 $secondary-bg: #F2F3F5;
-$tertiary: #7D818E;
 
+$tertiary: #7D818E;
+$tertiary-bg: #B0B2B9;
 
 $quaternary: #353949;
-
+$quaternary-bg: #F2F6F7;
 
 $link-color: $body-color;
 $link-hover-color: $emphasis;

@@ -1,0 +1,32 @@
+.wv-header-main {
+  padding: 13px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  // .wv-header-main__body
+  &__body {
+    display: flex;
+    flex: 1 1 auto;
+  }
+
+  .wv-header-description {
+    display: none;
+
+    @media (min-width: ($xl)) {
+      display: block;
+      // width: 120px;
+    }
+  }
+
+  .wv-link-item {
+    min-width: 44px;
+    min-height: 44px;
+
+    &__icon {}
+
+    &__title {
+      display: none;
+    }
+  }
+}

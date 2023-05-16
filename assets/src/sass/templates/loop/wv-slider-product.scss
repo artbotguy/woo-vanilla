@@ -1,0 +1,13 @@
+.wv-slider-product {
+
+  .swiper-wrapper {}
+
+  .swiper-slide {
+    padding-bottom: 88%;
+
+    @media (min-width: ($md)) {
+      // padding-bottom: 95%;
+
+    }
+  }
+}

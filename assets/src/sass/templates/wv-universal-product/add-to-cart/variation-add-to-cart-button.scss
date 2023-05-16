@@ -1,0 +1,38 @@
+.woocommerce-variation-add-to-cart {
+  .wv-add-to-cart {
+    transition: .3s;
+    padding: 7px 11px;
+
+    &_style_primary {}
+
+    &:hover {
+      // box-shadow: 0px 1px 5px $primary;
+
+      background: $primary;
+
+      .wv-icon {
+        use {
+          stroke: #fff;
+        }
+      }
+
+      span {
+        color: #fff;
+      }
+    }
+
+    border: 1px solid $primary;
+
+    .wv-icon {
+      margin-right: 10px;
+
+      use {
+        stroke: $primary;
+      }
+    }
+
+    span {
+      color: $primary;
+    }
+  }
+}

@@ -32,10 +32,5 @@ $short_description = apply_filters( 'woocommerce_short_description', $post->post
 	<?php
 	// echo $short_description; // WPCS: XSS ok.
 	?>
-		<div><h6>Состав:</h6>
-		<ul><li><span>Роза пионовидная вайлд лук</span><span>- 7 шт.</span></li></ul>
-		<ul><li><span>Роза кустовая пионовидная</span><span>- 3 шт.</span></li></ul>
-		<ul><li><span>Озотамнус</span><span>- 2 шт.</span></li></ul>
-		<ul><li><span>Эвкалипт</span><span>- 6 шт.</span></li></ul>
+Нежный, насыщенный и ароматный букет белых альстромерий, лавандовых роз и сантини. 
 	</div>
-</div>

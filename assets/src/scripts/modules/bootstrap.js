@@ -2,6 +2,8 @@ import Modal from "bootstrap/js/src/modal";
 import Dropdown from "bootstrap/js/src/dropdown";
 import Offcanvas from "bootstrap/js/src/offcanvas";
 import Popover from "bootstrap/js/src/popover";
+import Collapse from "bootstrap/js/src/collapse";
+// import Toast from "bootstrap/js/src/toast";
 
 class ClientBootstrap {
 	constructor() {

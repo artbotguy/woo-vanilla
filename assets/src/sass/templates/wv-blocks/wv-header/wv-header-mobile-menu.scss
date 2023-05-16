@@ -1,0 +1,33 @@
+.wv-header-mobile-menu {
+  z-index: 1020;
+  box-shadow: 0px -3px 10px rgba(63, 66, 69, 0.1);
+  padding: 10px 0;
+
+  @media (min-width: ($md)) {
+    display: none !important;
+  }
+
+  // .wv-header-mobile-menu__body
+  &__body {
+    flex: 1 1 auto;
+  }
+
+  // .wv-header-mobile-menu__list
+  &__list {
+    display: flex;
+
+  }
+
+  // .wv-header-mobile-menu__item
+  &__item {
+    .wv-link-item___icon {
+      margin-bottom: 4px;
+    }
+
+  }
+
+  .wv-cart-count {
+    left: 52%;
+    top: -9%;
+  }
+}

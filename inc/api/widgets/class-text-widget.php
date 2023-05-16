@@ -45,6 +45,7 @@ class Text_Widget extends WP_Widget {
 		parent::__construct( $this->widget_ID, $this->widget_name, $this->widget_options, $this->control_options );
 
 		add_action( 'widgets_init', array( $this, 'widgetsInit' ) );
+		add_action( 'widgets_init', array( $this, 'registerWidgetArea' ) );
 	}
 
 	/**
@@ -66,6 +67,19 @@ class Text_Widget extends WP_Widget {
 			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
 		}
 		echo $args['after_widget'];
+	}
+
+	public function registerWidgetArea() {
+				register_sidebar(
+					array(
+						'name'          => 'Home right sidebar',
+						'id'            => $this->widget_ID,
+						'before_widget' => '<div>',
+						'after_widget'  => '</div>',
+						'before_title'  => '<h2 class="rounded">',
+						'after_title'   => '</h2>',
+					)
+				);
 	}
 
 	/**

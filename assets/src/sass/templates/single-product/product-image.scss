@@ -1,0 +1,32 @@
+.wv-single-product {
+
+  // .wv-single-product__sliders
+  &__sliders {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+    min-height: 0;
+    min-width: 0;
+  }
+}
+
+.wv-slider-preview-single-product.swiper {
+  margin-bottom: 10px;
+
+  .swiper-slide {
+    padding-bottom: 100%;
+
+  }
+}
+
+.wv-slider-thumbs-single-product.swiper {
+  .swiper-slide {
+    padding-bottom: 30%;
+    border: 2px solid transparent;
+  }
+
+  .swiper-slide-thumb-active {
+    border: 2px solid $primary;
+  }
+}

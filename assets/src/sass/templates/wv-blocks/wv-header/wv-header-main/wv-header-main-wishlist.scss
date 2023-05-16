@@ -1,0 +1,21 @@
+.wv-header-main-wishlist {
+  display: none;
+
+  @media (min-width: ($xl)) {
+    order: 2;
+  }
+
+  .wv-link-item {
+    @media (min-width: ($md)) {
+      margin-right: 20px;
+    }
+
+    .wv-icon use {
+      stroke: $quaternary;
+    }
+  }
+
+  @media (min-width: ($md)) {
+    display: block;
+  }
+}

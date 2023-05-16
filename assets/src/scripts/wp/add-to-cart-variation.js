@@ -320,6 +320,7 @@
 		/**
 		 * Вставляет цену и т.п.
 		 */
+		// console.log(variation);
 		$template_html = template({
 			variation: variation
 		});

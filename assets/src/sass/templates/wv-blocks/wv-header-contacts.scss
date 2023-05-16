@@ -1,0 +1,27 @@
+// wv-header-contacts
+.wv-header-contacts {
+  padding: 0 15px;
+
+  // .wv-header-contacts__connect
+  &__connect {
+    margin-bottom: 30px;
+
+    li {
+      margin-bottom: 15px;
+
+      &:last-child {
+        span {
+          color: $emphasis;
+        }
+      }
+
+      svg {
+        margin-right: 6px;
+        stroke: $secondary;
+      }
+
+    }
+  }
+
+  .wv-contacts-soc {}
+}

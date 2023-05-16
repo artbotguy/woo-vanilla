@@ -14,12 +14,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 wp_enqueue_script( 'tinvwl' );
 ?>
-<div class="tinv-wishlist link-item link-item_type_circle" data-tinvwl_product_id="<?php echo $product->get_id(); ?>">
+<div class="tinv-wishlist wv-link-item wv-link-item_type_circle" data-tinvwl_product_id="<?php echo $product->get_id(); ?>">
 
 	<?php
 	do_action( 'tinvwl_wishlist_addtowishlist_button', $product, $loop );
 	?>
-	<svg class="icon icon_s">
-		<use xlink:href="#sprite-wish"></use>
-	</svg>
+	<!-- woovanilla_tinvwl_wishlist_button_after() -->
 </div>

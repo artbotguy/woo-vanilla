@@ -1,0 +1,127 @@
+.wv-menu-categories_location_header {
+  .menu-main__item {
+    &:first-child {
+      // акции
+      display: flex;
+      text-transform: uppercase;
+
+      a {
+        margin-left: 6px;
+        color: $primary;
+        font-size: inherit;
+        // font-weight: 500 !important;
+      }
+
+      &::before {
+        content: '';
+        background: center no-repeat url('../../../images/svg/sale.svg');
+        width: 24px;
+        height: 24px;
+        padding-right: 10px;
+        display: block;
+      }
+    }
+
+    &:hover {
+      .menu-sub {}
+    }
+  }
+
+
+}
+
+// .wv-menu-navigation_location_header
+.wv-menu-navigation_location_header {
+  display: flex;
+
+  .menu-item {
+    line-height: 142.5%;
+  }
+
+  .menu-main {
+    &__item {}
+  }
+
+  .menu-sub {
+    &__item {
+      &:not(:last-child) {
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  @media (min-width: ($md)) {
+    font-size: $small-font-size;
+    flex: 1 1 auto;
+
+    .menu-item {
+      &:not(:last-child) {
+        margin: 0 10px 0 0;
+
+        @media (min-width: ($xl)) {
+          margin: 0 15px 0 0;
+
+        }
+      }
+    }
+
+    a {
+      color: $body-color;
+      font-weight: 400 !important;
+    }
+
+    .menu-sub__item {}
+
+    .wv-universal-toggle {
+      padding: 5px 0 5px 5px;
+    }
+  }
+}
+
+.wv-header-top__head {
+  .wv-menu-navigation_location_header {
+    .menu-main {
+      &__link {
+        font-weight: 400;
+      }
+    }
+
+    .menu-sub {
+      // display: flex;
+    }
+  }
+
+}
+
+.wv-offcanvas-header-top .offcanvas-body {
+  .wv-menu-navigation_location_header {
+    margin-bottom: 30px;
+    padding: 30px 15px 30px 15px;
+    border-bottom: $wv-border;
+    flex-direction: column;
+
+    .menu-main {
+      &__item {
+        .wv-universal-toggle {
+          display: none;
+
+          @media (min-width: ($md)) {
+            display: block;
+          }
+        }
+      }
+
+      &__link {
+        display: none;
+
+        @media (min-width: ($md)) {
+          display: block;
+        }
+      }
+
+
+    }
+
+
+  }
+}

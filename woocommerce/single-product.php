@@ -11,6 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 get_header(); ?>
+<div class="container-lg">
 
 	<?php
 	/**
@@ -48,6 +49,7 @@ get_header(); ?>
 	 */
 	do_action( 'woocommerce_sidebar' );
 	?>
+</div> <!-- #container -->
 
 <?php
 get_footer();

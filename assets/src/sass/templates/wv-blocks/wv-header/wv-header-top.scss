@@ -1,0 +1,170 @@
+.wv-header-top {
+  padding: 0;
+  display: flex;
+  padding: 12.25px 0;
+
+  &.placeholder-wave {
+    &::before {
+      display: none;
+    }
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 400%;
+    top: 0;
+    left: -50%;
+    z-index: -1;
+    background: $secondary-bg;
+  }
+
+  // .header-nav-menu__head
+  &__head {
+    display: flex;
+    align-items: center;
+    height: 25.5px;
+    flex: 1 1 auto;
+
+    @media (min-width: ($md)) {
+      justify-content: space-between;
+    }
+  }
+
+  // .header-nav-menu__nav 
+  &__nav {}
+
+  // .header-nav-menu__icon
+  &__icon {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: transparent;
+    min-height: 46px;
+    width: 18px;
+    border: none;
+    margin: 0 3px;
+    padding: 0;
+
+    span {
+      position: absolute;
+      display: inline-flex;
+      height: 2px;
+      background-color: #231f20;
+      width: 100%;
+      left: 0;
+      transition: 0.2s;
+
+      &:nth-child(1) {
+        transform: translate(0, -6px);
+      }
+
+      &:nth-child(2) {}
+
+      &:nth-child(3) {
+        transform: translate(0, 6px);
+      }
+    }
+
+    &_active {
+      span {
+        &:nth-child(1) {
+          width: 104%;
+          transform-origin: top right;
+          transform: translate(-10%, 0) rotate(-45deg);
+        }
+
+        &:nth-child(2) {
+          opacity: 0;
+        }
+
+        &:nth-child(3) {
+          width: 104%;
+          transform-origin: bottom right;
+          transform: translate(-10%, 0) rotate(45deg);
+        }
+      }
+    }
+  }
+
+  // .header-nav-menu__local-contacts
+  &__local-contacts {
+    display: flex;
+    margin-left: auto;
+
+    @media (min-width: ($md)) {
+      margin: 0;
+    }
+
+    a {
+      &#linkCall {
+        .wv-icon {
+          // margin-left: 20px;
+
+          @media (min-width: ($md)) {
+            display: none;
+          }
+
+          use {
+            stroke: $emphasis;
+            fill: transparent;
+          }
+        }
+      }
+
+      &#linkMyOrders {
+        flex-direction: row;
+        white-space: nowrap;
+
+        div {
+          font-size: $small-font-size;
+
+        }
+
+        @media (min-width: ($md)) {
+          .wv-icon {
+            margin: 0 10px 0 10px;
+            width: 20px;
+            height: 20px;
+
+            use {
+              stroke: $body-color;
+              fill: transparent;
+            }
+          }
+        }
+      }
+
+      &#linkCall {
+        margin: 0 5px 0 5px;
+      }
+    }
+
+    .wv-icon {
+      margin-left: 15px;
+
+      use {
+        stroke: transparent;
+        fill: $secondary;
+      }
+    }
+
+
+  }
+
+  .wv-header-description {
+    margin-left: 15px;
+
+    @media (min-width: ($md)) {
+      display: none;
+    }
+  }
+
+  .wv-header-shedule {
+    margin-right: 25px;
+  }
+
+}

@@ -25,7 +25,7 @@ $label = ! empty( $args['product_name'] ) ? sprintf( esc_html__( '%s quantity', 
 	do_action( 'woocommerce_before_quantity_input_field' );
 	?>
 	<button class="quantity__button" data-wv-change-qty-operator="-">
-		<svg class="icon">
+		<svg class="wv-icon">
 		<use xlink:href="#sprite-minus"></use>
 	</svg>
 	</button>
@@ -48,7 +48,7 @@ $label = ! empty( $args['product_name'] ) ? sprintf( esc_html__( '%s quantity', 
 		<?php endif; ?>
 	/>
 		<button class="quantity__button" data-wv-change-qty-operator="+">
-		<svg class="icon">
+		<svg class="wv-icon">
 		<use xlink:href="#sprite-plus"></use>
 	</svg>
 	</button>

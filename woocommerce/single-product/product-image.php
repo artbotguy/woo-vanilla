@@ -15,11 +15,11 @@ if ( ! function_exists( 'wc_get_gallery_image_html' ) ) {
 global $product;
 $product_images_src = get_all_images_product_src();
 ?>
-<div class="wv-single-product__sliders wv-swiper-parent">
-	<div class="swiper wv-slider-single-product" id="wv-slider-single-product-<?php echo esc_attr( $product->get_id() ); ?>">
+<div class="wv-single-product__sliders _wv-swiper-parent">
+	<div class="swiper wv-slider-preview-single-product" id="wv-slider-preview-single-product-<?php echo esc_attr( $product->get_id() ); ?>">
 		<div class="swiper-wrapper">
 		<?php foreach ( $product_images_src as $src ) : ?>
-			<div class="swiper-slide">
+			<div class="swiper-slide _img-container">
 			<picture>
 				<source srcset="" type="image/webp">
 				<source srcset="" type="image/jpeg">
@@ -28,13 +28,11 @@ $product_images_src = get_all_images_product_src();
 			</div>
 		<?php endforeach; ?>
 		</div>
-	
-	
 	</div>
-	<div thumbsSlider="" class="swiper wv-slider-thumb-single-product" id="wv-slider-thumb-single-product-<?php echo esc_attr( $product->get_id() ); ?>">
+	<div thumbsSlider="" class="swiper wv-slider-thumbs-single-product" id="wv-slider-thumbs-single-product-<?php echo esc_attr( $product->get_id() ); ?>">
 		<div class="swiper-wrapper">
 		<?php foreach ( $product_images_src as $src ) : ?>
-			<div class="swiper-slide">
+			<div class="swiper-slide _img-container">
 			<picture>
 				<source srcset="" type="image/webp">
 				<source srcset="" type="image/jpeg">

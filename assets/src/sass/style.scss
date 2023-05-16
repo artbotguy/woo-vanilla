@@ -1,12 +1,11 @@
 // @import url(https://fonts.googleapis.com/css?family=Yeseva+One:regular);
 // @import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900);
 
-// @import '~normalize-scss/sass/normalize/import-now';
-
-
 /*--------------------------------------------------------------
 # Imports
 --------------------------------------------------------------*/
+@import 'variables.scss';
+
 @import './bootstrap.scss';
 @import 'swiper/css';
 @import 'swiper/css/pagination';
@@ -15,43 +14,106 @@
 
 @import 'fonts.scss';
 
-@import 'variables.scss';
 
 @import 'tags.scss';
+@import 'servises.scss';
 
 
-
+@import 'wocommerce.scss';
+@import 'packages.scss';
 /*--------------------------------------------------------------
 # Components
 --------------------------------------------------------------*/
-@import 'components/base/icons';
-
 @import 'components/header';
 @import 'components/sidebar';
 @import 'components/footer';
-
-@import 'components/catalog/catalog';
-
-
 
 /*--------------------------------------------------------------
 # Pages
 --------------------------------------------------------------*/
 @import 'pages/home';
+@import 'pages/wishlist';
 
 /*--------------------------------------------------------------
-# Partials
+# Templates
 --------------------------------------------------------------*/
-@import 'partials/link-item.scss';
-@import 'partials/cart-count.scss';
-
-@import 'components/sliders/slider-product';
-@import 'components/sliders/slider-products';
-
-@import 'components/product-lists/product-list-catalog';
-
-@import 'components/product/product-catalog-actions';
-
-//
 @import 'templates/content-product.scss';
 @import 'templates/content-single-product.scss';
+@import 'templates/single-product/product-image.scss';
+@import 'templates/taxonomy-product-cat.scss';
+
+
+// global
+@import 'templates/global/wv-ordering-info.scss';
+
+// loop
+@import 'templates/loop/orderby.scss';
+@import 'templates/loop/wv-slider-product.scss';
+
+
+// wv-base
+@import 'templates/wv-base/wv-icon.scss';
+
+// wv-universal-product
+@import 'templates/wv-universal-product/add-to-cart/variation-add-to-cart-button.scss';
+@import 'templates/wv-universal-product/add-to-cart/wv-variable.scss';
+@import 'templates/wv-universal-product//rating.scss';
+
+// wv-sections
+@import 'templates/wv-sections/wv-sliders-home.scss';
+@import 'templates/wv-sections/wv-advantages.scss';
+@import 'templates/wv-sections/wv-catalog-description.scss';
+@import 'templates/wv-sections/wv-home-description.scss';
+@import 'templates/wv-sections/wv-why-chose.scss';
+@import 'templates/wv-sections/wv-google-map.scss';
+
+// wv-offcanvases
+@import 'templates/wv-offcanvases/wv-offcanvas-header-top.scss';
+@import 'templates/wv-offcanvases/wv-offcanvas-cart.scss';
+
+// wv-blocks
+@import 'templates/wv-blocks/wv-contacts-soc.scss';
+
+//
+@import 'templates/wv-blocks/wv-header/wv-header-bot';
+@import 'templates/wv-blocks/wv-header/wv-header-bot-mobile';
+
+@import 'templates/wv-blocks/wv-header/wv-header-mobile-menu';
+
+@import 'templates/wv-blocks/wv-header-contacts';
+@import 'templates/wv-blocks/wv-header-search';
+//
+// wv-blocks/wv-header
+@import 'templates/wv-blocks/wv-header/wv-header-top.scss';
+@import 'templates/wv-blocks/wv-header/wv-header-main.scss';
+
+// wv-blocks/wv-header/wv-header-top/wv-header-main
+@import 'templates/wv-blocks/wv-header/wv-header-main/wv-header-main-logo.scss';
+@import 'templates/wv-blocks/wv-header/wv-header-main/wv-header-main-call.scss';
+@import 'templates/wv-blocks/wv-header/wv-header-main/wv-header-main-search.scss';
+@import 'templates/wv-blocks/wv-header/wv-header-main/wv-header-main-wishlist.scss';
+@import 'templates/wv-blocks/wv-header/wv-header-main/wv-header-main-cart.scss';
+
+
+// wv-blocks/wv-header/wv-header-main
+
+
+// wv-rendered
+@import 'templates/wv-rendered/menu.scss';
+@import 'templates/wv-rendered/wv-section-slider-products.scss';
+
+@import 'templates/wv-rendered/wv-menu-categories.scss';
+@import 'templates/wv-rendered/wv-header-shedule.scss';
+@import 'templates/wv-rendered/wv-header-description.scss';
+@import 'templates/wv-rendered/wv-catalog-sidebar.scss';
+@import 'templates/wv-rendered/wv-widget-area.scss';
+
+//wv-locations
+@import 'templates/wv-locations/wv_location_footer.scss';
+@import 'templates/wv-locations/wv_location_header.scss';
+
+// wv-types
+@import 'templates/wv-types/content-product_catalog.scss';
+@import 'templates/wv-types/content-product_slider.scss';
+
+// wv-base

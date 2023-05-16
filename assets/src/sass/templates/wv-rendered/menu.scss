@@ -1,0 +1,86 @@
+.menu {
+
+  &__label {
+    font-weight: 400;
+    font-size: $small-font-size;
+    color: $secondary;
+  }
+
+  .menu-main {
+
+    // .menu-main__item
+    &__item {
+      &.menu-item-has-children {
+
+        .menu-main__link {
+          font-weight: 500;
+          font-size: inherit;
+        }
+
+        .wv-universal-toggle {
+          display: inline-flex;
+        }
+      }
+    }
+
+    // .menu-main__link
+    &__link {
+      position: relative;
+
+      // для категорий без подкатегорий 
+      font-weight: bold;
+      font-size: $small-font-size;
+    }
+  }
+
+  .menu-sub {
+
+    &__link {}
+  }
+
+  .wv-universal-toggle {
+    display: none;
+  }
+
+  // .menu-link,
+  // .wv-universal-toggle {
+  //   margin-bottom: 10px;
+
+  // }
+}
+
+// указаны стили таким образом, чтобы при .item-has-children и без этого класса
+// структура состояла или имитировало то, что состоит из 3 элементов
+.menu-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+
+  .wv-universal-toggle {
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+  }
+
+  .menu-link {
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+  }
+
+  >.menu-sub {
+    grid-row: 2 / 3;
+    grid-column: 1 / 3;
+  }
+}
+
+.menu-item-header {
+  display: flex;
+  flex: 1 1 auto;
+}
+
+.menu-link {
+  flex: 1 1 auto;
+}
+
+
+
+//\
+.wv-dropdown-menu {}

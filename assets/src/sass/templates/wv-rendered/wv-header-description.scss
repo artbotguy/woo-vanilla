@@ -1,0 +1,8 @@
+.wv-header-description {
+  max-width: 111px;
+  font-size: $font-size-sm;
+
+  @media (min-width: ($md)) {
+    // font-size: inherit;
+  }
+}

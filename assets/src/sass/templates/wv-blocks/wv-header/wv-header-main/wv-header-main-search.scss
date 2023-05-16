@@ -1,0 +1,53 @@
+.wv-header-main-search {
+  display: flex;
+
+  @media (min-width: ($md)) {
+    margin-right: 20px;
+    flex: 1 1 auto;
+  }
+
+  @media (min-width: ($xl)) {
+    margin-right: 30px;
+    order: 0;
+  }
+
+  &__wrapper {
+    position: relative;
+
+    @media (min-width: ($xl)) {
+      flex: 1 1 auto;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .wv-header-search {
+      height: 100%;
+
+      &::before {
+        display: block;
+      }
+
+      input::placeholder {
+        opacity: 0;
+      }
+
+      @media (min-width: ($md)) {
+        &::before {
+          display: none;
+        }
+
+        input::placeholder {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

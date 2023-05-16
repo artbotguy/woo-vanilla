@@ -1,1 +1,1 @@
-<div class="catalog-products__items">
+<div class="wv-catalog-products__items">

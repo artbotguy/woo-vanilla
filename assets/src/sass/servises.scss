@@ -1,0 +1,130 @@
+._btn-minimal {
+  &:focus {
+    box-shadow: none
+  }
+}
+
+._wv-swiper-parent {
+  min-width: 0;
+}
+
+._img-container {
+  position: relative;
+
+  img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    -o-object-fit: cover;
+    object-fit: cover;
+  }
+}
+
+// для элементов с border, типа селектов, кнопок
+._wv-form-item {
+  padding: 5px 10px;
+  border: 1px solid #D0D2D7;
+  border-radius: 5px;
+  background: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: $body-color;
+  font-weight: 500;
+
+  @media (min-width: ($md)) {
+    padding: 8px 15px;
+
+  }
+}
+
+// Универсальный класс для переключения collapse и dropdown
+.wv-universal-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  padding: 0;
+
+  &::after {
+    content: "";
+    min-width: 10px;
+    min-height: 10px;
+    display: block;
+    margin-left: 8px;
+    padding: 5px;
+
+    background: center no-repeat url('../images/svg/arrow.svg') !important;
+    transition: .1s;
+  }
+
+  &.show {
+    &::after {
+      transform: rotate(-180deg);
+    }
+  }
+}
+
+.wv-link-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  &_type_circle {
+    background: #fff;
+    border-radius: 50%;
+    border: $wv-border;
+
+    .wv-link-item__title {
+      display: none;
+    }
+  }
+
+  // .wv-link-item__icon
+  &__icon {
+    use {
+      stroke: $tertiary;
+      fill: #F2F6F6;
+    }
+  }
+
+  // .wv-link-item__title
+  &__title {
+    font-size: $sub-sup-font-size;
+    color: $tertiary;
+  }
+}
+
+.wv-cart-count {
+  position: absolute;
+  border-radius: 50%;
+  height: 18px;
+  width: 18px;
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+  background: $primary;
+  border: 1px solid #fff;
+
+  @media (min-width: ($md)) {
+    height: 20px;
+    width: 20px;
+  }
+
+  span {
+    font-size: $sub-sup-font-size;
+    flex: 1 1 auto;
+    display: block;
+    color: #fff;
+
+    @media (min-width: ($md)) {
+      font-size: $small-font-size;
+    }
+  }
+}

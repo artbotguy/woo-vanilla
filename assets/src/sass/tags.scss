@@ -1,6 +1,19 @@
+html,
 body {
   font-family: 'TT Norms';
+  // line-height: 133.333%;
+  // line-height: 142.5%;
+
+  // line-height: 100%;
+  line-height: $line-height-base;
+  color: $body-color;
 }
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
 
 ol,
 ul {
@@ -14,7 +27,7 @@ a {
   color: $dark;
 
   &:hover {
-    color: $emphasis;
+    color: $emphasis !important;
   }
 }
 
@@ -23,12 +36,74 @@ img {
 }
 
 
-.btn-minimal {
-  &:focus {
-    box-shadow: none
+h1 {
+  font-size: 20px;
+
+  @media (min-width: ($md)) {
+    font-size: 30px;
+  }
+
+  @media (min-width: ($lg)) {
+    font-size: 40px;
+  }
+
+  // переопределяю bs.rfs
+  // font-size: 20px;
+
+  // @media (min-width: ($lg)) {
+  //   font-style: 30px;
+  // }
+}
+
+h2 {}
+
+// переопределяю bs.reboot
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  // line-height: 1.1;
+  font-family: 'Yeseva One';
+}
+
+// form
+input,
+button,
+select {
+  border: none;
+  padding: 0;
+  color: inherit;
+}
+
+* {
+  &:focus-visible {
+    outline: none;
   }
 }
 
-.wv-swiper-parent {
-  min-width: 0;
+select {
+  background: #fff;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+}
+
+button {
+  border: none;
+  background-color: transparent;
+}
+
+del,
+ins {
+  text-decoration: none;
 }

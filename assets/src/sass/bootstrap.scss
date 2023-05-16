@@ -3,7 +3,24 @@
 --------------------------------------------------------------*/
 
 .btn {
-  padding: 0;
+  padding: 10px 15px;
+  display: inline-flex;
+
+  &:focus {
+    box-shadow: 0px 1px 5px $primary;
+  }
+
+  span {
+    white-space: nowrap;
+  }
+}
+
+.btn-close {
+  margin: 0;
+
+  &:focus {
+    box-shadow: none;
+  }
 }
 
 .btn-check:checked+.btn,
@@ -11,24 +28,27 @@
 .btn.show,
 .btn:first-child:active,
 :not(.btn-check)+.btn:active {
-  border: 1px solid transparent;
+  border: 1px solid $primary;
 }
 
 .offcanvas {
+  padding-bottom: 30px;
+}
 
-  &-body {
-    padding: 0 20px;
-  }
+.offcanvas-body {
+  padding: 0 20px;
+}
 
-  &-header {
-    min-height: 66px;
-    padding: 15px;
-  }
+.offcanvas-header {
+  // min-height: 67px;
+  padding: 16px 20px 16px 20px;
 
   .btn-close {
     margin: 0;
+    padding: 0;
   }
 }
+
 
 .dropdown-menu {
   box-shadow: 0px 10px 30px rgba(34, 42, 70, 0.1);
@@ -42,32 +62,23 @@
   }
 }
 
+.accordion-button {
+  &:not(.collapsed)::after {
+    transform: rotate(180deg);
+  }
+}
+
 .dropdown {
   position: static;
 }
 
-.dropdown-toggle {
-  display: flex;
-  align-items: center;
-  position: relative;
 
 
-  &::after {
-    min-width: 10px;
-    min-height: 10px;
-    content: "";
-    display: block;
-    margin-left: .255em;
-    border: none;
-    background: center no-repeat url('../images/svg/arrow.svg');
-    transition: .1s;
-  }
+.dropdown-toggle,
+.accordion-button {}
 
-  &.show {
-    &::after {
-      transform: rotate(-180deg);
-    }
-  }
+.accordion-item {
+  border: none;
 }
 
 .nav-link {
@@ -79,34 +90,43 @@
   padding: 0 20px;
 }
 
+.placeholder {
+  background-color: $tertiary;
+  opacity: .2;
+  position: relative;
 
-// @import "bootstrap/scss/bootstrap";
+  &::after {
+    content: '';
+    z-index: 1000;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    // opacity: inherit;
+    background-color: inherit;
+  }
+}
+
+.form-control {
+  line-height: inherit;
+}
+
+//
+//
+//
 
 
+.container,
+.container-fluid,
+.container-xxl,
+.container-xl,
+.container-lg,
+.container-md,
+.container-sm {
+  padding: 0 15px !important;
 
-// @import "bootstrap/scss/functions";
-
-// @import "bootstrap/scss/variables";
-// // // @import "bootstrap/scss/variables-dark";
-
-
-
-// @import "bootstrap/scss/maps";
-// @import "bootstrap/scss/mixins";
-// @import "bootstrap/scss/root";
-
-// @import "bootstrap/scss/utilities";
-// @import "bootstrap/scss/reboot";
-// @import "bootstrap/scss/type";
-// @import "bootstrap/scss/images";
-// @import "bootstrap/scss/helpers";
-
-// @import "bootstrap/scss/containers";
-// @import "bootstrap/scss/buttons";
-// @import "bootstrap/scss/close";
-// @import "bootstrap/scss/modal";
-// @import "bootstrap/scss/grid";
-
-// @import "bootstrap/scss/utilities/api";
-
-// 8. Add additional custom code here
+  @media (min-width: ($md)) {
+    padding: 0 20px !important;
+  }
+}

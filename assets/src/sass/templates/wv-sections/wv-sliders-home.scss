@@ -1,0 +1,153 @@
+.wv-sliders-home {
+  display: grid;
+  margin-bottom: 20px;
+  padding-top: 10px;
+
+  @media (min-width: ($xl)) {
+    grid-template-columns: 3fr 1fr;
+    gap: 20px;
+    // max-height: 440px;
+    overflow: hidden;
+    align-items: start;
+  }
+
+  .wv-section-slider-banners {}
+
+  .wv-slider-banners {
+    border-radius: 10px;
+
+    &__content {
+      z-index: 1;
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      transform: translate(0, -50%);
+
+      @media (min-width: ($md)) {
+        left: 90px;
+      }
+    }
+
+    .swiper-slide {
+      padding-bottom: 71%;
+
+      @media (min-width: ($lg)) {
+        padding-bottom: 64%;
+
+      }
+
+      @media (min-width: ($xl)) {
+        padding-bottom: 53%;
+
+      }
+    }
+
+    &__title {
+      font-size: 20px;
+      line-height: 133%;
+      font-family: 'Yeseva One';
+      font-weight: 400;
+      margin-bottom: 25px;
+      max-width: 50%;
+
+      @media (min-width: ($sm)) {
+        font-size: 32px;
+        max-width: 43%;
+
+      }
+
+      @media (min-width: ($md)) {
+        font-size: 44px;
+      }
+    }
+
+    .copy-clipboard {
+      &__item {
+        display: inline-flex;
+        box-shadow: 0px 4px 15px rgba(34, 42, 70, 0.08);
+        border-radius: 10px;
+        // padding: 13px 0;
+        height: 50px;
+      }
+
+      &__button {
+        transition: .3s;
+        height: 100%;
+        background: #0093A2;
+        opacity: 0.5;
+        border-radius: 0px 10px 10px 0px;
+        width: 50px;
+
+        &:active,
+        &:focus {
+          background: $body-color;
+        }
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      input {
+        border-radius: 10px 0 0 10px;
+        padding-left: 25px;
+        // flex: 1 1 auto;
+        color: $primary;
+        background: #fff;
+        letter-spacing: 0.1em;
+      }
+
+      .wv-icon {
+        use {
+          stroke: #fff;
+        }
+      }
+    }
+
+
+    .swiper-pagination {
+      .swiper-pagination-bullet {
+        width: 40px;
+        height: 3px;
+        border-radius: 0;
+      }
+    }
+  }
+
+  .wv-section-slider-products {
+    display: none;
+    margin-bottom: 0;
+
+    @media (min-width: ($xl)) {
+      height: 100%;
+      display: grid;
+      grid-template-rows: auto 1fr;
+    }
+
+    &__title {
+      line-height: 155%;
+      font-size: $wv-font-size-md;
+      flex: 1 1 auto;
+      text-align: center;
+    }
+
+    &__head {
+      margin-bottom: 6px;
+    }
+
+    &__arrow {
+      display: none;
+    }
+
+    .swiper {
+      // max-height: 406px;
+    }
+
+
+    .wv-product-attributes {
+      // height: auto;
+    }
+  }
+
+}

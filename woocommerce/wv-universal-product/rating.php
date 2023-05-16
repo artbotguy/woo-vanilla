@@ -23,13 +23,13 @@ $average      = $product->get_average_rating();
 
 ?>
 
-	<div class="woocommerce-product-rating">
+	<div class="woocommerce-product-rating wv-rating-reviews">
 		<?php echo wv_get_rating_html( $average ); // WPCS: XSS ok. ?>
 		<?php if ( comments_open() ) : ?>
 			<a href="#reviews" class="woocommerce-review-link" rel="nofollow">
 			<?php
 			echo '(' . sprintf(
-				_n( '%0s review', '%s reviews', $review_count, 'woocommerce' ),
+				_n( '%s review', '%s reviews', $review_count, 'woocommerce' ),
 				'<span class="count">' .
 				esc_html( $review_count ) . '</span>'
 			) . ')';

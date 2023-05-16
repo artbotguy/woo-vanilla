@@ -1,0 +1,27 @@
+.wv-google-map {
+  margin-bottom: 50px;
+
+  .container-lg {
+    position: relative;
+
+  }
+
+  // .wv-google-map__content
+  &__content {
+    position: absolute;
+    top: 40px;
+    left: 0;
+  }
+
+  // .wv-google-map__mail
+  &__mail {}
+
+  // .wv-google-map__map
+  &__map {
+    height: 400px;
+
+    iframe {
+      width: 100%;
+    }
+  }
+}

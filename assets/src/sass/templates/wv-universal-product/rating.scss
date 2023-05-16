@@ -1,0 +1,104 @@
+// .wv-rating-reviews .woocommerce-product-rating
+.wv-rating-reviews {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: start;
+  gap: 3px;
+  align-items: center;
+  font-size: $sub-sup-font-size;
+
+  @media (min-width: ($md)) {
+    font-size: inherit;
+  }
+
+  // .woocommerce-loop-product__rating
+  &__rating {
+    display: flex;
+    align-items: center;
+
+    label {
+      font-weight: 500;
+    }
+  }
+
+  &__rating-star-wrap {
+    display: flex;
+    margin-right: 5px;
+
+    .wv-icon {
+      width: 20px;
+      height: 20px;
+
+      &:first-child {
+        use {
+          stroke: $emphasis;
+          fill: $emphasis;
+
+        }
+      }
+
+      &:last-child {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+
+        use {
+          stroke: $emphasis;
+        }
+      }
+    }
+
+    position: relative;
+
+    &_atfer_width {
+      &_0 {
+        &::after {
+          width: 100%;
+        }
+
+        .wv-icon {
+          &:last-child {
+            use {
+              stroke: $tertiary;
+            }
+          }
+        }
+      }
+
+      &_2 {
+        &::after {
+          width: 87%;
+        }
+      }
+
+      &_3 {
+        &::after {
+          width: 50%;
+        }
+      }
+
+      &_4 {
+        &::after {
+          width: 27%;
+        }
+      }
+
+      &_5 {
+        &::after {
+          width: 0%;
+        }
+      }
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      height: 100%;
+      top: 0;
+      right: 0;
+      z-index: 1;
+      background: #fff;
+    }
+  }
+}

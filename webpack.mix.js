@@ -12,10 +12,12 @@ const webpack = require('webpack');
 
 mix.setPublicPath('./assets/dist');
 
-// Compile assets.
+/**
+ * Note: Непонятная ошибка с обработкой scss при подключенных скриптах  add-to-cart-variation / xoo-wsc-main
+ */
 mix
-	.js('assets/src/scripts/wp/add-to-cart-variation.js', 'assets/dist/js')
-	.js('assets/src/scripts/wp/xoo-wsc-main.js', 'assets/dist/js')
+	// .js('assets/src/scripts/wp/add-to-cart-variation.js', 'assets/dist/js')
+	// .js('assets/src/scripts/wp/xoo-wsc-main.js', 'assets/dist/js')
 	.js('assets/src/scripts/app.js', 'assets/dist/js')
 	.js('assets/src/scripts/admin.js', 'assets/dist/js')
 
@@ -66,6 +68,7 @@ if (mix.inProduction()) {
 				new webpack.ProvidePlugin({
 					$: '/home/artbot/dev/wc-docker-apache/html/wp-content/themes/woo-vanilla/node_modules/jquery/dist/jquery.min.js',
 					// jQuery: '/home/artbot/dev/wc-docker-apache/html/wp-content/themes/woo-vanilla/node_modules/jquery/dist/jquery.min.js',
+					// lodash_mine: '/home/artbot/dev/wc-docker-apache/html/wp-content/themes/woo-vanilla/node_modules/lodash/_has.js'
 				}),
 			],
 		})

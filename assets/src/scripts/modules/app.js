@@ -2,28 +2,27 @@ import ClientEnquire from './enquire';
 import ClientBootstrap from './bootstrap';
 import ClientListeners from './listeners';
 import ClientSwiper from './swiper';
-
+import ClientChoises from './choises'
+// import ClientGoogleMap from './google-map'
 class App {
 
 	constructor() {
 		this.init();
-
-		// var swiper = new Swiper(".mySwiper", {
-		// 	freeMode: true,
-		// 	// autoplay: {
-		// 	// 	delay: 2500,
-		// 	// 	disableOnInteraction: false,
-		// 	// },
-		// });
-
 	}
 
 	init() {
+		$('p:empty').remove();
+
 		new ClientEnquire();
 		new ClientBootstrap();
 		new ClientListeners();
 		new ClientSwiper();
+		new ClientSwiper();
+		new ClientChoises();
+		// new ClientGoogleMap();
 	}
 }
+
+
 
 export default App;

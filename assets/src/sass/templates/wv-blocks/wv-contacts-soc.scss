@@ -1,0 +1,30 @@
+.wv-contacts-soc {
+  display: grid;
+  gap: 15px;
+
+  // .wv-contacts-soc__title
+  &__title {
+    white-space: nowrap;
+  }
+
+  // .wv-contacts-soc__list
+  &__list {
+    display: flex;
+  }
+
+  // .wv-contacts-soc__item
+  &__item {
+    margin-right: 20px;
+
+  }
+
+  // .wv-contacts-soc__link
+  &__link {
+    &:hover {
+      svg {
+        // opacity: 0; // note (?)
+        opacity: .8;
+      }
+    }
+  }
+}

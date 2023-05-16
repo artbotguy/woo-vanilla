@@ -16,10 +16,3 @@ endif;
 if ( is_customize_preview() ) {
 	echo '<div id="woovanilla-sidebar-control"></div>';
 }
-?>
-
-<aside id="secondary" class="widget-area" role="complementary">
-	<?php
-	dynamic_sidebar( 'woovanilla-sidebar' );
-	?>
-</aside><!-- #secondary -->

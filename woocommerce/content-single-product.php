@@ -21,7 +21,7 @@ if ( post_password_required() ) {
 	return;
 }
 ?>
-<div id="product-<?php the_ID(); ?>" <?php wc_product_class( 'single-product', $product ); ?>>
+<div id="product-<?php the_ID(); ?>" <?php wc_product_class( 'wv-single-product', $product ); ?>>
 
 	<?php
 		echo '<div class="wv-single-product__main">';
@@ -33,22 +33,25 @@ if ( post_password_required() ) {
 	do_action( 'woocommerce_before_single_product_summary' );
 	?>
 
-	<div class="summary entry-summary">
+	<div class="wv-single-product__summary">
 		<?php
+		woocommerce_template_single_title();
+		woovanilla_template_rating();
+		woovanilla_template_product_attributes( array( 'pa_czvet', 'pa_shirina', 'pa_vysota' ) );
+		woovanilla_variable_add_to_cart();
 		/**
 		 * Hook: woocommerce_single_product_summary.
 		 *
-		 * @hooked woocommerce_template_single_title - 5
-		 * @hooked woovanilla_template_rating - 10
-		 * @hooked woovanilla_template_product_attributes - 15
-		 * @hooked woocommerce_template_single_excerpt - 20
-		 * @hooked woocommerce_template_single_add_to_cart - 30
-		 * @hooked woocommerce_template_single_meta - 40
-		 * @hooked woocommerce_template_single_sharing - 50
 		 * @hooked WC_Structured_Data::generate_product_data() - 60
 		 */
-		do_action( 'woocommerce_single_product_summary' );
+		// do_action( 'woocommerce_single_product_summary' );
 		?>
+				<div class="wv-bouquet-composition"><h6>Состав:</h6>
+		<ul><li><span>Роза пионовидная вайлд лук</span><span>- 10 шт.</span></li></ul>
+		<ul><li><span>Роза кустовая пионовидная</span><span>- 3 шт.</span></li></ul>
+		<ul><li><span>Озотамнус</span><span>- 2 шт.</span></li></ul>
+		<ul><li><span>Эвкалипт</span><span>- 6 шт.</span></li></ul>
+</div>
 	</div>
 	<div class="wv-single-product__description">
 	<?php woocommerce_product_description_tab(); ?>
@@ -58,13 +61,24 @@ if ( post_password_required() ) {
 	woovanilla_template_ordering_info();
 	echo '</div>';
 	/**
+	 * // WV Note: Хук должен выводить шаблоны, в которые должны поступать продукты.
+	 * С вариативными продуктами в шаблон поступает вариации и их применение в WV loop product
+	 * не предствляется возможным...
+	 *
 	 * Hook: woocommerce_after_single_product_summary.
 	 *
-	 * @hooked woocommerce_output_product_data_tabs - 10
 	 * @hooked woocommerce_upsell_display - 15
 	 * @hooked woocommerce_output_related_products - 20
 	 */
-	do_action( 'woocommerce_after_single_product_summary' );
+	// do_action( 'woocommerce_after_single_product_summary' );
+
+	// заглушка наполовину работает как дефолтная логика - т.к. related в WC работает методом рандома
+	woovanilla_slider_products( array(), 'Рекомендуемые товары' );
+	woovanilla_slider_products( array(), 'Ранее вы смотрели' );
+
+	wc_get_template( 'wv-sections/wv-advantages-single-product.php' );
+
+
 	?>
 </div>
 

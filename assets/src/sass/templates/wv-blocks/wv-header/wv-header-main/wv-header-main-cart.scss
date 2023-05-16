@@ -1,0 +1,36 @@
+.wv-header-main-cart {
+  display: none;
+
+  @media (min-width: ($md)) {
+    display: flex;
+    align-items: center;
+  }
+
+  @media (min-width: ($xl)) {
+    order: 3;
+  }
+
+  .wv-link-item {
+    margin-right: 13px;
+
+    .wv-icon use {
+      stroke: $quaternary;
+    }
+  }
+
+  &__price {
+    white-space: nowrap;
+    color: $primary;
+    font-weight: 500;
+  }
+
+  .wv-cart-count {
+    left: 79%;
+    top: -1%;
+  }
+
+  .xoo-wsc-ft-amt-label {
+    display: none;
+  }
+
+}

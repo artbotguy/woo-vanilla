@@ -1,0 +1,59 @@
+.wv-header-search {
+  border: $wv-border;
+  border-radius: 60px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+
+  input {
+    padding: 9px 0 9px 20px;
+    display: inline;
+    width: 100%;
+    border: none;
+    background: transparent;
+    flex: 1 1 auto;
+
+    &:focus {
+      border: none;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    &::placeholder {
+      font-size: $small-font-size;
+
+      @media (min-width: ($md)) {
+        font-size: inherit;
+      }
+
+      // display: none;
+    }
+  }
+
+  &::before {
+    content: 'Поиск...';
+    font-size: $small-font-size;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    left: 0;
+    top: 50%;
+    transform: translate(20px, -50%);
+    color: $tertiary;
+    z-index: -1;
+    display: none;
+  }
+
+  .wv-icon {
+    margin: 0 15px 0 5px;
+    width: 28px;
+    height: 28px;
+
+    use {
+      stroke: $tertiary;
+    }
+  }
+
+}
