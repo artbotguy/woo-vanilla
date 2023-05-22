@@ -26,7 +26,7 @@
 	</div>
 
 	<?php wp_body_open(); ?>
-	<div id="page" class="">
+	<div id="page" class="wv-root">
 		<header class="header">
 			<div class="container-lg">
 				<div class="header__body">
@@ -39,4 +39,3 @@
 				</div>
 			</div>
 		</header>
-		<div id="content" class="site-content">

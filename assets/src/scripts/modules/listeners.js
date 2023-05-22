@@ -2,6 +2,8 @@ class ClientListeners {
 
   innerWidth = null;
 
+  self = null
+
   constructor() {
     this.init()
   }
@@ -25,7 +27,14 @@ class ClientListeners {
       // }
     })
 
-    $('.quantity__button').click(function (e) {
+    /**
+     * Данная логика используется в:
+     *  - Single Product - изменение значаения инпута => submit
+     *  - Cart Item - НЕ РАБОТАЕТ - изменение значения кнопками не запускает
+     *    this.$modal.on('change', '.xoo-wsc-qty', this.changeInputQty.bind(this));
+     *    Также не работает запуск $input.trigger()
+     */
+    $(document).on('click', '.wv-quantity__button', function (e) {
       e.preventDefault();
       const $input = $(this).parent().find('input')
       const operator = $(this).data().wvChangeQtyOperator;
@@ -40,6 +49,7 @@ class ClientListeners {
         if ($input.attr('max') ? $input.val() >= $input.attr('max') : false) return
       }
       $input.val(eval($input.val() + operator + '1'))
+      // .trigger('change')
 
     })
 
@@ -68,30 +78,30 @@ class ClientListeners {
   }
 
   load() {
-    window.addEventListener('load', function () {
-      const $placeholders = $('.placeholder')
-      for (let i = 0; i < $placeholders.length; i++) {
-        const placeholder = $placeholders[i];
-        placeholder.classList.remove('placeholder')
-        placeholder.parentNode.classList.remove('placeholder-wave')
-      }
 
-      this.setTimeout(() => {
-        $('.wv-header-bot').scrollLeft(500)
-      }, 3000)
 
-      this.setTimeout(() => {
-        $('.wv-header-bot').scrollLeft(-500)
-      }, 6000)
+    const $placeholders = $('.placeholder')
+    for (let i = 0; i < $placeholders.length; i++) {
+      const placeholder = $placeholders[i];
+      placeholder.classList.remove('placeholder')
+      placeholder.parentNode.classList.remove('placeholder-wave')
+    }
 
-      // this.setTimeout(() => {
-      //   $('.wv-advantages').scrollLeft(1000)
-      // }, 3000)
+    // setTimeout(() => {
+    //   $('.wv-header-bot').scrollLeft(500)
+    // }, 3000)
 
-      // this.setTimeout(() => {
-      //   $('.wv-advantages').scrollLeft(-1000)
-      // }, 6000)
-    })
+    // setTimeout(() => {
+    //   $('.wv-header-bot').scrollLeft(-500)
+    // }, 6000)
+
+    // this.setTimeout(() => {
+    //   $('.wv-advantages').scrollLeft(1000)
+    // }, 3000)
+
+    // this.setTimeout(() => {
+    //   $('.wv-advantages').scrollLeft(-1000)
+    // }, 6000)
   }
 
   scroll() {

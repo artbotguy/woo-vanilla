@@ -20,7 +20,9 @@
 
   .swiper {}
 
-  .swiper-wrapper {}
+  .swiper-wrapper {
+    padding-bottom: 10px;
+  }
 
   .swiper-slide {
     height: auto;

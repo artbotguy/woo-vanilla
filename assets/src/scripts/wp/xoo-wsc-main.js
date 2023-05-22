@@ -126,11 +126,11 @@ jQuery(document).ready(function ($) {
 
 
 		block() {
-			this.$modal.addClass('xoo-wsc-loading');
+			this.$modal.addClass('placeholder-wave');
 		}
 
 		unblock() {
-			this.$modal.removeClass('xoo-wsc-loading');
+			this.$modal.removeClass('placeholder-wave');
 		}
 
 
@@ -177,17 +177,29 @@ jQuery(document).ready(function ($) {
 
 		}
 
+		/**
+		 * 
+		 * WV: Производит: 
+		 * 	- Обновление списка продуктов
+		 * 	- 
+		 * 
+		 * @param {*} response 
+		 * @returns 
+		 */
 		updateFragments(response) {
-
-			// console.log('updated');
-
 			if (response.fragments) {
 
 				$(document.body).trigger('xoo_wsc_before_loading_fragments', [response]);
 
 				this.block();
 
-				//Set fragments
+				/**
+				 * WV: 
+				 * 	Ключ представляет собой вид: div.class,
+				 * 	Значение - HTML
+				 * 	Добавление новых фрагментов для обновления осуществляется изменением Xoo_Wsc_Cart::set_ajax_fragments()
+				 * 
+				 */
 				$.each(response.fragments, function (key, value) {
 					$(key).replaceWith(value);
 				});
@@ -249,6 +261,7 @@ jQuery(document).ready(function ($) {
 
 			this.$modal.on('click', '.xoo-wsc-chng', this.toggleQty.bind(this));
 			this.$modal.on('change', '.xoo-wsc-qty', this.changeInputQty.bind(this));
+			// this.$modal.on('focusout', '.xoo-wsc-qty', this.changeInputQty.bind(this));
 			this.$modal.on('click', '.xoo-wsc-undo-item', this.undoItem.bind(this));
 			this.$modal.on('focusin', '.xoo-wsc-qty', this.saveQtyFocus.bind(this));
 			this.$modal.on('click', '.xoo-wsc-smr-del', this.deleteIconClick.bind(this));
@@ -337,7 +350,7 @@ jQuery(document).ready(function ($) {
 
 			this.block();
 
-			$button.addClass('loading');
+			$button.addClass('placeholder-wave');
 
 			// Trigger event.
 			$(document.body).trigger('adding_to_cart', [$button, productData]);
@@ -347,10 +360,15 @@ jQuery(document).ready(function ($) {
 				type: 'POST',
 				context: this,
 				data: $.param(productData),
+				/**
+				 * Возвращается в том числе HTML (xoo-wsc-container, etc.)
+				 * 
+				 * @param {*} response 
+				 */
 				success: function (response) {
 
 					if (response.fragments) {
-						// Trigger event so themes can refresh other areas.
+						// Инициировать событие, чтобы темы могли обновлять другие области.
 						$(document.body).trigger('added_to_cart', [response.fragments, response.cart_hash, $button]);
 					} else {
 						window.location.reload();
@@ -360,14 +378,29 @@ jQuery(document).ready(function ($) {
 				complete: function () {
 					this.unblock();
 					$button
-						.removeClass('loading')
+						.removeClass('placeholder-wave')
 						.addClass('added');
 				}
 			})
 		}
 
+		/**
+		 * Производит: 
+		 * 	- Обновление списка продуктов
+		 * 	- Открытие корзины
+		 * 	- 
+		 * 
+		 * @param {*} e 
+		 * @param {*} response 
+		 * @param {*} hash 
+		 * @param {*} $button 
+		 * 
+		 */
 		addedToCart(e, response, hash, $button) {
 
+			/**
+			 * WV: Обновление фронтаы
+			 */
 			this.updateFragments({ fragments: response });
 
 			this.onCartUpdate();

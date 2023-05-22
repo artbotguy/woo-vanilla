@@ -36,7 +36,7 @@ if ( woocommerce_product_loop() ) {
 	?>
 <header class="woocommerce-products-header">
 	<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-		<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
+		<h1 class="woocommerce-products-header__title page-title _wv-spec-title"><?php woocommerce_page_title(); ?></h1>
 	<?php endif; ?>
 		 <button class="wv-catalog-filter-desktop-toggle _wv-form-item" data-bs-toggle="collapse" data-bs-target="#wv-catalog-filter-desktop-collapse">
 		<svg class="wv-icon">
@@ -94,6 +94,8 @@ if ( woocommerce_product_loop() ) {
 	 * @hooked woocommerce_pagination - 10
 	 */
 	do_action( 'woocommerce_after_shop_loop' );
+	wc_get_template( 'wv-sections/wv-catalog-description.php' );
+
 } else {
 	/**
 	 * Hook: woocommerce_no_products_found.
@@ -110,7 +112,6 @@ echo '</div>';
  */
 do_action( 'woocommerce_after_main_content' );
 
-wc_get_template( 'wv-sections/wv-catalog-description.php' );
 
 ?>
 </div> 

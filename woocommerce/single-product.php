@@ -11,17 +11,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 get_header(); ?>
-<div class="container-lg">
 
-	<?php
-	/**
-	 * woocommerce_before_main_content hook.
-	 *
-	 * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
-	 * @hooked woocommerce_breadcrumb - 20
-	 */
-	do_action( 'woocommerce_before_main_content' );
-	?>
+<?php woocommerce_output_content_wrapper(); ?>
+<?php	woocommerce_breadcrumb(); ?>
+	 
+<div class="container-lg">
+	
 
 		<?php while ( have_posts() ) : ?>
 			<?php the_post(); ?>
@@ -31,27 +26,10 @@ get_header(); ?>
 			<?php
 		endwhile; // end of the loop.
 		?>
-
-	<?php
-	/**
-	 * woocommerce_after_main_content hook.
-	 *
-	 * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
-	 */
-	do_action( 'woocommerce_after_main_content' );
-	?>
-
-	<?php
-	/**
-	 * woocommerce_sidebar hook.
-	 *
-	 * @hooked woocommerce_get_sidebar - 10
-	 */
-	do_action( 'woocommerce_sidebar' );
-	?>
 </div> <!-- #container -->
+
+<?php woocommerce_output_content_wrapper_end(); ?>
+
 
 <?php
 get_footer();
-
-/* Omit closing PHP tag at the end of PHP files to avoid "headers already sent" issues. */

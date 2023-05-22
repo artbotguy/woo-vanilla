@@ -6,6 +6,8 @@
 --------------------------------------------------------------*/
 @import 'variables.scss';
 
+@import 'reboot.scss';
+
 @import './bootstrap.scss';
 @import 'swiper/css';
 @import 'swiper/css/pagination';
@@ -24,6 +26,8 @@
 /*--------------------------------------------------------------
 # Components
 --------------------------------------------------------------*/
+@import 'layout.scss';
+
 @import 'components/header';
 @import 'components/sidebar';
 @import 'components/footer';
@@ -32,7 +36,8 @@
 # Pages
 --------------------------------------------------------------*/
 @import 'pages/home';
-@import 'pages/wishlist';
+@import 'pages/checkout.scss';
+@import 'pages/single.scss';
 
 /*--------------------------------------------------------------
 # Templates
@@ -45,10 +50,18 @@
 
 // global
 @import 'templates/global/wv-ordering-info.scss';
+@import 'templates/global/quantity-input.scss';
 
 // loop
 @import 'templates/loop/orderby.scss';
 @import 'templates/loop/wv-slider-product.scss';
+
+// checkout
+@import 'templates/checkout/form-billing.scss';
+@import 'templates/checkout/form-checkout.scss';
+@import 'templates/checkout/payment-method.scss';
+@import 'templates/checkout/payment.scss';
+@import 'templates/checkout/review-order.scss';
 
 
 // wv-base
@@ -57,7 +70,8 @@
 // wv-universal-product
 @import 'templates/wv-universal-product/add-to-cart/variation-add-to-cart-button.scss';
 @import 'templates/wv-universal-product/add-to-cart/wv-variable.scss';
-@import 'templates/wv-universal-product//rating.scss';
+@import 'templates/wv-universal-product/rating.scss';
+@import 'templates/wv-universal-product/wv-product-attributes.scss';
 
 // wv-sections
 @import 'templates/wv-sections/wv-sliders-home.scss';
@@ -68,8 +82,10 @@
 @import 'templates/wv-sections/wv-google-map.scss';
 
 // wv-offcanvases
+@import 'templates/wv-offcanvases/wv-offcanvases.scss';
 @import 'templates/wv-offcanvases/wv-offcanvas-header-top.scss';
 @import 'templates/wv-offcanvases/wv-offcanvas-cart.scss';
+@import 'templates/wv-offcanvases/wv-offcanvas-wishlist.scss';
 
 // wv-blocks
 @import 'templates/wv-blocks/wv-contacts-soc.scss';
@@ -107,6 +123,7 @@
 @import 'templates/wv-rendered/wv-header-description.scss';
 @import 'templates/wv-rendered/wv-catalog-sidebar.scss';
 @import 'templates/wv-rendered/wv-widget-area.scss';
+@import 'templates/wv-rendered/wv-item.scss';
 
 //wv-locations
 @import 'templates/wv-locations/wv_location_footer.scss';

@@ -1,0 +1,14 @@
+#page.wv-root {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.wv-site-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.wv-content-area {
+  flex: 1 1 auto;
+}

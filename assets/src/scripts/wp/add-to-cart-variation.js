@@ -45,6 +45,9 @@
 		$form.on('check_variations.wc-variation-form', { variationForm: self }, self.onFindVariation);
 		$form.on('update_variation_values.wc-variation-form', { variationForm: self }, self.onUpdateAttributes);
 
+		/**
+		 * WV
+		 */
 		$form.on('change.wc-variation-form', '.wv-variations input:radio', { variationForm: self }, self.WVOnChange);
 
 
@@ -239,11 +242,13 @@
 
 			if (variation) {
 				form.$form.trigger('found_variation', [variation]);
-				/**
-				 * WV
-				 * Logic for not find variation with matched atrr options (not generated all avalable combination variations)
-				 */
-			} else {
+
+			}
+			/**
+			 * WV
+			 * Логика, если не найден вариант с совпадающими параметрами atrr (не созданы все доступные варианты комбинации)
+			 */
+			else {
 				form.$form.trigger('reset_data');
 				attributes.chosenCount = 0;
 
@@ -259,17 +264,12 @@
 				}
 			}
 		}
-		// } else {
-		// 	form.$form.trigger('update_variation_values');
-		// 	form.$form.trigger('reset_data');
-		// }
-
 		// Show reset link.
 		form.toggleResetLink(attributes.chosenCount > 0);
 	};
 
 	/**
-	 * Triggered when a variation has been found which matches all attributes.
+	 * Запускается, когда найден вариант, соответствующий всем атрибутам.
 	 */
 	VariationForm.prototype.onFoundVariation = function (event, variation) {
 		var form = event.data.variationForm,
@@ -364,7 +364,7 @@
 	};
 
 	/**
-	 * Triggered when an attribute field changes.
+	 * Запускается при изменении поля атрибута.
 	 */
 	VariationForm.prototype.onChange = function (event) {
 		var form = event.data.variationForm;
@@ -406,133 +406,6 @@
 			return;
 		}
 
-		// // Loop through selects and disable/enable options based on selections.
-		// form.$attributeFields.each(function (index, el) {
-		// 	var current_attr_select = $(el),
-		// 		current_attr_name = current_attr_select.data('attribute_name') || current_attr_select.attr('name'),
-		// 		show_option_none = $(el).data('show_option_none'),
-		// 		option_gt_filter = ':gt(0)',
-		// 		attached_options_count = 0,
-		// 		new_attr_select = $('<select/>'),
-		// 		selected_attr_val = current_attr_select.val() || '',
-		// 		selected_attr_val_valid = true;
-
-		// 	// Reference options set at first.
-		// 	if (!current_attr_select.data('attribute_html')) {
-		// 		var refSelect = current_attr_select.clone();
-
-		// 		refSelect.find('option').removeAttr('attached').prop('disabled', false).prop('selected', false);
-
-		// 		// Legacy data attribute.
-		// 		current_attr_select.data(
-		// 			'attribute_options',
-		// 			refSelect.find('option' + option_gt_filter).get()
-		// 		);
-		// 		current_attr_select.data('attribute_html', refSelect.html());
-		// 	}
-
-		// 	new_attr_select.html(current_attr_select.data('attribute_html'));
-
-		// 	// The attribute of this select field should not be taken into account when calculating its matching variations:
-		// 	// The constraints of this attribute are shaped by the values of the other attributes.
-		// 	var checkAttributes = $.extend(true, {}, currentAttributes);
-
-		// 	checkAttributes[current_attr_name] = '';
-
-		// 	var variations = form.findMatchingVariations(form.variationData, checkAttributes);
-
-		// 	// Loop through variations.
-		// 	for (var num in variations) {
-		// 		if (typeof (variations[num]) !== 'undefined') {
-		// 			var variationAttributes = variations[num].attributes;
-
-		// 			for (var attr_name in variationAttributes) {
-		// 				if (variationAttributes.hasOwnProperty(attr_name)) {
-		// 					var attr_val = variationAttributes[attr_name],
-		// 						variation_active = '';
-
-		// 					if (attr_name === current_attr_name) {
-		// 						if (variations[num].variation_is_active) {
-		// 							variation_active = 'enabled';
-		// 						}
-
-		// 						if (attr_val) {
-		// 							// Decode entities.
-		// 							attr_val = $('<div/>').html(attr_val).text();
-
-		// 							// Attach to matching options by value. This is done to compare
-		// 							// TEXT values rather than any HTML entities.
-		// 							var $option_elements = new_attr_select.find('option');
-		// 							if ($option_elements.length) {
-		// 								for (var i = 0, len = $option_elements.length; i < len; i++) {
-		// 									var $option_element = $($option_elements[i]),
-		// 										option_value = $option_element.val();
-
-		// 									if (attr_val === option_value) {
-		// 										$option_element.addClass('attached ' + variation_active);
-		// 										break;
-		// 									}
-		// 								}
-		// 							}
-		// 						} else {
-		// 							// Attach all apart from placeholder.
-		// 							new_attr_select.find('option:gt(0)').addClass('attached ' + variation_active);
-		// 						}
-		// 					}
-		// 				}
-		// 			}
-		// 		}
-		// 	}
-
-		// 	// Count available options.
-		// 	attached_options_count = new_attr_select.find('option.attached').length;
-
-		// 	// Check if current selection is in attached options.
-		// 	if (selected_attr_val) {
-		// 		selected_attr_val_valid = false;
-
-		// 		if (0 !== attached_options_count) {
-		// 			new_attr_select.find('option.attached.enabled').each(function () {
-		// 				var option_value = $(this).val();
-
-		// 				if (selected_attr_val === option_value) {
-		// 					selected_attr_val_valid = true;
-		// 					return false; // break.
-		// 				}
-		// 			});
-		// 		}
-		// 	}
-
-		// 	// Detach the placeholder if:
-		// 	// - Valid options exist.
-		// 	// - The current selection is non-empty.
-		// 	// - The current selection is valid.
-		// 	// - Placeholders are not set to be permanently visible.
-		// 	if (attached_options_count > 0 && selected_attr_val && selected_attr_val_valid && ('no' === show_option_none)) {
-		// 		new_attr_select.find('option:first').remove();
-		// 		option_gt_filter = '';
-		// 	}
-
-		// 	// Detach unattached.
-		// 	new_attr_select.find('option' + option_gt_filter + ':not(.attached)').remove();
-
-		// 	// Finally, copy to DOM and set value.
-		// 	current_attr_select.html(new_attr_select.html());
-		// 	current_attr_select.find('option' + option_gt_filter + ':not(.enabled)').prop('disabled', true);
-
-		// 	// Choose selected value.
-		// 	if (selected_attr_val) {
-		// 		// If the previously selected value is no longer available, fall back to the placeholder (it's going to be there).
-		// 		if (selected_attr_val_valid) {
-		// 			current_attr_select.val(selected_attr_val);
-		// 		} else {
-		// 			current_attr_select.val('').trigger('change');
-		// 		}
-		// 	} else {
-		// 		current_attr_select.val(''); // No change event to prevent infinite loop.
-		// 	}
-		// });
-
 		// Custom event for when variations have been updated.
 		form.$form.trigger('woocommerce_update_variation_values');
 	};
@@ -557,12 +430,6 @@
 				count++;
 				data[attribute_name] = value;
 			}
-
-			// if (value.length > 0) {
-
-			// }
-
-
 		});
 
 		return {

@@ -1,0 +1,13 @@
+.wv-product-attributes {
+  font-size: $font-size-sm;
+
+  &__item {}
+
+  &__value {
+    white-space: nowrap;
+  }
+
+  &__label {
+    white-space: nowrap;
+  }
+}

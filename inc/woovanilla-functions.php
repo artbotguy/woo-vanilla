@@ -5,6 +5,19 @@
  * @package WooVanilla
  */
 
+
+/**
+ * Функция крепится к хуку, и служит для добавления к response, вызываемого TInvWL_Public_AddToWishlist::add_to_wishlist(),
+ * свойства content, которое представляет себя отрендеренный wl со всеми продуктами, после добавления продукта
+ * Нужен для того, чтобы обновлялся wl, когда он используется как offcanvas с помощью ajax
+ *
+ * @param array $data the comment param.
+ */
+function wv_add_content_response_body_add_to_wishlist( $data = array() ) {
+	$data['content'] = tinvwl_shortcode_view();
+	return $data;
+}
+
 /**
  * Undocumented function
  *
@@ -419,5 +432,87 @@ function wv_nav_menu( $args = array() ) {
 		echo $nav_menu;
 	} else {
 		return $nav_menu;
+	}
+}
+
+/**
+ * Функция в точности копирует блок кода из TInvWL_Public_TInvWL::enqueue_scripts()
+ */
+function wv_get_localize_args_public() {
+			$args = array(
+				'text_create'                => __( 'Create New', 'ti-woocommerce-wishlist' ),
+				'text_already_in'            => apply_filters( 'tinvwl_already_in_wishlist_text', tinv_get_option( 'general', 'text_already_in' ) ),
+				'simple_flow'                => tinv_get_option( 'general', 'simple_flow' ),
+				'hide_zero_counter'          => tinv_get_option( 'topline', 'hide_zero_counter' ),
+				'i18n_make_a_selection_text' => esc_attr__( 'Please select some product options before adding this product to your wishlist.', 'ti-woocommerce-wishlist' ),
+				'tinvwl_break_submit'        => esc_attr__( 'No items or actions are selected.', 'ti-woocommerce-wishlist' ),
+				'tinvwl_clipboard'           => esc_attr__( 'Copied!', 'ti-woocommerce-wishlist' ),
+				'allow_parent_variable'      => apply_filters( 'tinvwl_allow_add_parent_variable_product', false ),
+				'block_ajax_wishlists_data'  => apply_filters( 'tinvwl_block_ajax_wishlists_data', false ),
+				'update_wishlists_data'      => apply_filters( 'tinvwl_update_wishlists_data', false ),
+				'hash_key'                   => 'ti_wishlist_data_' . md5( get_current_blog_id() . '_' . get_site_url( get_current_blog_id(), '/' ) . get_template() ),
+				'nonce'                      => wp_create_nonce( 'wp_rest' ),
+				'rest_root'                  => esc_url_raw( get_rest_url() ),
+				'plugin_url'                 => esc_url_raw( TINVWL_URL ),
+				'wc_ajax_url'                => WC_AJAX::get_endpoint( 'tinvwl' ),
+				'stats'                      => tinv_get_option( 'general', 'product_stats' ),
+				'popup_timer'                => apply_filters( 'tinvwl_popup_close_timer', 6000 ),
+			);
+
+			if ( function_exists( 'wpml_get_current_language' ) ) {
+
+				global $sitepress;
+
+				if ( $sitepress && $sitepress instanceof SitePress ) {
+					$wpml_settings = $sitepress->get_settings();
+					if ( isset( $wpml_settings['custom_posts_sync_option'] ) && isset( $wpml_settings['custom_posts_sync_option']['product'] ) && in_array(
+						$wpml_settings['custom_posts_sync_option']['product'],
+						array(
+							1,
+							2,
+						)
+					) ) {
+
+						if ( 2 == $wpml_settings['custom_posts_sync_option']['product'] ) {
+							$args['wpml_default'] = wpml_get_default_language();
+						}
+						$args['wpml'] = wpml_get_current_language();
+					}
+				}
+			}
+			return $args;
+}
+
+if ( class_exists( 'Xoo_Wsc_Loader' ) ) {
+	/**
+	 * Undocumented function
+	 */
+	function wv_set_ajax_fragments() {
+
+		WC()->cart->calculate_totals();
+
+		ob_start();
+		xoo_wsc_helper()->get_template( 'xoo-wsc-container.php' );
+		$container = ob_get_clean();
+
+		ob_start();
+		xoo_wsc_helper()->get_template( 'xoo-wsc-slider.php' );
+		$slider = ob_get_clean();
+
+		ob_start();
+		xoo_wsc_helper()->get_template( 'global/footer/totals.php' );
+		$wv_totals = ob_get_clean();
+
+		// ob_start();
+		// echo '<span>' . xoo_wsc_cart()->get_cart_count() . '</span>';
+		$wv_cart_count = '<span>' . xoo_wsc_cart()->get_cart_count() . '</span>';
+
+		$fragments['div.xoo-wsc-container']                      = $container;
+		$fragments['div.xoo-wsc-slider']                         = $slider;
+		$fragments['.wv-header-main-cart .xoo-wsc-ft-totals']    = $wv_totals;
+		$fragments['header .wv-cart-count span'] = $wv_cart_count;
+
+		return $fragments;
+
 	}
 }

@@ -7,12 +7,17 @@
     fill: inherit;
   }
 
+  rect {
+    stroke: inherit;
+    fill: inherit;
+  }
+
   symbol {
     fill: inherit;
 
-    &#sprite-cart {
-      fill: none;
-    }
+    // &#sprite-cart {
+    //   fill: none;
+    // }
   }
 }
 

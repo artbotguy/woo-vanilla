@@ -1,11 +1,11 @@
-<div class="offcanvas offcanvas-start wv-offcanvas-header-top" tabindex="-1" id="offcanvasNav">
-	<div class="offcanvas-header">
+<div class="offcanvas offcanvas-start wv-offcanvas wv-offcanvas-header-top" tabindex="-1" id="offcanvasNav">
+	<div class="offcanvas-header wv-offcanvas__header">
 	  <?php
 		woovanilla_template_header_shedule();
 		?>
-	  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+	  <button type="button" class="wv-offcanvas__btn-close btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 	</div>
-	<div class="offcanvas-body">
+	<div class="wv-offcanvas__body offcanvas-body">
 <?php
 	wv_nav_menu(
 		array(

@@ -11,12 +11,10 @@ global $product;
 ?>
 <div class="woocommerce-variation-add-to-cart variations_button">
 	<?php
-	woovanilla_single_variation( $args );
+	woovanilla_single_variation();
 	?>
-	<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 
 	<?php
-	do_action( 'woocommerce_before_add_to_cart_quantity' );
 
 	woocommerce_quantity_input(
 		array(
@@ -26,7 +24,6 @@ global $product;
 		)
 	);
 
-	do_action( 'woocommerce_after_add_to_cart_quantity' );
 	?>
 
 	<button type="submit" class="wv-add-to-cart btn _wv-form-item  single_add_to_cart_button alt
@@ -43,14 +40,7 @@ global $product;
 	<span><?php echo esc_html( $product->single_add_to_cart_text() ); ?></span>
 	</button>
 
-	<?php
-	// if ( ! isset( $args['wv_loop_product_view_type'] ) ) :
-
-	// echo '<a href="" class="wv-buy-one-click"><span>Купить в 1 клик</span></a>';
-	// endif;
-	?>
-
-	<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
+	<?php tinvwl_view_addto_htmlloop(); ?>
 
 	<input type="hidden" name="add-to-cart" value="<?php echo absint( $product->get_id() ); ?>" />
 	<input type="hidden" name="product_id" value="<?php echo absint( $product->get_id() ); ?>" />

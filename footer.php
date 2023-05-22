@@ -2,14 +2,12 @@
 /**
  * The template for displaying the footer
  *
- * @package woovanilla
+ * @package WooVanilla
  */
 
 ?>
 
-</div><!-- #content -->
-
-<footer class="wv-footer">
+		<footer class="wv-footer">
 			<div class="container-xl">
 				<section class="wv-footer__main">
 						<?php
@@ -56,13 +54,11 @@
 					</div>
 				</section>
 			</div><!-- #container -->
-</footer>
+		</footer>
 
-<?php wc_get_template( 'wv-offcanvases/wv-offcanvases.php' ); ?>
-</div>
-<?php wp_footer(); ?>
+		<?php wc_get_template( 'wv-offcanvases/wv-offcanvases.php' ); ?>
+		</div> <!-- #wv-root -->
 
-
-</body>
-
+		<?php wp_footer(); ?>
+	</body>
 </html>

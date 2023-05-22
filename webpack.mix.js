@@ -17,7 +17,9 @@ mix.setPublicPath('./assets/dist');
  */
 mix
 	// .js('assets/src/scripts/wp/add-to-cart-variation.js', 'assets/dist/js')
-	// .js('assets/src/scripts/wp/xoo-wsc-main.js', 'assets/dist/js')
+	.js('assets/src/scripts/wp/xoo-wsc-main.js', 'assets/dist/js')
+	// .js('assets/src/scripts/wp/tinvwl-public.js', 'assets/dist/js')
+
 	.js('assets/src/scripts/app.js', 'assets/dist/js')
 	.js('assets/src/scripts/admin.js', 'assets/dist/js')
 
@@ -26,7 +28,6 @@ mix
 	.sass('assets/src/sass/gutenberg.scss', 'assets/dist/css')
 	// .sass('assets/src/sass/bootstrap.scss', 'assets/dist/css')
 	.sass('assets/src/sass/style.scss', 'assets/dist/css')
-
 
 const webpackConfig = {
 	// optimization: {

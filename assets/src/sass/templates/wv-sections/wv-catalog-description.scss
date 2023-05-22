@@ -1,6 +1,9 @@
 .wv-catalog-description {
   margin-bottom: 50px;
 
+  // .wv-catalog-description__body
+  &__body {}
+
   // .wv-catalog-description__title
   &__title {
     margin-bottom: 15px;

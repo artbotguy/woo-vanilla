@@ -12,8 +12,18 @@
 
 	// .wv-footer__main
 	&__main {
-		border-bottom: 1px solid #E2E4EB;
 		margin-bottom: 20px;
+		position: relative;
+
+		&::after {
+			content: '';
+			position: absolute;
+			height: 1px;
+			width: 200%;
+			bottom: 0;
+			left: -25%;
+			background: #E2E4EB;
+		}
 	}
 
 	// .wv-footer__bot

@@ -15,10 +15,11 @@ extract( Xoo_Wsc_Template_Args::footer_totals() );
 ?>
 
 <?php
-if ( WC()->cart->is_empty() ) {
-	return;}
+// if ( WC()->cart->is_empty() ) {
+// return;}
+//
 ?>
-
+	
 <div class="xoo-wsc-ft-totals">
 	<?php foreach ( $totals as $key => $data ) : ?>
 		<div class="xoo-wsc-ft-amt xoo-wsc-ft-amt-<?php echo $key; ?> <?php echo isset( $data['action'] ) ? $data['action'] : ''; ?>">

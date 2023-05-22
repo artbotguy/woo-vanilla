@@ -38,7 +38,17 @@ if ( post_password_required() ) {
 		woocommerce_template_single_title();
 		woovanilla_template_rating();
 		woovanilla_template_product_attributes( array( 'pa_czvet', 'pa_shirina', 'pa_vysota' ) );
+
+		/**
+		 * Move js APPEND .wv-variation-sub-wrapper
+		 */
+		woovanilla_template_popover_info();
+				/**
+		 * Move js BEFORE wv-add-to-cart
+		 */
+		woovanilla_template_buy_one_click();
 		woovanilla_variable_add_to_cart();
+
 		/**
 		 * Hook: woocommerce_single_product_summary.
 		 *

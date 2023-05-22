@@ -52,6 +52,8 @@ $variations_attr = function_exists( 'wc_esc_json' ) ? wc_esc_json( $variations_j
 				 * @hooked woovanilla_variation_add_to_cart_button - 10 Qty and cart button.
 				 */
 				do_action( 'woocommerce_after_single_variation' );
+
+
 			?>
 		</div>
 	<?php endif; ?>

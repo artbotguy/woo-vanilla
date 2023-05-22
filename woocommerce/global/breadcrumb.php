@@ -8,30 +8,33 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+?> 
+ <?php
+	if ( ! empty( $breadcrumb ) ) {
 
-if ( ! empty( $breadcrumb ) ) {
+		echo '<div class="container-lg">';
 
-	echo $wrap_before;
+		echo $wrap_before;
 
-	foreach ( $breadcrumb as $key => $crumb ) {
+		foreach ( $breadcrumb as $key => $crumb ) {
 
-		echo $before;
+			echo $before;
 
-		if ( ! empty( $crumb[1] ) && sizeof( $breadcrumb ) !== $key + 1 ) {
-			echo '<a class="woocommerce-breadcrumb__item" href="' . esc_url( $crumb[1] ) . '">' . esc_html( $crumb[0] ) . '</a>';
-		} else {
-			echo '<span class="woocommerce-breadcrumb__item">' . esc_html( $crumb[0] ) . '</span>';
-		}
+			if ( ! empty( $crumb[1] ) && sizeof( $breadcrumb ) !== $key + 1 ) {
+				echo '<a class="woocommerce-breadcrumb__item" href="' . esc_url( $crumb[1] ) . '">' . esc_html( $crumb[0] ) . '</a>';
+			} else {
+				echo '<span class="woocommerce-breadcrumb__item">' . esc_html( $crumb[0] ) . '</span>';
+			}
 
-		echo $after;
+			echo $after;
 
-		if ( sizeof( $breadcrumb ) !== $key + 1 ) {
-			echo '<svg class="wv-icon-default">
+			if ( sizeof( $breadcrumb ) !== $key + 1 ) {
+				echo '<svg class="wv-icon-default">
 				<use xlink:href="#sprite-arrow-long"></use>
 			</svg>';
+			}
 		}
+
+		echo $wrap_after;
+		echo '</div>';
 	}
-
-	echo $wrap_after;
-
-}

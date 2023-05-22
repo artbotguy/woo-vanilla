@@ -10,7 +10,7 @@
 <div class="container-lg">
 
   <div class="wv-why-chose__textable">
-	<h2 class="wv-why-chose__title">Почему Лавка Роз</h2>
+	<h2 class="wv-why-chose__title _wv-spec-title">Почему Лавка Роз</h2>
 	<p class="wv-why-chose__paragraph">Мы предоставляем исключительно комфортные условия взаимодействия всем категориям покупателей, в том числе коммерческим и корпоративным:</p>
 	<ul class="wv-why-chose__list">
 	  <li class="wv-why-chose__item">Удобные способы оплаты – наличными, банковскими картами, по безналичному расчету.</li>

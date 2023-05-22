@@ -9,8 +9,12 @@ defined( 'ABSPATH' ) || exit;
 
 ?>
 
-<?php
-get_template_part( 'views/public/components/cart/cart-offcanvas' );
+<div class="wv-offcanvases">
+  <?php
+	wc_get_template( 'wv-blocks/wv-header/wv-header-bot-mobile.php' );
 
-wc_get_template( 'wv-blocks/wv-header/wv-header-bot-mobile.php' );
-wc_get_template( 'wv-offcanvases/wv-offcanvas-header-top.php' );
+	wc_get_template( 'wv-offcanvases/wv-offcanvas-header-top.php' );
+	wc_get_template( 'wv-offcanvases/wv-offcanvas-wishlist.php' );
+	wc_get_template( 'wv-offcanvases/wv-offcanvas-cart.php' );
+	?>
+</div>

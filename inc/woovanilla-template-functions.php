@@ -71,16 +71,23 @@ function woovanilla_slider_products( $args = array(), $title = 'Товары', $
 	 * Only display the section if the shortcode returns "products"
 	 */
 	if ( false !== strpos( $shortcode_content, 'product' ) ) {
+		$link = '#';
+		if ( isset( $args['wv_shortcode_type'] ) ) {
+			$link = get_permalink( wc_get_page_id( 'shop' ) ) . '?wv_shortcode_type=' . $args['wv_shortcode_type'];
+		}
+
 		echo '<section class="wv-section-slider-products placeholder-wave _wv-swiper-parent">';
 
-		echo '<div class="wv-section-slider-products__head placeholder">
-        <h2 class="wv-section-slider-products__title">' . wp_kses_post( $title ) . '</h2>
-        <div class="wv-section-slider-products__arrow">
-          <svg class="wv-icon-default">
-            <use xlink:href="#sprite-arrow-long"></use>
-          </svg>
-        </div>
-      </div>';
+		echo '<a href="' . $link . '" class="placeholder">
+			<div class="wv-section-slider-products__head">
+							<h2 class="wv-section-slider-products__title _wv-spec-title">' . wp_kses_post( $title ) . '</h2>
+							<div class="wv-section-slider-products__arrow">
+								<svg class="wv-icon-default">
+									<use xlink:href="#sprite-arrow-slider-section"></use>
+								</svg>
+							</div>
+						</div>
+		</a>';
 
 		echo $shortcode_content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
@@ -133,23 +140,39 @@ function woovanilla_template_product_loop_preview_btn() {
  */
 function woovanilla_template_product_attributes( $include = array(), $separator = '' ) {
 	global $product;
+	$args = array( 'separator' => $separator );
+	if ( $product instanceof WC_Product_Variable ) {
+			$args = array_merge(
+				$args,
+				array(
+					'attribute_names' => array_keys(
+						array_filter(
+							$product->get_attributes(),
+							function( $attr ) use ( $include ) {
+								if ( ( ! $attr->get_variation() ) &&
+								empty( $include ) ? true : ( array_search( $attr->get_name(), $include ) !== false )
+								) {
+									return true;
+								}
+							}
+						)
+					),
+				)
+			);
+	} elseif ( $product instanceof WC_Product_Variation ) {
+		$args = array_merge(
+			$args,
+			array(
+				'attribute_names' => array_keys(
+					$product->get_attributes()
+				),
+			)
+		);
+	}
+
 	wc_get_template(
 		'wv-universal-product/wv-product-attributes.php',
-		array(
-			'separator'       => $separator,
-			'attribute_names' => array_keys(
-				array_filter(
-					$product->get_attributes(),
-					function( $attr ) use ( $include ) {
-						if ( ( ! $attr->get_variation() ) &&
-						empty( $include ) ? true : ( array_search( $attr->get_name(), $include ) !== false )
-						) {
-							return true;
-						}
-					}
-				)
-			),
-		)
+		$args
 	);
 }
 
@@ -360,8 +383,11 @@ function woovanilla_template_loop_item_delivery_time_waiting() {
 /**
  * Undocumented function
  */
-function woovanilla_template_popover_info( $args ) {
-	return sprintf(
+function woovanilla_template_popover_info( $args = array(
+	'wv-span-content' => 'скидка от кол-ва',
+	'bs-content'      => 'Скидка от количества',
+) ) {
+	return printf(
 		'
 <div class="wv-popover"><span>%s</span><svg class="wv-icon" 
 	role="button" 
@@ -380,6 +406,13 @@ function woovanilla_template_popover_info( $args ) {
 /**
  * Undocumented function
  */
+function woovanilla_template_buy_one_click() {
+	echo '<a href="#" class="wv-buy-one-click"><span>Купить в 1 клик</span></a>';
+}
+
+/**
+ * Undocumented function
+ */
 function woovanilla_template_ordering_info() {
 	wc_get_template( 'global/wv-ordering-info.php' );
 }
@@ -388,21 +421,12 @@ function woovanilla_template_ordering_info() {
  * Функция выводит шаблон, в которм присутствует данные о цене из бекенда.
  * Затем из фронтенда происходит обновление внутреннего html - данные перезаписываются
  */
-function woovanilla_single_variation( $args ) {
+function woovanilla_single_variation() {
 		$output = '<div class="wv-variation-sub-wrapper">';
 
 			$output .= '<div class="woocommerce-variation single_variation wv-placeholder-ajax placeholder">';
 		woocommerce_template_loop_price();
 		$output .= '</div>';
-
-	if ( ! isset( $args['wv_loop_product_view_type'] ) ) {
-		$output .= woovanilla_template_popover_info(
-			array(
-				'wv-span-content' => 'скидка от кол-ва',
-				'bs-content'      => 'Скидка от количества',
-			)
-		);
-	};
 		$output .= '</div>';
 			echo $output;
 }

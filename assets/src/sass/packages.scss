@@ -57,6 +57,10 @@
 
 // WC
 
+.woocommerce-notices-wrapper {
+  display: none;
+}
+
 .woocommerce-variation-description,
 .woocommerce-variation-availability {
   display: none;
@@ -106,9 +110,7 @@
 
 
 // XOO WCS 
-.xoo-wsc-ft-amt {
-  padding: 0;
-}
+
 
 // CHOICE.JS
 .choices {

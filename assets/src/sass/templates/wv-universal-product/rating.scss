@@ -7,9 +7,9 @@
   align-items: center;
   font-size: $sub-sup-font-size;
 
-  @media (min-width: ($md)) {
-    font-size: inherit;
-  }
+  // @media (min-width: ($md)) {
+  //   font-size: inherit;
+  // }
 
   // .woocommerce-loop-product__rating
   &__rating {

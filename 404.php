@@ -18,7 +18,7 @@ get_header(); ?>
 			<div id="primary" class="content-area">
 				<main id="main" class="site-main" role="main">
 
-					<h1>
+					<h1 class="_wv-spec-title">
 					<?php
 					esc_html_e( 'Oops! That page can&rsquo;t be found.', 'woovanilla' );
 					?>

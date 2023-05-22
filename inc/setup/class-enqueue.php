@@ -26,10 +26,13 @@ class Enqueue {
 	 * It provides the path to a versioned asset by Laravel Mix using querystring-based
 	 * cache-busting (This means, the file name won't change, but the md5. Look here for
 	 * more information: https://github.com/JeffreyWay/laravel-mix/issues/920 )
+	 *
+	 * Проблема с переопределением (?) подключения скрипта может возникать с wp_deregister_script()
+	 * из-за невыясненных несоответствий - например, с jquery
 	 */
 	public function enqueue_scripts() {
-		// wp_deregister_style( 'xoo-wsc-admin-fonts' );
-		// wp_deregister_style( 'xoo-wsc-admin-style' );
+		wp_deregister_style( 'xoo-wsc-fonts' );
+		wp_deregister_style( 'xoo-wsc-style' );
 
 		$version = time();
 
@@ -40,13 +43,11 @@ class Enqueue {
 		wp_enqueue_style( 'wv-main-css', mix( 'css/style.css' ), array(), $version, 'all' );
 
 		// JS
-		wp_enqueue_script( 'wv-map', get_stylesheet_directory_uri() . '/assets/src/scripts/inc/map.js', array(), $version, 'all' );
-
 		/**
 		 * Main script
-		 * note: need jq cut from this bundle
+		 *  WVNote: need jq cut from this bundle
 		 */
-		wp_enqueue_script( 'wv-main-js', mix( 'js/app.js' ), array( 'wv-map' ), $version, true );
+		wp_enqueue_script( 'wv-main-js', mix( 'js/app.js' ), array(), $version, true );
 
 		wp_localize_script(
 			'wv-main-js',
@@ -71,14 +72,25 @@ class Enqueue {
 		 *
 		 * note: Мб Webpack dev почему-то из-за подключенного через mix() файла препятсвет корректоной работе HMR для стилей
 		 */
-		wp_deregister_script( 'wc-add-to-cart-variation' );
 
-		// wp_enqueue_script( 'wc-add-to-cart-variation', mix( 'js/add-to-cart-variation.js' ), array( 'wp-util', 'jquery-blockui' ), $version, true );
-		wp_enqueue_script( 'wc-add-to-cart-variation', get_stylesheet_directory_uri() . '/assets/dist/js/add-to-cart-variation.js', array( 'wp-util', 'jquery-blockui' ), $version, 'all' );
+		/**
+		 * Note: Сложности с подлючением, мб из-за локальных подключений в файлах php-шаблонов
+		 * Так же не ясно как подключается public.js и admin.js- найден только handele = 'tinwvl' aka. _name
+		 */
+
+		wp_deregister_script( 'tinvwl' );
+		wp_register_script( 'tinvwl', get_stylesheet_directory_uri() . '/assets/dist/js/tinvwl-public.js', array( 'jquery', 'jquery-blockui', 'js-cookie', apply_filters( 'tinvwl_wc_cart_fragments_enabled', true ) ? 'wc-cart-fragments' : 'jquery' ), $version, 'all' );
+		wp_localize_script( 'tinvwl', 'tinvwl_add_to_wishlist', wv_get_localize_args_public() );
+		// // wp_enqueue_script( 'tinvwl', mix( 'js/tinvwl-public.js' ), array( 'jquery', 'wp-color-picker' ), $version, true );
+		// // wp_enqueue_script( 'tinvwl', get_stylesheet_directory_uri() . '/assets/dist/js/tinvwl-public.js', array('jquery', 'wp-color-picker' ), $version, 'all' );
 
 		wp_deregister_script( 'xoo-wsc-main-js' );
-		// wp_enqueue_script( 'xoo-wsc-main-js', mix( 'js/xoo-wsc-main.js' ), array( 'jquery' ), $version, true );
-		wp_enqueue_script( 'xoo-wsc-main-js', get_stylesheet_directory_uri() . '/assets/dist/js/xoo-wsc-main.js', array( 'jquery' ), $version, 'all' );
+		wp_enqueue_script( 'xoo-wsc-main-js', mix( 'js/xoo-wsc-main.js' ), array( 'jquery' ), $version, true );
+		// wp_enqueue_script( 'xoo-wsc-main-js', get_stylesheet_directory_uri() . '/assets/dist/js/xoo-wsc-main.js', array( 'jquery' ), $version, 'all' );
+
+		wp_deregister_script( 'wc-add-to-cart-variation' );
+		// wp_enqueue_script( 'wc-add-to-cart-variation', mix( 'js/add-to-cart-variation.js' ), array( 'wp-util', 'jquery-blockui' ), $version, true );
+		wp_enqueue_script( 'wc-add-to-cart-variation', get_stylesheet_directory_uri() . '/assets/dist/js/add-to-cart-variation.js', array( 'wp-util', 'jquery-blockui' ), $version, 'all' );
 
 		/**
 		 * Activate browser-sync on development environment

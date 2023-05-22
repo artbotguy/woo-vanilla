@@ -14,7 +14,7 @@
   </div>
 <div class="container-lg">
 
-  <h1 class="wv-home-description__title">Цветы в Воронеже с доставкой на дом</h1>
+  <h1 class="wv-home-description__title _wv-spec-title">Цветы в Воронеже с доставкой на дом</h1>
   <div class="wv-home-description__paragraphs">
 	<p class="wv-home-description__paragraph">
 	  Сделать приятный сюрприз близкому человеку, выразить свою симпатию,

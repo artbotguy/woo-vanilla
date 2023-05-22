@@ -43,5 +43,6 @@ $banners = get_posts(
 			<div class="swiper-pagination"></div>
 		</div>
 	</section>
+	<!-- not logic -->
 	<?php woovanilla_slider_products( array( 'class' => 'wv-slider-products_type_sliders-home' ), 'Букет недели', 'products_slider', '' ); ?>
 </div>

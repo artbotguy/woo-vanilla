@@ -3,6 +3,9 @@
  * Product quantity inputs
  * WV: added buttons
  *
+ * Данный блок, благодаря плагину SCW может менять ajax-запросом quantity (Может работать (при некой логике,
+ * связанной с манипуляциями с делегированными событиями), если input имеет сласс .xoo-wsc-qty)
+ *
  * @package WooVanilla
  *
  * @var bool   $readonly If the input should be set to readonly mode.
@@ -15,7 +18,7 @@ defined( 'ABSPATH' ) || exit;
 $label = ! empty( $args['product_name'] ) ? sprintf( esc_html__( '%s quantity', 'woocommerce' ), wp_strip_all_tags( $args['product_name'] ) ) : esc_html__( 'Quantity', 'woocommerce' );
 
 ?>
-<div class="quantity">
+<div class="quantity wv-quantity">
 	<?php
 	/**
 	 * Hook to output something before the quantity input field.
@@ -24,7 +27,7 @@ $label = ! empty( $args['product_name'] ) ? sprintf( esc_html__( '%s quantity', 
 	 */
 	do_action( 'woocommerce_before_quantity_input_field' );
 	?>
-	<button class="quantity__button" data-wv-change-qty-operator="-">
+	<button class="wv-quantity__button" data-wv-change-qty-operator="-">
 		<svg class="wv-icon">
 		<use xlink:href="#sprite-minus"></use>
 	</svg>
@@ -47,7 +50,7 @@ $label = ! empty( $args['product_name'] ) ? sprintf( esc_html__( '%s quantity', 
 			autocomplete="<?php echo esc_attr( isset( $autocomplete ) ? $autocomplete : 'on' ); ?>"
 		<?php endif; ?>
 	/>
-		<button class="quantity__button" data-wv-change-qty-operator="+">
+		<button class="wv-quantity__button" data-wv-change-qty-operator="+">
 		<svg class="wv-icon">
 		<use xlink:href="#sprite-plus"></use>
 	</svg>

@@ -1,0 +1,40 @@
+.wv-site-main_page_checkout {
+  margin-bottom: 50px;
+
+  @media (min-width: ($md)) {
+    margin-bottom: 60px;
+  }
+
+  @media (min-width: ($xl)) {
+    margin-bottom: 85px;
+  }
+
+  h1 {
+    margin-bottom: 20px;
+  }
+}
+
+.wv-checkout {
+  &__cart {
+    border: 1px solid #E3E3E8;
+    border-radius: 10px;
+    margin-bottom: 30px;
+  }
+
+  &__cart-header {
+    border-bottom: 1px solid #E3E3E8;
+    padding: 15px 20px;
+
+    .button {
+      color: $tertiary;
+    }
+  }
+
+  .wv-item {
+    padding: 20px;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid #E3E3E8;
+    }
+  }
+}

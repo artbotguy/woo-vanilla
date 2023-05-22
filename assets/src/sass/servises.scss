@@ -35,9 +35,28 @@
   color: $body-color;
   font-weight: 500;
 
+  &_style {
+    &_primary {
+      background: $primary;
+      color: #fff !important;
+
+      &:hover {
+        background: $body-color;
+      }
+    }
+
+    &_emphasis {
+      background: $emphasis;
+      color: #fff !important;
+
+      &:hover {
+        background: $body-color;
+      }
+    }
+  }
+
   @media (min-width: ($md)) {
     padding: 8px 15px;
-
   }
 }
 
@@ -127,4 +146,8 @@
       font-size: $small-font-size;
     }
   }
+}
+
+._wv-spec-title {
+  font-family: 'Yeseva One';
 }

@@ -7,6 +7,14 @@
 
 
 /**
+ * Отключаем блок "Поделиться" и Header в вишлисте
+ */
+remove_action( 'tinvwl_after_wishlist', array( 'TInvWL_Public_Wishlist_Social', 'init' ) );
+remove_action( 'tinvwl_before_wishlist', array( TInvWL_Public_Wishlist_View::instance(), 'wishlist_header' ) );
+
+
+
+/**
  * Homepage
  */
 // add_action( 'homepage', 'woovanilla_recent_products', 0 );
@@ -114,10 +122,17 @@ add_action( 'woocommerce_archive_description', 'woocommerce_catalog_ordering', 3
 	 * PLUGINS
 	 */
 
-	/**
-	 * Side Cart WooCommerce
-	 */
+/**
+ * Side Cart WooCommerce
+ */
+if ( class_exists( 'Xoo_Wsc_Loader' ) ) {
+	remove_filter( 'woocommerce_add_to_cart_fragments', array( xoo_wsc_cart(), 'set_ajax_fragments' ) );
+	remove_filter( 'woocommerce_update_order_review_fragments', array( xoo_wsc_cart(), 'set_ajax_fragments' ) );
 
+	add_filter( 'woocommerce_add_to_cart_fragments', 'wv_set_ajax_fragments' );
+	add_filter( 'woocommerce_update_order_review_fragments', 'wv_set_ajax_fragments' );
+
+}
 
 /**
  * FILTERS
@@ -135,3 +150,11 @@ add_filter( 'tinvwl_wishlist_button_after', 'woovanilla_tinvwl_wishlist_button_a
  * Обновленные тайтлы сортировки
  */
 add_filter( 'woocommerce_catalog_orderby', 'woovanilla_rename_sorting_option' );
+
+/**
+ * Вывод Cart Product name отдельно от Cart Product Meta
+ */
+add_filter( 'woocommerce_product_variation_title_include_attributes', '__return_false' );
+
+
+add_filter( 'tinvwl_addtowishlist_return_ajax', 'wv_add_content_response_body_add_to_wishlist' );

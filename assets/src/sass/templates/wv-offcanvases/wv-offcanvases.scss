@@ -1,0 +1,45 @@
+.wv-offcanvases {
+  height: 0;
+  width: 0;
+}
+
+
+.wv-offcanvas {
+  height: 100%;
+
+  // .wv-offcanvas__header
+  &__header {
+    padding: 16px 20px 16px 20px;
+  }
+
+  // .wv-offcanvas__title
+  &__title {
+    font-weight: 500;
+  }
+
+  // .wv-offcanvas__btn-close
+  &__btn-close {
+    margin: 0;
+    padding: 0;
+  }
+
+  // .wv-offcanvas__body
+  &__body {
+    padding: 0 20px;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  // .wv-offcanvas__sub-title
+  &__sub-title {
+    margin-top: 15px;
+  }
+
+  // .wv-offcanvas__footer
+  &__footer {
+    padding: 16px 20px 16px 20px;
+  }
+
+}

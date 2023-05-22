@@ -48,6 +48,11 @@ class ClientEnquire {
 					const el = items[items.length - 1];
 					$('.wv-widget-area_location_catalog').append(el)
 				}
+
+				// woovanilla_template_popover_info()
+				$('.wv-single-product__summary .wv-variation-sub-wrapper').append($('.wv-single-product__summary .wv-popover'))
+				$('.wv-single-product__summary .wv-add-to-cart').before($('.wv-single-product__summary .wv-buy-one-click'))
+
 			}
 		})
 
