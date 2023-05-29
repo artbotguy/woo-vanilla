@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	global $product;
 
 ?>
-<div class="wv-product-attributes">
+<div class="wv-product-attributes placeholder">
 <?php
 foreach ( $attribute_names as $key => $attribute_name ) :
 	?>

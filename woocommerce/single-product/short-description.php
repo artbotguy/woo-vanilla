@@ -28,7 +28,7 @@ $short_description = apply_filters( 'woocommerce_short_description', $post->post
 // }
 
 ?>
-<div class="woocommerce-product-details__short-description">
+<div class="woocommerce-product-details__short-description placeholder">
 	<?php
 	// echo $short_description; // WPCS: XSS ok.
 	?>

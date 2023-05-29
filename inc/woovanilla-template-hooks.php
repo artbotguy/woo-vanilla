@@ -25,7 +25,6 @@ remove_action( 'tinvwl_before_wishlist', array( TInvWL_Public_Wishlist_View::ins
 remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10 );
 remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10 );
 
-// remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10 );
 remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
 remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5 );
 
@@ -50,9 +49,6 @@ remove_action( 'woocommerce_single_variation', 'woocommerce_single_variation', 1
 /**
  * Product Loop Slider
  */
-		// add_action( 'woocommerce_after_shop_loop_item_slider_title', 'woocommerce_template_loop_price' );
-
-
 
 
 /**
@@ -158,3 +154,10 @@ add_filter( 'woocommerce_product_variation_title_include_attributes', '__return_
 
 
 add_filter( 'tinvwl_addtowishlist_return_ajax', 'wv_add_content_response_body_add_to_wishlist' );
+
+
+// add_filter( 'woocommerce_format_sale_price', 'wvtest' );
+
+// function wvtest( $price, $regular_price = null, $sale_price = null ) {
+// $var = 0;
+// }

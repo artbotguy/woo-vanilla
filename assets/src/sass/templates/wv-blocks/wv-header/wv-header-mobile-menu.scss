@@ -1,7 +1,8 @@
 .wv-header-mobile-menu {
   z-index: 1020;
   box-shadow: 0px -3px 10px rgba(63, 66, 69, 0.1);
-  padding: 10px 0;
+  padding: 10px 15px;
+  // padding: 10px 0px;
 
   @media (min-width: ($md)) {
     display: none !important;
@@ -15,15 +16,19 @@
   // .wv-header-mobile-menu__list
   &__list {
     display: flex;
-
+    justify-content: space-between;
+    margin: 0 -15px;
+    // display: grid;
+    // grid-template-columns: repeat(5, 1fr);
   }
 
   // .wv-header-mobile-menu__item
   &__item {
+    flex: 1 1 20%;
+
     .wv-link-item___icon {
       margin-bottom: 4px;
     }
-
   }
 
   .wv-cart-count {

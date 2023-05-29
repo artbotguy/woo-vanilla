@@ -13,8 +13,10 @@
   .wv-link-item {
     margin-right: 13px;
 
-    .wv-icon use {
-      stroke: $quaternary;
+    .wv-icon {
+      path {
+        stroke: $body-color;
+      }
     }
   }
 

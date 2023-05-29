@@ -13,10 +13,10 @@ if ( ! function_exists( 'wc_get_gallery_image_html' ) ) {
 }
 
 global $product;
-$product_images_src = get_all_images_product_src();
+$product_images_src = wv_get_all_images_product_src();
 ?>
-<div class="wv-single-product__sliders _wv-swiper-parent">
-	<div class="swiper wv-slider-preview-single-product" id="wv-slider-preview-single-product-<?php echo esc_attr( $product->get_id() ); ?>">
+<div class="wv-single-product__sliders _wv-swiper-parent placeholder-wave">
+	<div class="swiper wv-slider-preview-single-product placeholder" id="wv-slider-preview-single-product-<?php echo esc_attr( $product->get_id() ); ?>">
 		<div class="swiper-wrapper">
 		<?php foreach ( $product_images_src as $src ) : ?>
 			<div class="swiper-slide _img-container">
@@ -29,7 +29,7 @@ $product_images_src = get_all_images_product_src();
 		<?php endforeach; ?>
 		</div>
 	</div>
-	<div thumbsSlider="" class="swiper wv-slider-thumbs-single-product" id="wv-slider-thumbs-single-product-<?php echo esc_attr( $product->get_id() ); ?>">
+	<div thumbsSlider="" class="swiper wv-slider-thumbs-single-product placeholder" id="wv-slider-thumbs-single-product-<?php echo esc_attr( $product->get_id() ); ?>">
 		<div class="swiper-wrapper">
 		<?php foreach ( $product_images_src as $src ) : ?>
 			<div class="swiper-slide _img-container">

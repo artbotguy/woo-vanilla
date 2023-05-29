@@ -1,26 +1,5 @@
 const enquire = require('enquire.js');
 
-const headerNavMenu = $('.header-nav-menu');
-
-const callHeaderMainMenu = $('.wv-header-main-call')
-
-const headerMenuCatalogMobileBody = $('.wv-header-bot-mobile__body');
-const headerMenuCatalog = $('.wv-header-bot');
-
-const headerActionsMobileList = $('.wv-header-mobile-menu__list');
-const headerMainMenuHeaderSearchWrapper = $('.wv-header-main-search__wrapper');
-
-const headerMenuMain = $('.wv-header-main')
-
-const searchHeaderMenuMain = $('.wv-header-main-search')
-
-
-//
-
-const linkMyOrders = $('#linkMyOrders')
-const linkCart = $('#linkCart')
-const linkWishlist = $('#linkWishlist')
-
 /**
  * Warning!
  * Использование коллекций элементов в переменных, в частности для получения длинны коллекции
@@ -36,25 +15,28 @@ class ClientEnquire {
 	}
 
 	init() {
-		/**
-		 * (min-width: 0px)
-		 */
-		enquire.register('(min-width: 0px)', {
-			setup() {
 
-				// CATALOG
-				for (let index = 0; index < 2; index++) {
-					const items = $('.wv-widget-area_location_catalog div .berocket_single_filter_widget')
-					const el = items[items.length - 1];
-					$('.wv-widget-area_location_catalog').append(el)
-				}
 
-				// woovanilla_template_popover_info()
-				$('.wv-single-product__summary .wv-variation-sub-wrapper').append($('.wv-single-product__summary .wv-popover'))
-				$('.wv-single-product__summary .wv-add-to-cart').before($('.wv-single-product__summary .wv-buy-one-click'))
+		// CATALOG
+		for (let index = 0; index < 2; index++) {
+			const items = $('.wv-widget-area_location_catalog div .berocket_single_filter_widget')
+			const el = items[items.length - 1];
+			$('.wv-widget-area_location_catalog').append(el)
+		}
 
-			}
-		})
+		// woovanilla_template_popover_info()
+		$('.wv-single-product__summary .wv-variation-sub-wrapper').append($('.wv-single-product__summary .wv-popover'))
+		$('.wv-single-product__summary .wv-add-to-cart').before($('.wv-single-product__summary .wv-buy-one-click'))
+
+
+		// /**
+		//  * (min-width: 0px)
+		//  */
+		// enquire.register('(min-width: 0px)', {
+		// 	setup() {
+
+		// 	}
+		// })
 
 		// after - после элемента
 		// append - внутрь элемента в конец
@@ -94,16 +76,16 @@ class ClientEnquire {
 				 * Menu Main
 				 */
 				// MM0
-				headerMenuCatalog.prepend($('.wv-header-bot-mobile .wv-menu-categories')) // note (!)
-				// MM1 - wv-header-search изначально лежит в оболочке, открывающей offcanvas.Catalog, 
-				// 		в которой лежит другой wv-header-search. Для десктопа он находится вне оболочки 
-				$('.wv-header-main__search').prepend($('.wv-header-main-search__wrapper .wv-header-search'))
+				$('.wv-header-bot__wrapper').prepend($('.wv-header-bot-mobile .wv-menu-categories')) // note (!)
+				// MM1 - wv-product-search изначально лежит в оболочке, открывающей offcanvas.Catalog, 
+				// 		в которой лежит другой wv-product-search. Для десктопа он находится вне оболочки 
+				$('.wv-header-main__search').prepend($('.wv-header-main-search__wrapper .wv-product-search'))
 				// MM2
-				$('.wv-header-main-cart').prepend(linkCart)
-				$('.wv-header-main-wishlist').prepend(linkWishlist)
-				$('.wv-header-top__local-contacts').append(linkMyOrders)
-				linkCart.addClass('wv-link-item_type_circle')
-				linkWishlist.addClass('wv-link-item_type_circle')
+				$('.wv-header-main-cart').prepend($('#linkCart'))
+				$('.wv-header-main-wishlist').prepend($('#linkWishlist'))
+				$('.wv-header-top__local-contacts').append($('#linkMyOrders'))
+				$('#linkCart').addClass('wv-link-item_type_circle')
+				$('#linkWishlist').addClass('wv-link-item_type_circle')
 
 				/**
 				 * FOOTER
@@ -144,16 +126,16 @@ class ClientEnquire {
 				 * Menu Main
 				 */
 				// MM0
-				headerMenuCatalogMobileBody.append($('.wv-header-bot .wv-menu-categories'))
+				$('.wv-header-bot-mobile__body').append($('.wv-header-bot__wrapper .wv-menu-categories'))
 
 				// MM1
-				headerMainMenuHeaderSearchWrapper.prepend($('.wv-header-main__search .wv-header-search'))
+				$('.wv-header-main-search__wrapper').prepend($('.wv-header-main__search .wv-product-search'))
 				// MM2
-				headerActionsMobileList.append(linkCart)
-				headerActionsMobileList.append(linkWishlist)
-				headerActionsMobileList.append(linkMyOrders)
-				linkCart.removeClass('wv-link-item_type_circle')
-				linkWishlist.removeClass('wv-link-item_type_circle')
+				$('.wv-header-mobile-menu__list').append($('#linkCart'))
+				$('.wv-header-mobile-menu__list').append($('#linkWishlist'))
+				$('.wv-header-mobile-menu__list').append($('#linkMyOrders'))
+				$('#linkCart').removeClass('wv-link-item_type_circle')
+				$('#linkWishlist').removeClass('wv-link-item_type_circle')
 
 				/**
 				 * FOOTER
@@ -186,18 +168,15 @@ class ClientEnquire {
 		 */
 		enquire.register('(min-width: 767px) and (max-width: 991px)', {
 			match() {
-				searchHeaderMenuMain.before(callHeaderMainMenu) //
+				$('.wv-header-main-search').before($('.wv-header-main-call')) //
 
-				////
-				headerMenuMain.find('#callLink').attr('data-bs-toggle', 'dropdown')
+				$('.wv-header-main').find('#callLink').attr('data-bs-toggle', 'dropdown')
 
 			},
 			unmatch() {
-				searchHeaderMenuMain.after(callHeaderMainMenu) //
+				$('.wv-header-main-search').after($('.wv-header-main-call')) //
 
-				////
-				headerMenuMain.find('#callLink').removeAttr('data-bs-toggle')
-
+				$('.wv-header-main').find('#callLink').removeAttr('data-bs-toggle')
 			}
 		})
 

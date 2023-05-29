@@ -121,11 +121,11 @@
 
         div {
           font-size: $small-font-size;
-
+          line-height: 1;
         }
 
         @media (min-width: ($md)) {
-          .wv-icon {
+          .wv-icon-default {
             margin: 0 10px 0 10px;
             width: 20px;
             height: 20px;

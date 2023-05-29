@@ -36,6 +36,7 @@
     box-shadow: 0px 4px 15px rgba(34, 42, 70, 0.08);
 
     &::after {
+      content: '';
       display: none;
     }
   }
@@ -66,7 +67,8 @@
   display: none;
 }
 
-.woocommerce-variation-price {
+.woocommerce-variation-price,
+.wv-price {
   .price {
     display: flex;
     flex-direction: column;
@@ -120,6 +122,7 @@
 
   &.is-open {
     &::after {
+      content: '';
       transform: rotate(-180deg);
     }
   }
@@ -162,18 +165,19 @@
   &__list {}
 
   &::after {
+    content: '';
     content: "";
     min-width: 10px;
     min-height: 10px;
     display: block;
     margin-left: 8px;
     padding: 5px;
-    background: center no-repeat url('../images/svg/arrow.svg') !important;
+    background: center no-repeat url('../images/svg/sprite-icons/arrow.svg') !important;
     transition: 0.1s;
   }
 }
 
-// TINV
+// TINVWL
 
 .tinv-wishlist {
   display: flex;
@@ -198,5 +202,25 @@
 
   &::before {
     display: none !important;
+  }
+}
+
+.wishlist-counter-with-products {
+  .wv-icon {
+    use {
+      fill: $primary;
+      stroke: $primary;
+    }
+  }
+}
+
+// Choises
+
+.choices {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    width: fit-content;
   }
 }

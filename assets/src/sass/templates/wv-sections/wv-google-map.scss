@@ -1,9 +1,13 @@
 .wv-google-map {
   margin-bottom: 50px;
 
+  // .wv-google-map__body
+  &__body {
+    display: flex;
+  }
+
   .container-lg {
     position: relative;
-
   }
 
   // .wv-google-map__content
@@ -19,6 +23,7 @@
   // .wv-google-map__map
   &__map {
     height: 400px;
+    flex: 1 1 auto;
 
     iframe {
       width: 100%;

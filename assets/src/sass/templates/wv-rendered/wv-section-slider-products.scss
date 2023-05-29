@@ -10,13 +10,41 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
+    align-items: center;
+
+    &:hover {
+
+      // stroke -> fill
+      .wv-icon {
+        use {
+          stroke: transparent;
+          fill: $emphasis;
+        }
+      }
+    }
   }
 
   // .wv-section-slider-products__title
-  &__title {}
+  &__title {
+    flex: 1 1 auto;
+    color: $body-color;
+  }
 
   // .wv-section-slider-products__arrow
-  &__arrow {}
+  &__arrow {
+    display: none;
+
+    .wv-icon {
+      use {
+        stroke: transparent;
+        fill: $body-color;
+      }
+    }
+
+    @media (min-width: ($md)) {
+      display: flex;
+    }
+  }
 
   .swiper {}
 

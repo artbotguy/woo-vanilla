@@ -82,7 +82,7 @@ function woovanilla_slider_products( $args = array(), $title = 'Товары', $
 			<div class="wv-section-slider-products__head">
 							<h2 class="wv-section-slider-products__title _wv-spec-title">' . wp_kses_post( $title ) . '</h2>
 							<div class="wv-section-slider-products__arrow">
-								<svg class="wv-icon-default">
+								<svg class="wv-icon">
 									<use xlink:href="#sprite-arrow-slider-section"></use>
 								</svg>
 							</div>
@@ -103,7 +103,7 @@ function woovanilla_template_product_loop_slider() {
 	wc_get_template(
 		'loop/wv-slider-product.php',
 		array(
-			'product_images_src' => get_all_images_product_src(),
+			'product_images_src' => wv_get_all_images_product_src(),
 		)
 	);
 }
@@ -202,14 +202,6 @@ function woovanilla_variable_add_to_cart( $args = array() ) {
 			$args
 		)
 	);
-}
-
-	/**
-	 * Get the product price for the loop.
-	 */
-function woovanilla_template_loop_price() {
-	wv_get_variation( $wv_loop_product_view_type );
-	wc_get_template( 'loop/price.php' );
 }
 
 /**
@@ -389,7 +381,7 @@ function woovanilla_template_popover_info( $args = array(
 ) ) {
 	return printf(
 		'
-<div class="wv-popover"><span>%s</span><svg class="wv-icon" 
+<div class="wv-popover placeholder"><span>%s</span><svg class="wv-icon" 
 	role="button" 
 	placement="top" 
 	class="btn btn-lg btn-danger" 
@@ -407,7 +399,7 @@ function woovanilla_template_popover_info( $args = array(
  * Undocumented function
  */
 function woovanilla_template_buy_one_click() {
-	echo '<a href="#" class="wv-buy-one-click"><span>Купить в 1 клик</span></a>';
+	echo '<a href="#" class="wv-buy-one-click placeholder"><span>Купить в 1 клик</span></a>';
 }
 
 /**
@@ -417,15 +409,16 @@ function woovanilla_template_ordering_info() {
 	wc_get_template( 'global/wv-ordering-info.php' );
 }
 
-/**
- * Функция выводит шаблон, в которм присутствует данные о цене из бекенда.
- * Затем из фронтенда происходит обновление внутреннего html - данные перезаписываются
- */
+// /**
+// WVNote: DEPR??? - мб в эой логике нет смысла (в добавлении woocommerce_template_loop_price)
+// * Функция выводит шаблон, в которм присутствует данные о цене из бекенда.
+// * Затем из фронтенда происходит обновление внутреннего html - данные перезаписываются
+// */
 function woovanilla_single_variation() {
 		$output = '<div class="wv-variation-sub-wrapper">';
 
 			$output .= '<div class="woocommerce-variation single_variation wv-placeholder-ajax placeholder">';
-		woocommerce_template_loop_price();
+		// woocommerce_template_loop_price(); // WVNote
 		$output .= '</div>';
 		$output .= '</div>';
 			echo $output;
@@ -459,4 +452,50 @@ function woovanilla_rename_sorting_option( $options ) {
 	$options['price']      = 'По возрастанию цены';
 	$options['price-desc'] = 'По убыванию цены';
 	return $options;
+}
+
+
+function woovanilla_breadcrumb( $args = array() ) {
+			$args = wp_parse_args(
+				$args,
+				apply_filters(
+					'woocommerce_breadcrumb_defaults',
+					array(
+						'delimiter'   => '&nbsp;&#47;&nbsp;',
+						'wrap_before' => '<nav class="wv-breadcrumb placeholder-wave woocommerce-breadcrumb">',
+						'wrap_after'  => '</nav>',
+						'before'      => '',
+						'after'       => '',
+						'home'        => _x( 'Home', 'breadcrumb', 'woocommerce' ),
+					)
+				)
+			);
+
+		$breadcrumbs = new WC_Breadcrumb();
+
+	if ( ! empty( $args['home'] ) ) {
+		$breadcrumbs->add_crumb( $args['home'], apply_filters( 'woocommerce_breadcrumb_home_url', home_url() ) );
+	}
+
+		$args['breadcrumb'] = $breadcrumbs->generate();
+
+		/**
+		 * WooCommerce Breadcrumb hook
+		 *
+		 * @hooked WC_Structured_Data::generate_breadcrumblist_data() - 10
+		 */
+		do_action( 'woocommerce_breadcrumb', $breadcrumbs, $args );
+
+		wc_get_template( 'global/breadcrumb.php', $args );
+}
+
+/**
+ * Функция теперь принимает аргументы
+ *
+ * (была добавлена для возможности добавления класса для global/wrapper-start.php)
+ *
+ * @param [type] $args the comment param.
+ */
+function woovanilla_output_content_wrapper( $args = array() ) {
+	wc_get_template( 'global/wrapper-start.php', $args );
 }

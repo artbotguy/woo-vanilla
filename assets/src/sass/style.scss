@@ -14,6 +14,11 @@
 @import 'swiper/css/navigation';
 //
 
+/*
+* WVNOTE: неочевидная логика - подключение и в prod и в build сборке возможно при
+* использовании шрифтов из папки assets/dist/dist/fonts - билдер в dev сборке
+* преобразует путь для шрифтов в абсолютный (несмотря на options.processCssUrls = FALSE)
+*/
 @import 'fonts.scss';
 
 
@@ -46,14 +51,19 @@
 @import 'templates/content-single-product.scss';
 @import 'templates/single-product/product-image.scss';
 @import 'templates/taxonomy-product-cat.scss';
+@import 'templates/archive-product.scss';
+@import 'templates/single-product.scss';
+@import 'templates/product-searchform.scss';
 
 
 // global
 @import 'templates/global/wv-ordering-info.scss';
 @import 'templates/global/quantity-input.scss';
+@import 'templates/global/breadcrumb.scss';
 
 // loop
 @import 'templates/loop/orderby.scss';
+@import 'templates/loop/pagination.scss';
 @import 'templates/loop/wv-slider-product.scss';
 
 // checkout
@@ -97,7 +107,6 @@
 @import 'templates/wv-blocks/wv-header/wv-header-mobile-menu';
 
 @import 'templates/wv-blocks/wv-header-contacts';
-@import 'templates/wv-blocks/wv-header-search';
 //
 // wv-blocks/wv-header
 @import 'templates/wv-blocks/wv-header/wv-header-top.scss';

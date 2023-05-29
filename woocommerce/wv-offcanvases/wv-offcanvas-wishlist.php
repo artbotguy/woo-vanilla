@@ -6,7 +6,8 @@
 	<div class="wv-offcanvas__body offcanvas-body">
 <?php
 
-TInvWL_Public_TInvWL::instance()->wishlist_content();
+// TInvWL_Public_TInvWL::instance()->wishlist_content();
+echo do_shortcode( '[ti_wishlistsview]' );
 
 ?>
 	</div>

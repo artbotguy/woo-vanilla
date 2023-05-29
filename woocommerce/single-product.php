@@ -12,8 +12,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 get_header(); ?>
 
-<?php woocommerce_output_content_wrapper(); ?>
-<?php	woocommerce_breadcrumb(); ?>
+<?php woovanilla_output_content_wrapper( array( 'template' => $template ) ); ?>
+<?php	woovanilla_breadcrumb(); ?>
 	 
 <div class="container-lg">
 	
@@ -27,7 +27,8 @@ get_header(); ?>
 		endwhile; // end of the loop.
 		?>
 </div> <!-- #container -->
-
+	
+<?php wc_get_template( 'wv-sections/wv-advantages-single-product.php' ); ?>
 <?php woocommerce_output_content_wrapper_end(); ?>
 
 

@@ -44,6 +44,12 @@ img {
   // width: 100%;
 }
 
+input {
+  &:disabled {
+    background: transparent !important;
+  }
+}
+
 // form
 input,
 button,

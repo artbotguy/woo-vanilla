@@ -6,31 +6,38 @@
  */
 
 
-/**
- * Функция крепится к хуку, и служит для добавления к response, вызываемого TInvWL_Public_AddToWishlist::add_to_wishlist(),
- * свойства content, которое представляет себя отрендеренный wl со всеми продуктами, после добавления продукта
- * Нужен для того, чтобы обновлялся wl, когда он используется как offcanvas с помощью ajax
- *
- * @param array $data the comment param.
- */
-function wv_add_content_response_body_add_to_wishlist( $data = array() ) {
-	$data['content'] = tinvwl_shortcode_view();
-	return $data;
+if ( class_exists( 'TInvWL_Public_TInvWL' ) ) {
+	/**
+	 * Функция крепится к хуку, и служит для добавления к response, вызываемого TInvWL_Public_AddToWishlist::add_to_wishlist(),
+	 * свойства content, которое представляет себя отрендеренный wl со всеми продуктами, после добавления продукта
+	 * Нужен для того, чтобы обновлялся wl, когда он используется как offcanvas с помощью ajax
+	 *
+	 * @param array $data the comment param.
+	 */
+	function wv_add_content_response_body_add_to_wishlist( $data = array() ) {
+		$data['content'] = tinvwl_shortcode_view();
+		return $data;
+	}
 }
+
+
 
 /**
  * Undocumented function
  *
  * @return array list links images
  */
-function get_all_images_product_src() {
+function wv_get_all_images_product_src() {
 		 global $product;
 
 	return array_map(
 		function ( $id ) {
 			return wp_get_attachment_url( $id );
 		},
-		array_merge( $product->get_gallery_image_ids(), array( $product->get_image_id() ) )
+		array_merge(
+			$product->get_gallery_image_ids(),
+			array( $product->get_image_id() )
+		)
 	);
 }
 
@@ -51,28 +58,6 @@ function woovanilla_do_shortcode( $tag, array $atts = array(), $content = null )
 	return call_user_func( $shortcode_tags[ $tag ], $atts, $content, $tag );
 }
 
-/**
- * FROM AWPS
- */
-
-if ( ! function_exists( 'dd' ) ) {
-	/**
-	 * Var_dump and die method
-	 *
-	 * @return void
-	 */
-	function dd() {
-		 echo '<pre>';
-		array_map(
-			function ( $x ) {
-				var_dump( $x );
-			},
-			func_get_args()
-		);
-		echo '</pre>';
-		die;
-	}
-}
 
 if ( ! function_exists( 'starts_with' ) ) {
 	/**
@@ -155,7 +140,7 @@ if ( ! function_exists( 'svg' ) ) {
 	/**
 	 * Easily point to the assets dist folder.
 	 *
-	 * Exemple: assets/dist/images/svg/icons/inline-benifits-24-7.svg.php => benifits-24-7
+	 * Exemple: assets/dist/images/svg/icons/inline-benifits-24-7.svg.php => svg('benifits-24-7', 'icons)
 	 *
 	 *   *
 	 *
@@ -507,10 +492,10 @@ if ( class_exists( 'Xoo_Wsc_Loader' ) ) {
 		// echo '<span>' . xoo_wsc_cart()->get_cart_count() . '</span>';
 		$wv_cart_count = '<span>' . xoo_wsc_cart()->get_cart_count() . '</span>';
 
-		$fragments['div.xoo-wsc-container']                      = $container;
-		$fragments['div.xoo-wsc-slider']                         = $slider;
-		$fragments['.wv-header-main-cart .xoo-wsc-ft-totals']    = $wv_totals;
-		$fragments['header .wv-cart-count span'] = $wv_cart_count;
+		$fragments['div.xoo-wsc-container']                   = $container;
+		$fragments['div.xoo-wsc-slider']                      = $slider;
+		$fragments['.wv-header-main-cart .xoo-wsc-ft-totals'] = $wv_totals;
+		$fragments['header .wv-cart-count span']              = $wv_cart_count;
 
 		return $fragments;
 

@@ -1,25 +1,49 @@
 .wv-menu-categories_location_header {
   .menu-main__item {
-    &:first-child {
-      // акции
-      display: flex;
-      text-transform: uppercase;
 
+    // акции
+    &:first-child {
       a {
-        margin-left: 6px;
+        display: flex;
+        text-transform: uppercase;
+        align-items: center;
         color: $primary;
         font-size: inherit;
+
+        &:hover {
+          color: $primary !important;
+
+          &::after {
+            width: 70%;
+          }
+        }
+
+
         // font-weight: 500 !important;
+        &::before {
+          content: '';
+          background: center no-repeat url('../images/svg/sprite-icons/sale.svg');
+          width: 24px;
+          height: 24px;
+          padding-right: 10px;
+          margin-right: 6px;
+          display: inline-flex;
+        }
+
+
+        &::after {
+          content: '';
+          transition: .3s;
+          position: absolute;
+          height: 2px;
+          width: 0px;
+          bottom: 0;
+          right: 0;
+          background: $primary;
+        }
       }
 
-      &::before {
-        content: '';
-        background: center no-repeat url('../../../images/svg/sale.svg');
-        width: 24px;
-        height: 24px;
-        padding-right: 10px;
-        display: block;
-      }
+
     }
 
     &:hover {
@@ -33,6 +57,7 @@
 // .wv-menu-navigation_location_header
 .wv-menu-navigation_location_header {
   display: flex;
+  justify-content: center;
 
   .menu-item {
     line-height: 142.5%;
@@ -73,8 +98,13 @@
     .menu-sub__item {}
 
     .wv-universal-toggle {
-      padding: 5px 0 5px 5px;
+      padding: 5px 0 5px 0px;
     }
+  }
+
+  .dropdown-menu {
+    left: auto;
+    top: 45px;
   }
 }
 

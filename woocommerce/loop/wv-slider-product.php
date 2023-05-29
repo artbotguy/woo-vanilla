@@ -1,9 +1,13 @@
 <?php
+/**
+ * Descr
+ *
+ * @package     WooVanilla
+ */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
 global $product;
 ?>
 

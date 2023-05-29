@@ -60,28 +60,32 @@ wp_enqueue_script( 'tinvwl' );
 							
 								<div class="wv-item__name">
 								<?php
-															echo apply_filters(
-																'tinvwl_wishlist_item_name',
-																sprintf(
-																	'<a href="%s">%s</a>',
-																	esc_url( $product_url ),
-																	is_callable(
-																		array(
-																			$product,
-																			'get_name',
-																		)
-																	) ? $product->get_name() : $product->get_title()
-																),
-																$wl_product,
-																$product
-															); // WPCS: xss ok.;
+									echo apply_filters(
+										'tinvwl_wishlist_item_name',
+										sprintf(
+											'<a href="%s">%s</a>',
+											esc_url( $product_url ),
+											is_callable(
+												array(
+													$product,
+													'get_name',
+												)
+											) ? $product->get_name() : $product->get_title()
+										),
+										$wl_product,
+										$product
+									); // WPCS: xss ok.;
 								?>
 								</div>
-								<?php echo apply_filters( 'tinvwl_wishlist_item_meta_data', tinv_wishlist_get_item_data( $product, $wl_product ), $wl_product, $product ); // WPCS: xss ok.; ?>
+								<?php 
+								// WVNOTE: Логика метаданных актуальна для вариативных wl-items (такое не добавлено)
+								// echo apply_filters( 'tinvwl_wishlist_item_meta_data', tinv_wishlist_get_item_data( $product, $wl_product ), $wl_product, $product ); // WPCS: xss ok.; 
+								?>
 
 								<div class="wv-item__price">
 								<?php
-								echo apply_filters( 'tinvwl_wishlist_item_price', $product->get_price_html(), $wl_product, $product ); // WPCS: xss ok.
+								woocommerce_template_loop_price();
+								// echo apply_filters( 'tinvwl_wishlist_item_price', $product->get_price_html(), $wl_product, $product ); // WPCS: xss ok.
 								?>
 								</div>
 							</div>

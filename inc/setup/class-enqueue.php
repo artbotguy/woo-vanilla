@@ -31,13 +31,28 @@ class Enqueue {
 	 * из-за невыясненных несоответствий - например, с jquery
 	 */
 	public function enqueue_scripts() {
+		$version = time();
+		
+		wp_deregister_style( 'tinvwl' );
+		wp_deregister_style( 'tinvwl-theme' );
+		wp_deregister_style( 'tinvwl-webfont-font' );
+		wp_deregister_style( 'tinvwl-webfont' );
+
 		wp_deregister_style( 'xoo-wsc-fonts' );
 		wp_deregister_style( 'xoo-wsc-style' );
 
-		$version = time();
 
+		// WV fonts
 		wp_enqueue_style( 'gf-yeseva-one', 'https://fonts.googleapis.com/css?family=Yeseva+One:regular', array(), $version );
 		wp_enqueue_style( 'gf-inter', 'https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900)', array(), $version );
+
+		// $wv_fonts_filenames = scandir( get_template_directory() . '/assets/dist/fonts' );
+		// for ( $i = 0; $i < count( $wv_fonts_filenames ); $i++ ) {
+		// $filename = $wv_fonts_filenames[ $i ];
+		// if ( strpos( $wv_fonts_filenames[ $i ], '.woff' ) ) {
+		// wp_enqueue_style( 'wv-font' . $i, get_stylesheet_directory_uri() . '/assets/dist/fonts/' . $filename, array(), $version );
+		// }
+		// }
 
 		wp_enqueue_style( 'bootstrap-css', get_template_directory_uri() . '/node_modules/bootstrap/dist/css/bootstrap.css', array(), $version, 'all' );
 		wp_enqueue_style( 'wv-main-css', mix( 'css/style.css' ), array(), $version, 'all' );
@@ -47,7 +62,8 @@ class Enqueue {
 		 * Main script
 		 *  WVNote: need jq cut from this bundle
 		 */
-		wp_enqueue_script( 'wv-main-js', mix( 'js/app.js' ), array(), $version, true );
+		// wp_enqueue_script( 'wv-main-js', mix( 'js/app.js' ), array(), $version, true );
+		wp_enqueue_script( 'wv-main-js', get_stylesheet_directory_uri() . '/assets/dist/js/app.js', array( 'jquery' ), $version, 'all' );
 
 		wp_localize_script(
 			'wv-main-js',
@@ -85,8 +101,8 @@ class Enqueue {
 		// // wp_enqueue_script( 'tinvwl', get_stylesheet_directory_uri() . '/assets/dist/js/tinvwl-public.js', array('jquery', 'wp-color-picker' ), $version, 'all' );
 
 		wp_deregister_script( 'xoo-wsc-main-js' );
-		wp_enqueue_script( 'xoo-wsc-main-js', mix( 'js/xoo-wsc-main.js' ), array( 'jquery' ), $version, true );
-		// wp_enqueue_script( 'xoo-wsc-main-js', get_stylesheet_directory_uri() . '/assets/dist/js/xoo-wsc-main.js', array( 'jquery' ), $version, 'all' );
+		// wp_enqueue_script( 'xoo-wsc-main-js', mix( 'js/xoo-wsc-main.js' ), array( 'jquery' ), $version, true );
+		wp_enqueue_script( 'xoo-wsc-main-js', get_stylesheet_directory_uri() . '/assets/dist/js/xoo-wsc-main.js', array( 'jquery' ), $version, 'all' );
 
 		wp_deregister_script( 'wc-add-to-cart-variation' );
 		// wp_enqueue_script( 'wc-add-to-cart-variation', mix( 'js/add-to-cart-variation.js' ), array( 'wp-util', 'jquery-blockui' ), $version, true );
@@ -99,8 +115,5 @@ class Enqueue {
 			wp_enqueue_script( '__bs_script__', getenv( 'WP_SITEURL' ) . ':3000/browser-sync/browser-sync-client.js', array(), $version, true );
 		endif;
 
-		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-			wp_enqueue_script( 'comment-reply' );
-		}
 	}
 }

@@ -1,13 +1,28 @@
 //
 
 
-.header {
-	position: relative;
+.wv-header {
 	margin-bottom: 20px;
 
-	.main-navigation {}
+	&_scrolled {
+		.wv-header__wrapper {
+			position: fixed;
 
-	box-shadow: 0px 4px 15px rgba(34, 42, 70, 0.08);
+		}
+
+		.wv-header-top,
+		.wv-header-bot {
+			display: none;
+		}
+	}
+
+	&__wrapper {
+		background: #fff;
+		position: absolute;
+		box-shadow: 0px 4px 15px rgba(34, 42, 70, 0.08);
+		z-index: 1000;
+		width: 100%;
+	}
 
 	&__body {
 		display: flex;

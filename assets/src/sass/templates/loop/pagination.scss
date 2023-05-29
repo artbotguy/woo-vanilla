@@ -1,0 +1,64 @@
+.wv-pagination {
+  margin-bottom: 40px;
+
+  @media (min-width: ($md)) {
+    margin-bottom: 60px;
+  }
+
+  // .wv-pagination__wrapper
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+
+  ul.page-numbers {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: start;
+    gap: 15px;
+
+    li {
+
+      a,
+      span {
+        &.page-numbers {
+          display: inline-flex;
+          padding: 15px;
+          border: 1px solid #D0D2D7;
+          border-radius: 5px;
+          padding: 4px 10px;
+        }
+
+      }
+
+      .current {
+        background: #0093A2;
+        border: 1px solid #0093A2;
+        color: #fff;
+      }
+
+      .prev {
+        // transform: rotate(180deg);
+      }
+
+      a {
+        height: 100%;
+
+        // &.prev,
+        // &.next {
+        //   .wv-icon-default {
+        //     width: 18px;
+        //     height: 18px;
+
+        //     use {
+        //       fill: $body-color;
+        //       stroke: $body-color;
+        //     }
+        //   }
+        // }
+
+      }
+    }
+  }
+}

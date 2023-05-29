@@ -1,35 +1,40 @@
+/*
+* WVNOTE: неочевидная логика - подключение и в prod и в build сборке возможно при
+* использовании шрифтов из папки assets/dist/dist/fonts - билдер в dev сборке
+* преобразует путь для шрифтов в абсолютный (несмотря на options.processCssUrls = FALSE)
+*/
 @font-face {
   font-family: 'TT Norms';
-  src: url('../fonts/TTNorms-Medium.woff');
+  src: url('../../dist/fonts/TTNorms-Medium.woff'), ;
   font-weight: 500;
 }
 
 @font-face {
   font-family: 'TT Norms';
-  src: url('../fonts/TTNorms-Medium.woff2');
+  src: url('../../dist/fonts/TTNorms-Medium.woff2'), ;
   font-weight: 500;
 }
 
 @font-face {
   font-family: 'TT Norms';
-  src: url('../fonts/TTNorms-Regular.woff');
+  src: url('../../dist/fonts/TTNorms-Regular.woff'), ;
   font-weight: 400;
 }
 
 @font-face {
   font-family: 'TT Norms';
-  src: url('../fonts/TTNorms-Regular.woff2');
+  src: url('../../dist/fonts/TTNorms-Regular.woff2'), ;
   font-weight: 400;
 }
 
 @font-face {
   font-family: 'TT Norms';
-  src: url('../fonts/TTNorms-Bold.woff');
+  src: url('../../dist/fonts/TTNorms-Bold.woff'), ;
   font-weight: bold;
 }
 
 @font-face {
   font-family: 'TT Norms';
-  src: url('../fonts/TTNorms-Bold.woff2');
+  src: url('../../dist/fonts/TTNorms-Bold.woff2'), ;
   font-weight: bold;
 }

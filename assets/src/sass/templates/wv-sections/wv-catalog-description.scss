@@ -16,7 +16,7 @@
   // .wv-catalog-description__paragraph
   &__paragraph {
     margin-bottom: 15px;
-    font-size: $font-size-sm;
+    // font-size: $font-size-sm;
 
     @media (min-width: ($md)) {
       margin-bottom: 20px;
@@ -43,7 +43,7 @@
   &__sub-title {
     margin-bottom: 15px;
     padding-top: 15px;
-    font-size: $font-size-sm;
+    // font-size: $font-size-sm;
 
     @media (min-width: ($md)) {
       margin-bottom: 20px;

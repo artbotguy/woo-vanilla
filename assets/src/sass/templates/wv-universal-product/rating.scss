@@ -54,6 +54,7 @@
     &_atfer_width {
       &_0 {
         &::after {
+          content: '';
           width: 100%;
         }
 
@@ -68,24 +69,28 @@
 
       &_2 {
         &::after {
+          content: '';
           width: 87%;
         }
       }
 
       &_3 {
         &::after {
+          content: '';
           width: 50%;
         }
       }
 
       &_4 {
         &::after {
+          content: '';
           width: 27%;
         }
       }
 
       &_5 {
         &::after {
+          content: '';
           width: 0%;
         }
       }

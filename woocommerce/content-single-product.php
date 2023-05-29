@@ -56,14 +56,15 @@ if ( post_password_required() ) {
 		 */
 		// do_action( 'woocommerce_single_product_summary' );
 		?>
-				<div class="wv-bouquet-composition"><h6>Состав:</h6>
-		<ul><li><span>Роза пионовидная вайлд лук</span><span>- 10 шт.</span></li></ul>
-		<ul><li><span>Роза кустовая пионовидная</span><span>- 3 шт.</span></li></ul>
-		<ul><li><span>Озотамнус</span><span>- 2 шт.</span></li></ul>
-		<ul><li><span>Эвкалипт</span><span>- 6 шт.</span></li></ul>
-</div>
-	</div>
-	<div class="wv-single-product__description">
+		<div class="wv-bouquet-composition placeholder"><h6>Состав:</h6>
+			<ul><li><span>Роза пионовидная вайлд лук</span><span>- 10 шт.</span></li></ul>
+			<ul><li><span>Роза кустовая пионовидная</span><span>- 3 шт.</span></li></ul>
+			<ul><li><span>Озотамнус</span><span>- 2 шт.</span></li></ul>
+			<ul><li><span>Эвкалипт</span><span>- 6 шт.</span></li></ul>
+		</div>
+	</div> <!-- #wv-single-product__summary -->
+	
+	<div class="wv-single-product__description placeholder">
 	<?php woocommerce_product_description_tab(); ?>
 	</div>
 
@@ -85,9 +86,6 @@ if ( post_password_required() ) {
 	// заглушка наполовину работает как дефолтная логика - т.к. related в WC работает методом рандома
 	woovanilla_slider_products( array(), 'Рекомендуемые товары' );
 	woovanilla_slider_products( array(), 'Ранее вы смотрели' );
-
-	wc_get_template( 'wv-sections/wv-advantages-single-product.php' );
-
 
 	?>
 </div>

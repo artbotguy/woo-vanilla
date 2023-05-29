@@ -1,3 +1,5 @@
+// import Sticky from "sticky-js";
+
 class ClientListeners {
 
   innerWidth = null;
@@ -105,7 +107,17 @@ class ClientListeners {
   }
 
   scroll() {
+    $('.wv-header').css('padding-bottom', $('.wv-header__wrapper').height())
 
+    window.addEventListener('scroll', function (e) {
+      if ((this.window.scrollY >= $('.wv-header__wrapper').height())) {
+        // $('.wv-header').css('padding-bottom', $('.wv-header__wrapper').height())
+        $('.wv-header').addClass('wv-header_scrolled')
+      } else {
+        // $('.wv-header').css('padding-bottom', 0)
+        $('.wv-header').removeClass('wv-header_scrolled')
+      }
+    })
   }
 }
 

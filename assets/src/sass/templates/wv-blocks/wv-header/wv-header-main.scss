@@ -1,5 +1,6 @@
 .wv-header-main {
-  padding: 13px 0;
+  padding: 16px 0;
+  // padding: 11px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -8,6 +9,8 @@
   &__body {
     display: flex;
     flex: 1 1 auto;
+    height: 48px;
+    align-items: center;
   }
 
   .wv-header-description {
@@ -22,6 +25,10 @@
   .wv-link-item {
     min-width: 44px;
     min-height: 44px;
+
+    .wv-icon use {
+      stroke: $body-color;
+    }
 
     &__icon {}
 

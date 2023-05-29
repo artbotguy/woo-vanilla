@@ -1,6 +1,6 @@
 <?php
 /**
- * Shop breadcrumb
+ * Descr
  *
  * @package     WooVanilla
  */
@@ -10,20 +10,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?> 
  <?php
-	if ( ! empty( $breadcrumb ) ) {
+	if ( ! empty( $breadcrumb ) ) :
 
-		echo '<div class="container-lg">';
 
 		echo $wrap_before;
+		?>
+<div class="container-lg">
+		 
+<div class="wv-breadcrumb__body placeholder">
 
+		<?php
 		foreach ( $breadcrumb as $key => $crumb ) {
 
 			echo $before;
 
 			if ( ! empty( $crumb[1] ) && sizeof( $breadcrumb ) !== $key + 1 ) {
-				echo '<a class="woocommerce-breadcrumb__item" href="' . esc_url( $crumb[1] ) . '">' . esc_html( $crumb[0] ) . '</a>';
+				echo '<a class="wv-breadcrumb__item" href="' . esc_url( $crumb[1] ) . '">' . esc_html( $crumb[0] ) . '</a>';
 			} else {
-				echo '<span class="woocommerce-breadcrumb__item">' . esc_html( $crumb[0] ) . '</span>';
+				echo '<span class="wv-breadcrumb__item">' . esc_html( $crumb[0] ) . '</span>';
 			}
 
 			echo $after;
@@ -34,7 +38,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 			</svg>';
 			}
 		}
+		?>
+		 
+		</div>
+		</div> <!-- #container --> 
+		 <?php
 
-		echo $wrap_after;
-		echo '</div>';
-	}
+			echo $wrap_after;
+
+	endif;

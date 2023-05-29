@@ -186,6 +186,7 @@
 
         input:checked+label {
           &::before {
+            content: '';
             border: 1px solid $quaternary;
           }
 

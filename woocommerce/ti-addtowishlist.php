@@ -3,10 +3,7 @@
 /**
  * The Template for displaying add to wishlist product button.
  *
- * This template can be overridden by copying it to yourtheme/woocommerce/ti-addtowishlist.php.
- *
- * @version             1.47.0
- * @package           TInvWishlist\Template
+ * @package WooVanilla
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

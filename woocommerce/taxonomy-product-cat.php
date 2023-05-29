@@ -10,15 +10,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 get_header();
-
-/**
- * Hook: woocommerce_before_main_content.
- *
- * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
- * @hooked woocommerce_breadcrumb - 20
- * @hooked WC_Structured_Data::generate_website_data() - 30
- */
-do_action( 'woocommerce_before_main_content' );
+	woovanilla_output_content_wrapper( array( 'template' => $template ) );
+woovanilla_breadcrumb();
 
 ?>
 <div class="container-lg">
@@ -34,17 +27,17 @@ if ( woocommerce_product_loop() ) {
 	echo '<div class="wv-catalog-products__main">';
 
 	?>
-<header class="woocommerce-products-header">
+<header class="woocommerce-products-header placeholder-wave">
 	<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-		<h1 class="woocommerce-products-header__title page-title _wv-spec-title"><?php woocommerce_page_title(); ?></h1>
+		<h1 class="woocommerce-products-header__title page-title _wv-spec-title placeholder"><?php woocommerce_page_title(); ?></h1>
 	<?php endif; ?>
-		 <button class="wv-catalog-filter-desktop-toggle _wv-form-item" data-bs-toggle="collapse" data-bs-target="#wv-catalog-filter-desktop-collapse">
-		<svg class="wv-icon">
-			<use xlink:href="#sprite-filter"></use>
-		</svg>
-		<span class="wv-catalog-filter-desktop-toggle__title">Фильтры</span>
-		<div class="wv-catalog-filter-desktop-toggle__counter"></div>
-	</button>	
+		<button class="wv-catalog-filter-desktop-toggle _wv-form-item placeholder" data-bs-toggle="collapse" data-bs-target="#wv-catalog-filter-desktop-collapse">
+			<svg class="wv-icon">
+				<use xlink:href="#sprite-filter"></use>
+			</svg>
+			<span class="wv-catalog-filter-desktop-toggle__title">Фильтры</span>
+			<div class="wv-catalog-filter-desktop-toggle__counter"></div>
+		</button>	
 
 
 	<?php

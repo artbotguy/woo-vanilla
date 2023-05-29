@@ -1,28 +1,7 @@
-.woocommerce-breadcrumb {
-  margin-bottom: 17px;
+.woocommerce-message {
+  display: none;
+}
 
-  @media (min-width: ($md)) {
-    margin-bottom: 20px;
-  }
-
-  @media (min-width: ($lg)) {
-    margin-bottom: 30px;
-  }
-
-  &__item {
-    color: $secondary;
-    font-size: $small-font-size;
-
-    &:first-child {
-      color: $dark;
-    }
-  }
-
-  .wv-icon-default {
-    margin: 0 5px;
-
-    use {
-      fill: $secondary;
-    }
-  }
+.woocommerce-info {
+  padding: 15px 0;
 }

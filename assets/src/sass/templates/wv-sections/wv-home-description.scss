@@ -1,9 +1,13 @@
 .wv-home-description {
-  padding-bottom: 40px;
   background: #F2F6F6;
 
-  @media (min-width: ($md)) {
-    padding-bottom: 60px;
+  // .wv-home-description__body
+  &__body {
+    padding-bottom: 40px;
+
+    @media (min-width: ($md)) {
+      padding-bottom: 60px;
+    }
   }
 
   // .wv-home-description__decor

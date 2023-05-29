@@ -47,7 +47,7 @@
       line-height: 133%;
       font-family: 'Yeseva One';
       font-weight: 400;
-      margin-bottom: 25px;
+      margin-bottom: 10%;
       max-width: 50%;
 
       @media (min-width: ($sm)) {
@@ -57,6 +57,7 @@
       }
 
       @media (min-width: ($md)) {
+        margin-bottom: 25px;
         font-size: 44px;
       }
     }
@@ -67,7 +68,11 @@
         box-shadow: 0px 4px 15px rgba(34, 42, 70, 0.08);
         border-radius: 10px;
         // padding: 13px 0;
-        height: 50px;
+        height: 40px;
+
+        @media (min-width: ($md)) {
+          height: 50px;
+        }
       }
 
       &__button {
@@ -96,9 +101,22 @@
         color: $primary;
         background: #fff;
         letter-spacing: 0.1em;
+        font-size: $font-size-sm;
+
+        @media (min-width: ($md)) {
+          font-size: inherit;
+        }
       }
 
       .wv-icon {
+        width: 20px;
+        height: 20px;
+
+        @media (min-width: ($md)) {
+          width: 24px;
+          height: 24px;
+        }
+
         use {
           stroke: #fff;
         }
@@ -113,7 +131,17 @@
         border-radius: 0;
       }
     }
+
+    .wv-swiper-arrows {
+      display: none;
+
+      @media (min-width: ($md)) {
+        display: flex;
+      }
+    }
   }
+
+
 
   .wv-section-slider-products {
     display: none;

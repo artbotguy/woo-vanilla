@@ -13,11 +13,11 @@ global $wp;
 
 ?>
 
-<?php woocommerce_output_content_wrapper(); ?>
+<?php woovanilla_output_content_wrapper( array( 'template' => $template ) ); ?>
 
 <div class="container-lg">
   <?php
-	woocommerce_breadcrumb();
+	woovanilla_breadcrumb();
 	?>
 	
 	<div class="wv-checkout">

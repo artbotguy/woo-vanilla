@@ -49,10 +49,12 @@
         border: 2px solid $emphasis;
 
         &::before {
+          content: '';
           opacity: 1;
         }
 
         &::after {
+          content: '';
           opacity: 1;
         }
       }
@@ -69,7 +71,7 @@
     border: 2px solid #D0D2D7;
 
     &::before {
-      content: '';
+
       position: relative;
       display: inline-flex;
       top: 5px;

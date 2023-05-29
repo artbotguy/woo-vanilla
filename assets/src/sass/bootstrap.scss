@@ -72,7 +72,7 @@
 }
 
 .placeholder {
-  background-color: $tertiary;
+  background-color: $tertiary !important;
   opacity: .2;
   position: relative;
 
@@ -85,12 +85,25 @@
     top: 0;
     left: 0;
     // opacity: inherit;
-    background-color: inherit;
+    background-color: inherit !important;
   }
 }
 
+// .wv-placeholder-transparent {
+//   background-color: transparent !important;
+
+//   &::after {
+//     content: '';
+//     background-color: transparent !important;
+//   }
+// }
+
 .form-control {
   line-height: inherit;
+
+  &:focus {
+    background: transparent;
+  }
 }
 
 //

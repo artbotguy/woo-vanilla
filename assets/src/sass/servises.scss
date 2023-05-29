@@ -69,6 +69,7 @@
   padding: 0;
 
   &::after {
+    content: '';
     content: "";
     min-width: 10px;
     min-height: 10px;
@@ -76,12 +77,13 @@
     margin-left: 8px;
     padding: 5px;
 
-    background: center no-repeat url('../images/svg/arrow.svg') !important;
+    background: center no-repeat url('../images/svg/sprite-icons/arrow.svg') !important;
     transition: .1s;
   }
 
   &.show {
     &::after {
+      content: '';
       transform: rotate(-180deg);
     }
   }
@@ -93,6 +95,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
+  transition: .1s;
 
   &_type_circle {
     background: #fff;
@@ -150,4 +153,16 @@
 
 ._wv-spec-title {
   font-family: 'Yeseva One';
+
+  &:hover {
+    color: $emphasis;
+  }
+}
+
+._wv-hovervable {
+
+  &:hover {
+    box-shadow: 0px 4px 15px rgba(34, 42, 70, 0.08);
+
+  }
 }

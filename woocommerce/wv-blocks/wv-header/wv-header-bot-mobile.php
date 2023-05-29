@@ -13,7 +13,7 @@
 	  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 	</div>
 	<div class="offcanvas-body wv-header-bot-mobile__body">
-	  <?php wc_get_template( 'wv-blocks/wv-header-search.php' ); ?>
+	  <?php get_product_search_form(); ?>
 	  <div class="wv-header-bot-mobile__catalog">
 		<div class="wv-header-bot-mobile__title">Каталог товаров</div>
 		<?php

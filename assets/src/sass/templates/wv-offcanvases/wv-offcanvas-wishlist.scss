@@ -2,4 +2,10 @@
   .wv-offcanvas__header {
     border-bottom: 1px solid #E2E4EB;
   }
+
+  .wv-item {
+    &__name {
+      margin-bottom: 10px;
+    }
+  }
 }

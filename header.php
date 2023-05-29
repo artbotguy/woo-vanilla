@@ -27,15 +27,17 @@
 
 	<?php wp_body_open(); ?>
 	<div id="page" class="wv-root">
-		<header class="header">
-			<div class="container-lg">
-				<div class="header__body">
-					<?php
-					wc_get_template( 'wv-blocks/wv-header/wv-header-top.php' );
-					wc_get_template( 'wv-blocks/wv-header/wv-header-main.php' );
-					wc_get_template( 'wv-blocks/wv-header/wv-header-bot.php' );
-					wc_get_template( 'wv-blocks/wv-header/wv-header-mobile-menu.php' );
-					?>
+		<header class="wv-header">
+			<div class="wv-header__wrapper">
+				<div class="container-lg">
+					<div class="wv-header__body">
+						<?php
+						wc_get_template( 'wv-blocks/wv-header/wv-header-top.php' );
+						wc_get_template( 'wv-blocks/wv-header/wv-header-main.php' );
+						wc_get_template( 'wv-blocks/wv-header/wv-header-bot.php' );
+						wc_get_template( 'wv-blocks/wv-header/wv-header-mobile-menu.php' );
+						?>
+					</div>
 				</div>
 			</div>
 		</header>

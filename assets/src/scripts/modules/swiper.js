@@ -5,6 +5,9 @@ import get from 'lodash-es/get'
 
 /**
  * Класс пользовательских Свайперов
+ * 
+ * Для корректной работы необходимо добавлять необходимые модули в options.modules, 
+ * а также соответствующие свойства в options
  */
 export default class ClientSwiper {
 
@@ -109,20 +112,6 @@ export default class ClientSwiper {
         pagination: {},
       },
     },
-
-    // /**
-    //  *   slider-advantages
-    //  */
-    // sliderAdvantages: {
-    //   swipers: [],
-    //   selector: '.wv-slider-advantages',
-    //   options: {
-    //     modules: [FreeMode],
-    //     spaceBetween: 10,
-    //     freeMode: true,
-    //     slidesPerView: 4,
-    //   }
-    // }
   }
 
   /**
@@ -170,7 +159,7 @@ export default class ClientSwiper {
    */
   optionsHandler(sliderKey, nodeSlider, options = {}) {
     /**
-    * Не уверен, что глубокое клонирование нужно всегда
+    * WVNOTE: Не уверен, что глубокое клонирование нужно всегда (особенно свойтсво modules)
     */
     let localOptions = cloneDeep(options)
 
@@ -185,19 +174,19 @@ export default class ClientSwiper {
     }
 
     if (has(options, 'modules') && options.modules.length !== 0) {
-      if (options.modules.find(el => el.name === 'Navigation')) {
+      if (has(options, 'navigation')) {
         localOptions.navigation.nextEl = $(nodeSlider).find(".swiper-button-next")[0]
         localOptions.navigation.prevEl = $(nodeSlider).find(".swiper-button-prev")[0]
       }
-      if (options.modules.find(el => el.name === 'Pagination')) {
+      if (has(options, 'pagination')) {
         localOptions.pagination.el = $(nodeSlider).find(".swiper-pagination")[0]
       }
-      if (options.modules.find(el => el.name === 'Thumb')) {
+      if (has(options, 'thumbs')) {
         localOptions.thumbs.swiper = get(this.sliders, localOptions.thumbs.swiper)
       }
-      if (options.modules.find(el => el.name === 'Controller')) {
-        localOptions.controller.control = get(this.sliders, localOptions.thumbs.swiper)
-      }
+      // if (has(options, 'Controller')) {
+      //   localOptions.controller.control = get(this.sliders, localOptions.thumbs.swiper)
+      // }
     }
 
     return localOptions;
