@@ -7,27 +7,28 @@ const webpack = require('webpack');
 mix.setPublicPath('./assets/dist');
 
 /**
- * Note: Непонятная ошибка с обработкой scss при подключенных скриптах  add-to-cart-variation / xoo-wsc-main
- * с помощью функции mix(). Поэтому скомпилированные скрипты подключаются в ручную в 
- * WooVanilla\Setup\Enqueue::enqueue_scripts() для корретной работы Hot Module Replacement с scss
+//  * Note: Непонятная ошибка с обработкой scss при подключенных скриптах  add-to-cart-variation / xoo-wsc-main
+//  * с помощью функции mix(). Поэтому скомпилированные скрипты подключаются в ручную в 
+//  * WooVanilla\Setup\Enqueue::enqueue_scripts() для корретной работы Hot Module Replacement с scss
+ * При нерабочем HotReplacement необходимо проверить, везде ли есть соответсвие между
+ * подлючаемым файлом из webpack.mix.js и функцией mix()
+ * Так обновление стилей может не работать, если app.js используется в mix(), но не подкючен в 
+ * webpack.mix.js
  */
 mix
-	// .js('assets/src/scripts/wp/add-to-cart-variation.js', 'assets/dist/js')
-	// .js('assets/src/scripts/wp/xoo-wsc-main.js', 'assets/dist/js')
-	// .js('assets/src/scripts/wp/tinvwl-public.js', 'assets/dist/js')
+	.js('assets/src/scripts/wp/add-to-cart-variation.js', 'assets/dist/js')
+	.js('assets/src/scripts/wp/xoo-wsc-main.js', 'assets/dist/js')
+	.js('assets/src/scripts/wp/tinvwl-public.js', 'assets/dist/js')
 
-	.js('assets/src/scripts/admin.js', 'assets/dist/js')
-
-	.block('assets/src/scripts/gutenberg.js', 'assets/dist/js')
-	.sass('assets/src/sass/admin.scss', 'assets/dist/css')
-	.sass('assets/src/sass/gutenberg.scss', 'assets/dist/css')
-	// .sass('assets/src/sass/bootstrap.scss', 'assets/dist/css')
+	.js('assets/src/scripts/app.js', 'assets/dist/js')
 	.sass('assets/src/sass/style.scss', 'assets/dist/css')
 	/**
 	* WVNOTE: Отключает копирование изображений, которые используются для background. Также отключает перезаписывание путей для семейств шрифтов до абсолютных (*)
 	* WVNOTE: неочевидная логика - подключение и в prod и в build сборке возможно при
 	* использовании шрифтов из папки assets/dist/dist/fonts - билдер в dev сборке
 	* преобразует путь для шрифтов в абсолютный (несмотря на options.processCssUrls = FALSE)
+* UPD: Не работало. Добавил ещё assets/dist/fonts - по итогу одна папка для prod, другая для dev
+
 	**/
 	.options({
 		processCssUrls: false,

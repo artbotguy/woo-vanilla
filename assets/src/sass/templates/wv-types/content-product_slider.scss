@@ -22,6 +22,22 @@
       .wv-add-to-cart {
         background: $primary;
 
+        &:hover {
+          background: $body-color;
+          // box-shadow: 0px 1px 5px #E2195B;
+          border: 1px solid $body-color;
+
+          span {
+            color: #fff;
+          }
+
+          .wv-icon {
+            use {
+              stroke: #fff;
+            }
+          }
+        }
+
         .wv-icon {
           use {
             stroke: #fff;

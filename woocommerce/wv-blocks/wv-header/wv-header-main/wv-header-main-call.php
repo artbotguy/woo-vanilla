@@ -18,7 +18,7 @@ defined( 'ABSPATH' ) || exit;
 	</a>
 	<button class="wv-universal-toggle wv-icon-after wv-icon-after_m" data-bs-toggle="dropdown" aria-expanded="false">+7 (920) 211-49-03
 	</button>
-	<div class="wv-header-main-call__request-call">Заказать звонок</div>
+	<button class="wv-header-main-call__request-call">Заказать звонок</button>
 	<ul class="dropdown-menu wv-header-main-call__dropdown-menu">
 	<!-- # -->
 	</ul>

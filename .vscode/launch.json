@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "attach",
+      "name": "F",
+      "port": 9222,
+      "enableContentValidation": false,
+      "webRoot": "${workspaceFolder}/",
+      // "urlFilter": "http://localhost:*",
+      "url": "http://localhost",
+      "sourceMapPathOverrides": {
+        "webpack:///./assets/src/scripts/*.js": "${workspaceFolder}/assets/src/scripts/*.js",
+        "webpack:///./node_modules/*": "${workspaceFolder}/node_modules/*"
+      }
+    },
+  ]
+}

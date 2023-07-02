@@ -55,7 +55,9 @@ class Enqueue {
 		// }
 
 		wp_enqueue_style( 'bootstrap-css', get_template_directory_uri() . '/node_modules/bootstrap/dist/css/bootstrap.css', array(), $version, 'all' );
-		wp_enqueue_style( 'wv-main-css', mix( 'css/style.css' ), array(), $version, 'all' );
+		
+		// wp_enqueue_style( 'wv-main-css', mix( 'css/style.css' ), array(), $version, 'all' );
+		wp_enqueue_style( 'wv-main-css',  get_stylesheet_directory_uri() . '/assets/dist/css/style.css' , array(), $version, 'all' );
 
 		// JS
 		/**
@@ -63,7 +65,7 @@ class Enqueue {
 		 *  WVNote: need jq cut from this bundle
 		 */
 		// wp_enqueue_script( 'wv-main-js', mix( 'js/app.js' ), array(), $version, true );
-		wp_enqueue_script( 'wv-main-js', get_stylesheet_directory_uri() . '/assets/dist/js/app.js', array( 'jquery' ), $version, 'all' );
+		wp_enqueue_script( 'wv-main-js', get_stylesheet_directory_uri() . '/assets/src/scripts/app.js', array( 'jquery' ), $version, 'all' );
 
 		wp_localize_script(
 			'wv-main-js',
@@ -95,18 +97,18 @@ class Enqueue {
 		 */
 
 		wp_deregister_script( 'tinvwl' );
-		wp_register_script( 'tinvwl', get_stylesheet_directory_uri() . '/assets/dist/js/tinvwl-public.js', array( 'jquery', 'jquery-blockui', 'js-cookie', apply_filters( 'tinvwl_wc_cart_fragments_enabled', true ) ? 'wc-cart-fragments' : 'jquery' ), $version, 'all' );
+		wp_register_script( 'tinvwl', get_stylesheet_directory_uri() . '/assets/src/scripts/wp/tinvwl-public.js', array( 'jquery', 'jquery-blockui', 'js-cookie', apply_filters( 'tinvwl_wc_cart_fragments_enabled', true ) ? 'wc-cart-fragments' : 'jquery' ), $version, 'all' );
 		wp_localize_script( 'tinvwl', 'tinvwl_add_to_wishlist', wv_get_localize_args_public() );
 		// // wp_enqueue_script( 'tinvwl', mix( 'js/tinvwl-public.js' ), array( 'jquery', 'wp-color-picker' ), $version, true );
 		// // wp_enqueue_script( 'tinvwl', get_stylesheet_directory_uri() . '/assets/dist/js/tinvwl-public.js', array('jquery', 'wp-color-picker' ), $version, 'all' );
 
 		wp_deregister_script( 'xoo-wsc-main-js' );
 		// wp_enqueue_script( 'xoo-wsc-main-js', mix( 'js/xoo-wsc-main.js' ), array( 'jquery' ), $version, true );
-		wp_enqueue_script( 'xoo-wsc-main-js', get_stylesheet_directory_uri() . '/assets/dist/js/xoo-wsc-main.js', array( 'jquery' ), $version, 'all' );
+		wp_enqueue_script( 'xoo-wsc-main-js', get_stylesheet_directory_uri() . '/assets/src/scripts/wp/xoo-wsc-main.js', array( 'jquery' ), $version, 'all' );
 
 		wp_deregister_script( 'wc-add-to-cart-variation' );
 		// wp_enqueue_script( 'wc-add-to-cart-variation', mix( 'js/add-to-cart-variation.js' ), array( 'wp-util', 'jquery-blockui' ), $version, true );
-		wp_enqueue_script( 'wc-add-to-cart-variation', get_stylesheet_directory_uri() . '/assets/dist/js/add-to-cart-variation.js', array( 'wp-util', 'jquery-blockui' ), $version, 'all' );
+		wp_enqueue_script( 'wc-add-to-cart-variation', get_stylesheet_directory_uri() . '/assets/src/scripts/wp/add-to-cart-variation.js', array( 'wp-util', 'jquery-blockui' ), $version, 'all' );
 
 		/**
 		 * Activate browser-sync on development environment

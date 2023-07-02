@@ -77,9 +77,9 @@ wp_enqueue_script( 'tinvwl' );
 									); // WPCS: xss ok.;
 								?>
 								</div>
-								<?php 
+								<?php
 								// WVNOTE: Логика метаданных актуальна для вариативных wl-items (такое не добавлено)
-								// echo apply_filters( 'tinvwl_wishlist_item_meta_data', tinv_wishlist_get_item_data( $product, $wl_product ), $wl_product, $product ); // WPCS: xss ok.; 
+								// echo apply_filters( 'tinvwl_wishlist_item_meta_data', tinv_wishlist_get_item_data( $product, $wl_product ), $wl_product, $product ); // WPCS: xss ok.;
 								?>
 
 								<div class="wv-item__price">

@@ -209,7 +209,7 @@
   .wv-icon {
     use {
       fill: $primary;
-      stroke: $primary;
+      stroke: $primary !important;
     }
   }
 }

@@ -2,6 +2,9 @@
 * WVNOTE: неочевидная логика - подключение и в prod и в build сборке возможно при
 * использовании шрифтов из папки assets/dist/dist/fonts - билдер в dev сборке
 * преобразует путь для шрифтов в абсолютный (несмотря на options.processCssUrls = FALSE)
+* UPD: Не работало. Добавил ещё assets/dist/fonts - по итогу одна папка для prod, другая для dev
+
+* UPD: Не работало. Добавил ещё assets/dist/fonts - по итогу одна папка для prod, другая для dev
 */
 @font-face {
   font-family: 'TT Norms';
