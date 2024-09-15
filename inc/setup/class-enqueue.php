@@ -65,7 +65,8 @@ class Enqueue {
 		 *  WVNote: need jq cut from this bundle
 		 */
 		// wp_enqueue_script( 'wv-main-js', mix( 'js/app.js' ), array(), $version, true );
-		wp_enqueue_script( 'wv-main-js', get_stylesheet_directory_uri() . '/assets/src/scripts/app.js', array( 'jquery' ), $version, 'all' );
+		//ЭТОТ ПУТЬ БИТЫЙ wp_enqueue_script( 'wv-main-js', get_stylesheet_directory_uri() . '/assets/src/scripts/app.js', array( 'jquery' ), $version, 'all' );
+		wp_enqueue_script( 'wv-main-js', get_stylesheet_directory_uri() . '/assets/dist/js/app.js', array( 'jquery' ), $version, 'all' );
 
 		wp_localize_script(
 			'wv-main-js',
